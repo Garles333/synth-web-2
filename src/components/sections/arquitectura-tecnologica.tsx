@@ -13,7 +13,14 @@ const puzzleVariants = [
 ];
 
 // Animación puzzle box wrapper
-function PuzzleBox({ children, index, ...rest }: { children: React.ReactNode; index: number } & React.HTMLAttributes<HTMLDivElement>) {
+function PuzzleBox({ 
+  children, 
+  index, 
+  ...rest 
+}: { 
+  children: React.ReactNode; 
+  index: number;
+} & Omit<React.HTMLAttributes<HTMLDivElement>, 'onDrag' | 'onDragStart' | 'onDragEnd'>) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.21 });
   const variant = puzzleVariants[index] || { x: 0, y: 17, rotate: 0 };
