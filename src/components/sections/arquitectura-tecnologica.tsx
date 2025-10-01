@@ -20,7 +20,7 @@ function PuzzleBox({
 }: { 
   children: React.ReactNode; 
   index: number;
-} & Omit<React.HTMLAttributes<HTMLDivElement>, 'onDrag' | 'onDragStart' | 'onDragEnd'>) {
+} & Omit<React.HTMLAttributes<HTMLDivElement>, 'onDrag' | 'onDragStart' | 'onDragEnd' | 'onAnimationStart' | 'onAnimationEnd' | 'onAnimationIteration'>) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.21 });
   const variant = puzzleVariants[index] || { x: 0, y: 17, rotate: 0 };
