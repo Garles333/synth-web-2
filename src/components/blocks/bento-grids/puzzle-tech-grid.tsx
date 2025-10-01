@@ -2,9 +2,16 @@
 import { motion } from "motion/react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Layers, Database, Network, Brain, Activity } from "lucide-react";
+import { Layers, Database, Network, Brain, Activity, LucideIcon } from "lucide-react";
 
-const techCards = [
+interface TechCard {
+  icon: LucideIcon;
+  title: string;
+  description: string | React.ReactNode;
+  badges: string[];
+}
+
+const techCards: TechCard[] = [
   {
     icon: Layers,
     title: "Capa Agnóstica de Modelos",
@@ -101,7 +108,7 @@ export const PuzzleTechGrid = () => {
 };
 
 // Pequeño, aspect ratio cuadrado, fuente pequeña\compacta
-const SquareTechCard = ({ card }) => {
+const SquareTechCard = ({ card }: { card: TechCard }) => {
   const Icon = card.icon;
   return (
     <Card
@@ -131,7 +138,7 @@ const SquareTechCard = ({ card }) => {
 };
 
 // Cuadro alto vertical, ocupa grid-row 1/3 y col-start-3 en desktop
-const VerticalTechCard = ({ card }) => {
+const VerticalTechCard = ({ card }: { card: TechCard }) => {
   const Icon = card.icon;
   return (
     <Card
