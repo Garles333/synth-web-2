@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { AnimatedTextHighlight } from "@/components/ui/animated-text-highlight";
+import { AnimatedTextHighlight } from "@/components/blocks/text-animations/animated-text-highlight";
 import { TypewriterModern } from "@/components/blocks/text-animations/TypewriterModern";
 import {
   ArrowRight,
