@@ -152,7 +152,7 @@ export default async function HomePage() {
           <div className="hidden md:flex items-center gap-2">
             <div className="flex items-center gap-1 mr-2">
               <Link href="/en" className="inline-flex items-center px-2 py-1 rounded-md border border-[#2A3441] text-white hover:border-[#FF6634] transition">
-                <span role="img" aria-label="English">🇬🇧</span>
+                <span role="img" aria-label="English (US)">🇺🇸</span>
               </Link>
             </div>
             <Button asChild className="bg-[#FF6634] hover:bg-[#FF6634]/90 text-white">
