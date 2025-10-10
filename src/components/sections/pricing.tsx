@@ -257,66 +257,6 @@ export const Pricing = ({ locale = 'es' }: { locale?: 'es' | 'en' }) => {
           </div>
         </div>
 
-        {/* Plan Académico Banner - Enhanced prominence */}
-        <div className="relative max-w-5xl mx-auto mb-12">
-          {/* Glow effects */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#FF6634]/20 via-[#FF8A5B]/20 to-[#FF6634]/20 blur-2xl animate-pulse opacity-60"></div>
-          
-          <div className="relative bg-gradient-to-br from-[#1A1F2E] via-[#232944] to-[#1A1F2E] rounded-2xl border-2 border-[#FF6634]/60 p-8 md:p-10 shadow-2xl hover:border-[#FF6634] transition-all duration-500 group overflow-hidden">
-            {/* Animated background particles */}
-            <div className="absolute inset-0 overflow-hidden opacity-30">
-              <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-[#FF6634]/30 rounded-full blur-3xl animate-float"></div>
-              <div className="absolute bottom-1/4 right-1/4 w-40 h-40 bg-[#FF8A5B]/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
-            </div>
-
-            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
-              {/* Icon & Title Section */}
-              <div className="flex items-center gap-4 flex-1">
-                <div className="relative">
-                  <div className="absolute inset-0 bg-[#FF6634]/30 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-                  <div className="relative w-16 h-16 bg-gradient-to-br from-[#FF6634] to-[#FF8A5B] rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                    <GraduationCap className="w-8 h-8 text-white" />
-                    <Sparkles className="absolute -top-1 -right-1 w-4 h-4 text-[#FFD700] animate-pulse" />
-                  </div>
-                </div>
-                
-                <div className="text-left">
-                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-2 flex items-center gap-2 flex-wrap">
-                    {locale === 'en' ? 'Special Academic Plan' : 'Plan Académico Especial'}
-                    <span className="inline-block px-3 py-1 bg-[#FF6634]/20 text-[#FF6634] text-sm font-medium rounded-full border border-[#FF6634]/40">
-                      {locale === 'en' ? 'Up to 60% OFF' : 'Hasta 60% OFF'}
-                    </span>
-                  </h3>
-                  <p className="text-[#E1E5EB] text-base md:text-lg max-w-2xl">
-                    {locale === 'en' 
-                      ? 'Are you an educational institution? Contact us at ' 
-                      : 'Si eres una institución educativa, escríbenos a '}
-                    <a 
-                      href="mailto:hola@synth-insights.com" 
-                      className="text-[#FF6634] font-semibold hover:text-[#FF8A5B] transition-colors underline decoration-2 underline-offset-2"
-                    >
-                      hola@synth-insights.com
-                    </a>
-                    {locale === 'en' 
-                      ? ' and get discounts of up to 60% on all our plans.' 
-                      : ' y obtén descuentos de hasta 60% en todos nuestros planes.'}
-                  </p>
-                </div>
-              </div>
-
-              {/* CTA Button */}
-              <Button 
-                asChild
-                className="bg-[#FF6634] hover:bg-[#FF8A5B] text-white px-8 py-6 text-lg font-semibold rounded-xl shadow-lg hover:shadow-2xl hover:shadow-[#FF6634]/40 transition-all duration-300 hover:scale-105 whitespace-nowrap"
-              >
-                <a href="mailto:hola@synth-insights.com">
-                  {locale === 'en' ? 'Contact Us' : 'Contáctanos'}
-                </a>
-              </Button>
-            </div>
-          </div>
-        </div>
-
         {/* Pricing Cards: solo 3 columnas en desktop, con animación */}
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {plans.map((plan, index) => (
@@ -409,6 +349,44 @@ export const Pricing = ({ locale = 'es' }: { locale?: 'es' | 'en' }) => {
           <p className="text-[var(--color-light-text)] text-sm max-w-2xl mx-auto">
             {t.bottomDesc} <a href="mailto:hola@synth-insights.com" className="text-[var(--color-accent-orange)] underline hover:opacity-80 transition">hola@synth-insights.com</a>.
           </p>
+        </div>
+
+        {/* Plan Académico Banner - Professional Version - NOW BELOW ENTERPRISE */}
+        <div className="relative max-w-4xl mx-auto mt-12 mb-8">
+          {/* Subtle glow effects */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#FF6634]/10 via-[#FF8A5B]/10 to-[#FF6634]/10 blur-xl opacity-40"></div>
+          
+          <div className="relative bg-gradient-to-br from-[#1A1F2E] to-[#0B0E1A] rounded-xl border border-[#FF6634]/40 p-8 shadow-lg hover:border-[#FF6634]/60 transition-all duration-300 group">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+              {/* Icon & Title Section */}
+              <div className="flex items-center gap-4 flex-1">
+                <div className="w-12 h-12 bg-gradient-to-br from-[#FF6634]/20 to-[#FF8A5B]/20 rounded-xl flex items-center justify-center border border-[#FF6634]/30 group-hover:scale-105 transition-transform duration-300">
+                  <GraduationCap className="w-6 h-6 text-[#FF6634]" />
+                </div>
+                
+                <div className="text-left flex-1">
+                  <h3 className="text-xl md:text-2xl font-bold text-white mb-1">
+                    {locale === 'en' ? 'Educational Institutions' : 'Instituciones Educativas'}
+                  </h3>
+                  <p className="text-[#E1E5EB] text-sm md:text-base">
+                    {locale === 'en' 
+                      ? 'Access exclusive discounts of up to 60% on all our plans. Contact us to learn more.' 
+                      : 'Accede a descuentos exclusivos de hasta 60% en todos nuestros planes. Contáctanos para conocer más.'}
+                  </p>
+                </div>
+              </div>
+
+              {/* CTA Button with mailto */}
+              <Button 
+                asChild
+                className="bg-[#FF6634] hover:bg-[#FF8A5B] text-white px-6 py-3 text-base font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 whitespace-nowrap"
+              >
+                <a href="mailto:hola@synth-insights.com?subject=Consulta%20Plan%20Académico">
+                  {locale === 'en' ? 'Contact Us' : 'Solicitar Información'}
+                </a>
+              </Button>
+            </div>
+          </div>
         </div>
 
         {/* VPN Help Notice - only show if using default currency after some time */}
