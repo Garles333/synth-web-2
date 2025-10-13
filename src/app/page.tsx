@@ -28,6 +28,8 @@ import { ArquitecturaTecnologica } from "@/components/sections/arquitectura-tecn
 import { Pricing } from "@/components/sections/pricing";
 import { ValidationCarousel } from "@/components/blocks/feature-sections/validation-carousel";
 import { RealismSynthLayers } from "@/components/sections/realism-synth-layers";
+import { DiferenciaFundamental } from "@/components/sections/diferencia-fundamental";
+import { LaboratorioRealismo } from "@/components/sections/laboratorio-realismo";
 import Link from "next/link";
 // import { fetchPosts } from "@/lib/contentful";
 
@@ -467,6 +469,14 @@ export default async function HomePage() {
       </section>
 
       <RealismSynthLayers locale="es" />
+
+      <ScrollReveal direction="up" distance={60}>
+        <DiferenciaFundamental />
+      </ScrollReveal>
+
+      <ScrollReveal direction="up" distance={60}>
+        <LaboratorioRealismo />
+      </ScrollReveal>
 
       <section id="equipo" className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
