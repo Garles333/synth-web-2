@@ -79,7 +79,7 @@ export const ArquitecturaTecnologica = ({ locale = 'es' }: { locale?: 'es' | 'en
       eventDriven: 'Por Eventos',
       distributed: 'Distribuido',
       culturalEngine: 'Motor de Cosmovisiones Culturales',
-      culturalEngineDesc: 'Nuestro motor no solo traduce el idioma, calibra el modelo de pensamiento. Integramos marcos científicos como las Dimensiones Culturales de Hofstede, ajustando las variables implícitas que rigen la toma de decisiones: desde la percepción de la autoridad hasta la aversión a la incertidumbre. Por eso, un participante de 22 años en Madrid no solo usa referencias distintas a uno de 55 en Lima; piensa distinto. Garantizamos un realismo regional inigualable, basado en la ciencia del comportamiento cultural.',
+      culturalEngineDesc: 'Nuestro motor calibra el modelo de pensamiento integrando Dimensiones Culturales de Hofstede. Ajustamos variables implícitas: percepción de autoridad, aversión a incertidumbre. Un joven de 22 años en Madrid piensa distinto a uno de 55 en Lima. Realismo regional basado en ciencia del comportamiento.',
       hofstede: 'Hofstede',
       persistent: 'Persistente',
     },
@@ -106,7 +106,7 @@ export const ArquitecturaTecnologica = ({ locale = 'es' }: { locale?: 'es' | 'en
       eventDriven: 'Event-driven',
       distributed: 'Distributed',
       culturalEngine: 'Cultural Worldviews Engine',
-      culturalEngineDesc: 'Our engine doesn\'t just translate language, it calibrates the model of thinking. We integrate scientific frameworks like Hofstede\'s Cultural Dimensions, adjusting the implicit variables that govern decision-making: from perception of authority to uncertainty avoidance. That\'s why a 22-year-old participant in Madrid not only uses different references than a 55-year-old in Lima; they think differently. We guarantee unmatched regional realism, based on the science of cultural behavior.',
+      culturalEngineDesc: 'Our engine calibrates the thinking model integrating Hofstede\'s Cultural Dimensions. We adjust implicit variables: perception of authority, uncertainty avoidance. A 22-year-old in Madrid thinks differently than a 55-year-old in Lima. Regional realism based on behavioral science.',
       hofstede: 'Hofstede',
       persistent: 'Persistent',
     }
