@@ -59,12 +59,11 @@ export const SparkSection = () => {
           </motion.div>
 
           <h2 className="text-5xl md:text-7xl font-bold mb-6 text-white leading-tight">
-            La Magia Revelada:{' '}
             <span className="bg-gradient-to-r from-[#FF6634] via-[#FF8A5B] to-[#FFAA7F] bg-clip-text text-transparent">
               Así Nace
             </span>
             <br />
-            una Persona en Segundos
+            una Persona Sintética en Segundos
           </h2>
           
           <p className="text-xl md:text-2xl text-[#E1E5EB] max-w-4xl mx-auto leading-relaxed font-light">
