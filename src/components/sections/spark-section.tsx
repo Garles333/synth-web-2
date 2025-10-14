@@ -525,8 +525,8 @@ export const SparkSection = () => {
                   transition={{ duration: 3, repeat: Infinity }} />
 
                 
-                <p className="text-xl md:text-2xl text-[#E1E5EB] leading-relaxed max-w-3xl mx-auto">
-                  Spark te permite generar un panel de participantes diversos y creíbles en segundos, listos para ser refinados en el Laboratorio o usados directamente en una simulación. Es la combinación perfecta de{' '}
+                <p className="text-base md:text-lg text-[#E1E5EB] leading-relaxed max-w-3xl mx-auto">
+                  Genera participantes diversos y creíbles en segundos, listos para el Laboratorio o simulación directa. La combinación perfecta de{' '}
                   <span className="text-white font-bold bg-gradient-to-r from-[#FF6634]/20 to-transparent px-2 py-1 rounded">control estratégico</span>
                   {' '}y{' '}
                   <span className="text-white font-bold bg-gradient-to-r from-[#FF8A5B]/20 to-transparent px-2 py-1 rounded">descubrimiento inspirado</span>.
