@@ -472,7 +472,7 @@ export default async function HomePage() {
       <RealismSynthLayers locale="es" />
 
       <ScrollReveal direction="up" distance={60}>
-        <SparkSection />
+        <LaboratorioRealismo />
       </ScrollReveal>
 
       <ScrollReveal direction="up" distance={60}>
@@ -480,7 +480,7 @@ export default async function HomePage() {
       </ScrollReveal>
 
       <ScrollReveal direction="up" distance={60}>
-        <LaboratorioRealismo />
+        <SparkSection />
       </ScrollReveal>
 
       <section id="equipo" className="py-20 px-4">
