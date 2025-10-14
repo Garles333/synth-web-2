@@ -78,8 +78,9 @@ export const ArquitecturaTecnologica = ({ locale = 'es' }: { locale?: 'es' | 'en
       multiAgentDesc: 'Coordinación de agentes, Apache Kafka, Redis Streams, eventos y colas distribuidas.',
       eventDriven: 'Por Eventos',
       distributed: 'Distribuido',
-      personalityEngine: 'Motor de Personalidad',
-      personalityEngineDesc: 'Modelado Big Five + HEXACO. Persistencia de memoria con grafos Neo4j.',
+      culturalEngine: 'Motor de Cosmovisiones Culturales',
+      culturalEngineDesc: 'Nuestro motor no solo traduce el idioma, calibra el modelo de pensamiento. Integramos marcos científicos como las Dimensiones Culturales de Hofstede, ajustando las variables implícitas que rigen la toma de decisiones: desde la percepción de la autoridad hasta la aversión a la incertidumbre. Por eso, un participante de 22 años en Madrid no solo usa referencias distintas a uno de 55 en Lima; piensa distinto. Garantizamos un realismo regional inigualable, basado en la ciencia del comportamiento cultural.',
+      hofstede: 'Hofstede',
       persistent: 'Persistente',
     },
     en: {
@@ -104,8 +105,9 @@ export const ArquitecturaTecnologica = ({ locale = 'es' }: { locale?: 'es' | 'en
       multiAgentDesc: 'Agent coordination, Apache Kafka, Redis Streams, distributed events and queues.',
       eventDriven: 'Event-driven',
       distributed: 'Distributed',
-      personalityEngine: 'Personality Engine',
-      personalityEngineDesc: 'Big Five + HEXACO modeling. Memory persistence with Neo4j graphs.',
+      culturalEngine: 'Cultural Worldviews Engine',
+      culturalEngineDesc: 'Our engine doesn\'t just translate language, it calibrates the model of thinking. We integrate scientific frameworks like Hofstede\'s Cultural Dimensions, adjusting the implicit variables that govern decision-making: from perception of authority to uncertainty avoidance. That\'s why a 22-year-old participant in Madrid not only uses different references than a 55-year-old in Lima; they think differently. We guarantee unmatched regional realism, based on the science of cultural behavior.',
+      hofstede: 'Hofstede',
       persistent: 'Persistent',
     }
   }[locale];
@@ -222,21 +224,21 @@ export const ArquitecturaTecnologica = ({ locale = 'es' }: { locale?: 'es' | 'en
               <div className="bg-[#FF6634]/20 text-[#FF6634] px-2.5 py-1 rounded-full text-[12px] font-medium">{t.distributed}</div>
             </div>
           </PuzzleBox>
-          {/* BLOQUE 5 - Motor de Personalidad */}
+          {/* BLOQUE 5 - Motor de Cosmovisiones Culturales */}
           <PuzzleBox index={3} className="bg-[#1A1F2E] border border-[#2A3441] rounded-xl px-6 py-6 flex flex-col items-start min-h-[160px] w-full overflow-hidden md:h-[182px] md:min-h-[182px] md:max-h-[182px] md:row-start-2 md:col-start-2" style={{}}>
             <div className="flex items-center gap-2.5 mb-1.5">
               <div className="w-7 h-7 bg-[#FF6634]/20 rounded-xl flex items-center justify-center">
                 <Brain className="w-5 h-5 text-[#FF6634]" />
               </div>
               <div className="text-sm font-bold text-white" style={{fontSize:'1.05rem'}}>
-                {t.personalityEngine}
+                {t.culturalEngine}
               </div>
             </div>
             <div className="text-[#E1E5EB] text-[13px] mb-1 leading-tight">
-              {t.personalityEngineDesc}
+              {t.culturalEngineDesc}
             </div>
             <div className="flex flex-wrap gap-1.5 mt-auto">
-              <div className="bg-[#FF6634]/20 text-[#FF6634] px-2.5 py-1 rounded-full text-[12px] font-medium">HEXACO</div>
+              <div className="bg-[#FF6634]/20 text-[#FF6634] px-2.5 py-1 rounded-full text-[12px] font-medium">{t.hofstede}</div>
               <div className="bg-[#FF6634]/20 text-[#FF6634] px-2.5 py-1 rounded-full text-[12px] font-medium">{t.persistent}</div>
             </div>
           </PuzzleBox>

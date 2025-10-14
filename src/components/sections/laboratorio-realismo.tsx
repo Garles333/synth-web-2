@@ -294,51 +294,6 @@ export const LaboratorioRealismo = () => {
             );
           })}
         </div>
-
-        {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          viewport={{ once: true, amount: 0.3 }}
-          className="mt-20 text-center"
-        >
-          <div className="relative inline-block max-w-5xl">
-            {/* Animated glow */}
-            <motion.div 
-              className="absolute inset-0 bg-gradient-to-r from-[#FF6634]/20 via-[#FF8A5B]/30 to-[#FF6634]/20 rounded-3xl blur-2xl"
-              animate={{ 
-                scale: [1, 1.05, 1],
-                opacity: [0.5, 0.7, 0.5]
-              }}
-              transition={{ duration: 3, repeat: Infinity }}
-            ></motion.div>
-            
-            <div className="relative bg-gradient-to-br from-[#1A1F2E]/95 via-[#141824]/95 to-[#0F1218]/95 backdrop-blur-xl border-2 border-[#FF6634] rounded-3xl px-12 py-10 shadow-2xl">
-              <div className="flex items-center justify-center gap-3 mb-6">
-                <Brain className="w-8 h-8 text-[#FF6634]" />
-                <Zap className="w-6 h-6 text-[#FF8A5B]" />
-                <Target className="w-8 h-8 text-[#FF6634]" />
-              </div>
-              
-              <p className="text-3xl md:text-4xl font-bold text-white mb-5 leading-tight">
-                No estás ejecutando una encuesta.
-                <br />
-                Estás dirigiendo un{' '}
-                <span className="bg-gradient-to-r from-[#FF6634] to-[#FF8A5B] bg-clip-text text-transparent">
-                  experimento de comportamiento humano
-                </span>.
-              </p>
-              
-              <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[#FF6634] to-transparent mx-auto mb-5"></div>
-              
-              <p className="text-xl text-[#E1E5EB] leading-relaxed font-light max-w-3xl mx-auto">
-                La granularidad de Synth te da el control para hacerlo con una{' '}
-                <span className="text-white font-medium">precisión sin precedentes</span>.
-              </p>
-            </div>
-          </div>
-        </motion.div>
       </motion.div>
     </section>
   );
