@@ -85,7 +85,7 @@ export const SparkSection = () => {
             <Zap className="w-5 h-5 text-[#FF8A5B]" />
           </motion.div>
 
-          <h2 className="text-6xl md:text-8xl font-black mb-8 leading-tight">
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
             <motion.span 
               className="inline-block bg-gradient-to-r from-[#FF6634] via-[#FF8A5B] to-[#FFAA7F] bg-clip-text text-transparent"
               initial={{ opacity: 0, x: -20 }}
@@ -111,10 +111,10 @@ export const SparkSection = () => {
             transition={{ duration: 0.8, delay: 0.8 }}
             className="max-w-4xl mx-auto"
           >
-            <p className="text-2xl md:text-3xl text-[#E1E5EB] leading-relaxed font-light mb-4">
+            <p className="text-xl text-[#E1E5EB] leading-relaxed font-light mb-4">
               Presentamos <span className="text-white font-bold bg-gradient-to-r from-[#FF6634]/20 to-transparent px-3 py-1 rounded">Spark</span>, nuestro motor de creación probabilística.
             </p>
-            <p className="text-lg md:text-xl text-[#E1E5EB]/80 leading-relaxed">
+            <p className="text-base md:text-lg text-[#E1E5EB]/80 leading-relaxed">
               La herramienta definitiva para eliminar el sesgo del 'lienzo en blanco' y descubrir perfiles que no sabías que necesitabas.
             </p>
           </motion.div>
