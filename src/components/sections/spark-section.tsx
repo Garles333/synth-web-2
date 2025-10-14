@@ -206,8 +206,8 @@ export const SparkSection = () => {
                     <div className="space-y-5">
                       {[
                         { label: 'Rango de Edad', value: '25-35', icon: '👤' },
-                        { label: 'NSE', value: 'C+', icon: '💼' },
-                        { label: 'País', value: 'España', icon: '🌍' }
+                        { label: 'NSE', value: 'Medio-alto-', icon: '💼' },
+                        { label: 'Ubicación', value: 'Madrid (España)', icon: '🌍' }
                       ].map((field, i) => (
                         <motion.div
                           key={i}
@@ -339,7 +339,7 @@ export const SparkSection = () => {
 
                     {/* Enhanced animated tags with better positioning */}
                     {[
-                      { text: 'Aversión al Riesgo: 75%', angle: 0, delay: 0, icon: '⚠️' },
+                      { text: 'Aversión al Riesgo: 25%', angle: 180, delay: 0, icon: '⚠️' },
                       { text: 'Sesgo Status Quo: +20%', angle: 120, delay: 0.3, icon: '🔄' },
                       { text: 'Cosmovisión: Jóvenes Urbanos', angle: 240, delay: 0.6, icon: '🌆' },
                     ].map((tag, i) => {
