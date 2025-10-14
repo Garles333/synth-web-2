@@ -45,10 +45,9 @@ export const DiferenciaFundamental = () => {
   });
 
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.95, 1, 1, 0.95]);
 
   return (
-    <section ref={ref} className="py-32 px-4 bg-gradient-to-b from-[#0B0E1A] via-[#0F1119] to-[#0B0E1A] relative overflow-hidden">
+    <section ref={ref} className="py-32 px-4 bg-gradient-to-b from-[#0B0E1A] via-[#0D0F16] to-[#0B0E1A] relative overflow-hidden">
       {/* Enhanced Background Effects */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-[#FF6634]/10 rounded-full blur-[120px] animate-pulse"></div>
@@ -86,7 +85,7 @@ export const DiferenciaFundamental = () => {
 
       <motion.div 
         className="max-w-7xl mx-auto relative z-10"
-        style={{ opacity, scale }}
+        style={{ opacity }}
       >
         {/* Header */}
         <motion.div
@@ -140,20 +139,20 @@ export const DiferenciaFundamental = () => {
         </motion.div>
 
         {/* Comparison Grid */}
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
-          {/* Left Column - Chatbot Genérico */}
+        <div className="grid lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
+          {/* Left Column - Generic Chatbot */}
           <motion.div
             initial={{ opacity: 0, x: -60 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            viewport={{ once: true, amount: 0.2 }}
-            className="relative group"
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            viewport={{ once: true, amount: 0.3 }}
+            className="relative group h-full flex flex-col"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-[#2A2A2A]/50 to-[#1A1A1A]/50 rounded-3xl blur-xl opacity-50 group-hover:opacity-70 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-gray-800/10 to-gray-900/10 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             
-            <div className="relative bg-gradient-to-br from-[#2A2A2A]/60 via-[#252525]/60 to-[#1A1A1A]/60 backdrop-blur-xl rounded-3xl p-8 md:p-10 border border-[#3A3A3A] overflow-hidden">
+            <div className="relative bg-gradient-to-br from-gray-800/40 via-gray-900/40 to-black/40 backdrop-blur-sm border border-gray-700/50 rounded-3xl p-8 flex-1 flex flex-col">
               {/* Header */}
-              <div className="flex flex-col items-center mb-10 relative">
+              <div className="flex flex-col items-center mb-10 relative flex-shrink-0">
                 <div className="relative mb-6">
                   <div className="absolute inset-0 bg-[#4A4A4A]/30 rounded-full blur-xl"></div>
                   <div className="relative w-20 h-20 bg-gradient-to-br from-[#4A4A4A] to-[#3A3A3A] rounded-full flex items-center justify-center shadow-2xl border border-[#5A5A5A]">
@@ -167,95 +166,67 @@ export const DiferenciaFundamental = () => {
                 </div>
               </div>
               
-              {/* Content */}
-              <div className="space-y-5">
-                {comparisonData.map((item, index) => (
+              {/* Categories */}
+              <div className="space-y-6 flex-1">
+                {comparisonData.map((category, index) => (
                   <motion.div
-                    key={`chatbot-${index}`}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: 0.4 + index * 0.08 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    className="relative group/item"
+                    key={category.category}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="border-t border-gray-700/30 pt-6 h-full"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#2A2A2A]/0 via-[#3A3A3A]/20 to-[#2A2A2A]/0 rounded-xl opacity-0 group-hover/item:opacity-100 transition-opacity duration-300"></div>
-                    
-                    <div className="relative bg-[#1F1F1F]/80 rounded-xl p-5 border border-[#3A3A3A]/50 hover:border-[#4A4A4A] transition-all duration-300">
-                      <div className="flex items-start gap-3 mb-3">
-                        <div className="w-8 h-8 bg-[#2A2A2A] rounded-lg flex items-center justify-center flex-shrink-0 border border-[#3A3A3A]">
-                          <span className="text-[#888888] font-mono text-xs font-bold">{index + 1}</span>
-                        </div>
-                        <h4 className="font-mono text-sm font-bold text-[#999999] uppercase tracking-wider">{item.category}</h4>
-                      </div>
-                      <p className="font-mono text-sm text-[#AAAAAA] leading-relaxed pl-11">{item.chatbot}</p>
-                    </div>
+                    <h4 className="font-mono text-sm font-bold text-gray-400 mb-3 tracking-wider uppercase">{category.category}</h4>
+                    <p className="text-gray-400 leading-relaxed text-[15px] font-light min-h-[80px]">{category.chatbot}</p>
                   </motion.div>
                 ))}
               </div>
             </div>
           </motion.div>
 
-          {/* Right Column - Synth */}
+          {/* Right Column - Synth Participant */}
           <motion.div
             initial={{ opacity: 0, x: 60 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            viewport={{ once: true, amount: 0.2 }}
-            className="relative group"
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            viewport={{ once: true, amount: 0.3 }}
+            className="relative group h-full flex flex-col"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-[#FF6634]/20 to-[#FF8A5B]/20 rounded-3xl blur-2xl opacity-60 group-hover:opacity-80 transition-opacity duration-500 animate-pulse"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-[#FF6634]/20 to-[#FF8A5B]/10 rounded-3xl blur-2xl opacity-60 group-hover:opacity-100 transition-opacity duration-500"></div>
             
-            <div className="relative bg-gradient-to-br from-[#1A1F2E]/95 via-[#151925]/95 to-[#0F1218]/95 backdrop-blur-xl rounded-3xl p-8 md:p-10 border-2 border-[#FF6634] overflow-hidden shadow-2xl">
-              {/* Shine effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
+            <div className="relative bg-gradient-to-br from-[#1A1F2E]/95 via-[#141824]/95 to-[#0F1218]/95 backdrop-blur-xl border-2 border-[#FF6634] rounded-3xl p-8 flex-1 flex flex-col">
               {/* Header */}
-              <div className="flex flex-col items-center mb-10 relative z-10">
-                <div className="relative mb-6">
-                  <motion.div 
-                    className="absolute inset-0 bg-[#FF6634]/30 rounded-full blur-2xl"
-                    animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.7, 0.5] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  ></motion.div>
-                  <div className="relative w-20 h-20 bg-gradient-to-br from-[#FF6634] via-[#FF7A4D] to-[#FF8A5B] rounded-full flex items-center justify-center shadow-2xl">
-                    <Sparkles className="w-10 h-10 text-white" strokeWidth={2.5} />
-                  </div>
-                </div>
-                <h3 className="text-3xl font-bold text-white mb-3 flex items-center gap-3">
-                  Participante Synth
+              <div className="flex items-center gap-4 pb-8 border-b border-[#FF6634]/30">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-[#FF6634] blur-lg opacity-50 rounded-xl"></div>
                   <img
                     src="https://i.postimg.cc/bvqJBxD6/Logo-Synth-sin-fondo.png"
-                    alt="Synth"
-                    className="h-7 w-auto object-contain"
+                    alt="Synth Logo"
+                    className="h-12 w-12 object-contain relative z-10"
                   />
-                </h3>
-                <div className="flex items-center gap-2 text-[#FF6634] text-sm font-medium">
-                  <CheckCircle2 className="w-4 h-4" />
-                  <span>Insights auténticos y profundos</span>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-white">Participante</h3>
+                  <p className="text-[#FF6634] text-sm font-medium">Agente Sintético Synth</p>
                 </div>
               </div>
-              
-              {/* Content */}
-              <div className="space-y-5 relative z-10">
-                {comparisonData.map((item, index) => (
+
+              {/* Categories */}
+              <div className="space-y-6 flex-1">
+                {comparisonData.map((category, index) => (
                   <motion.div
-                    key={`synth-${index}`}
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: 0.4 + index * 0.08 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    className="relative group/item"
+                    key={category.category}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="relative group/item border-t border-[#FF6634]/30 pt-6 h-full"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#FF6634]/0 via-[#FF6634]/10 to-[#FF6634]/0 rounded-xl opacity-0 group-hover/item:opacity-100 transition-opacity duration-300"></div>
-                    
-                    <div className="relative bg-gradient-to-br from-white/10 to-white/5 rounded-xl p-5 border border-[#FF6634]/30 hover:border-[#FF6634]/60 hover:bg-white/15 transition-all duration-300 backdrop-blur-sm">
-                      <div className="flex items-start gap-3 mb-3">
-                        <div className="w-8 h-8 bg-gradient-to-br from-[#FF6634] to-[#FF8A5B] rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg">
-                          <span className="text-white font-bold text-xs">{index + 1}</span>
-                        </div>
-                        <h4 className="text-sm font-bold text-[#FF6634] uppercase tracking-wider">{item.category}</h4>
-                      </div>
-                      <p className="text-sm text-white leading-relaxed pl-11 font-light">{item.synth}</p>
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#FF6634]/5 to-transparent opacity-0 group-hover/item:opacity-100 transition-opacity duration-300 rounded-xl -m-2"></div>
+                    <div className="relative">
+                      <h4 className="text-sm font-bold text-[#FF6634] mb-3 tracking-wider uppercase">{category.category}</h4>
+                      <p className="text-white leading-relaxed text-[15px] font-light min-h-[80px]">{category.synth}</p>
                     </div>
                   </motion.div>
                 ))}

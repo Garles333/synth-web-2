@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Brain, Heart, Users, Target, Globe, Zap } from 'lucide-react';
+import { Brain, Heart, Users, Target, Globe, Zap, User } from 'lucide-react';
 
 const modules = [
   {
@@ -176,60 +176,35 @@ export const LaboratorioRealismo = () => {
                 <div className="w-72 h-72 bg-gradient-radial from-[#FF6634]/30 via-[#FF6634]/10 to-transparent rounded-full blur-2xl"></div>
               </motion.div>
               
-              {/* Person silhouette */}
+              {/* Person silhouette - IMPROVED */}
               <div className="relative w-56 h-56 flex items-center justify-center z-10">
-                <svg
-                  viewBox="0 0 200 200"
-                  className="w-full h-full drop-shadow-2xl"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
+                <motion.div
+                  className="relative"
+                  animate={{ 
+                    scale: [1, 1.05, 1],
+                  }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                 >
-                  <defs>
-                    <linearGradient id="personGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#FF6634" />
-                      <stop offset="50%" stopColor="#FF7A4D" />
-                      <stop offset="100%" stopColor="#FF8A5B" />
-                    </linearGradient>
-                    <filter id="glow">
-                      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                      <feMerge>
-                        <feMergeNode in="coloredBlur"/>
-                        <feMergeNode in="SourceGraphic"/>
-                      </feMerge>
-                    </filter>
-                  </defs>
+                  {/* Outer glow */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-32 h-32 bg-gradient-to-br from-[#FF6634] to-[#FF8A5B] rounded-full blur-3xl opacity-60"></div>
+                  </div>
                   
-                  {/* Head */}
-                  <circle cx="100" cy="55" r="28" fill="url(#personGradient)" filter="url(#glow)" />
+                  {/* User icon */}
+                  <div className="relative bg-gradient-to-br from-[#FF6634] to-[#FF8A5B] rounded-full p-12 shadow-2xl">
+                    <User className="w-20 h-20 text-white" strokeWidth={2.5} />
+                  </div>
                   
-                  {/* Body */}
-                  <path
-                    d="M 72 85 Q 72 95 72 115 L 72 145 L 80 170 M 128 85 Q 128 95 128 115 L 128 145 L 120 170 M 72 85 Q 100 95 128 85 M 100 85 L 100 130"
-                    stroke="url(#personGradient)"
-                    strokeWidth="10"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    filter="url(#glow)"
+                  {/* Pulse ring */}
+                  <motion.div
+                    className="absolute inset-0 border-2 border-[#FF6634] rounded-full"
+                    animate={{ 
+                      scale: [1, 1.3, 1.3],
+                      opacity: [0.8, 0, 0]
+                    }}
+                    transition={{ duration: 2, repeat: Infinity }}
                   />
-                  
-                  {/* Arms */}
-                  <path
-                    d="M 72 100 L 50 130 M 128 100 L 150 130"
-                    stroke="url(#personGradient)"
-                    strokeWidth="10"
-                    strokeLinecap="round"
-                    filter="url(#glow)"
-                  />
-                  
-                  {/* Legs */}
-                  <path
-                    d="M 72 145 L 65 175 M 128 145 L 135 175"
-                    stroke="url(#personGradient)"
-                    strokeWidth="10"
-                    strokeLinecap="round"
-                    filter="url(#glow)"
-                  />
-                </svg>
+                </motion.div>
               </div>
 
               {/* Connection lines to modules */}
