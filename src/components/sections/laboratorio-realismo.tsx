@@ -35,8 +35,8 @@ const modules = [
   {
     id: 4,
     icon: Globe,
-    title: 'Spark y Cosmovisiones',
-    description: 'Con nuestro motor de Cosmovisiones y la creación de perfiles con Spark, nos aseguramos de que cada participante piense y hable de acuerdo a su realidad. Un joven de 22 años en Madrid no usa las mismas referencias que uno de 55 en Lima. Garantizamos un realismo regional inigualable.',
+    title: 'El Motor de Cosmovisiones Culturales',
+    description: 'Nuestro motor no solo traduce el idioma, calibra el modelo de pensamiento. Para ello, integramos marcos científicos como las Dimensiones Culturales de Hofstede, ajustando las variables implícitas que rigen la toma de decisiones: desde la percepción de la autoridad hasta la aversión a la incertidumbre. Por eso, un participante de 22 años en Madrid no solo usa referencias distintas a uno de 55 en Lima; piensa distinto. Garantizamos un realismo regional inigualable, basado en la ciencia del comportamiento cultural.',
     delay: 0.8,
     color: 'from-emerald-500 to-teal-600',
     bgGlow: 'emerald-500',
