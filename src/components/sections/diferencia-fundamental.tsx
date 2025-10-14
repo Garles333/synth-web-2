@@ -138,102 +138,100 @@ export const DiferenciaFundamental = () => {
           </div>
         </motion.div>
 
-        {/* Comparison Grid */}
-        <div className="grid lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
-          {/* Left Column - Generic Chatbot */}
-          <motion.div
-            initial={{ opacity: 0, x: -60 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            viewport={{ once: true, amount: 0.3 }}
-            className="relative group h-full flex flex-col"
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-gray-800/10 to-gray-900/10 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        {/* Integrated Comparison Container */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          viewport={{ once: true, amount: 0.2 }}
+          className="relative max-w-7xl mx-auto"
+        >
+          {/* Outer glow */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#FF6634]/20 via-[#FF8A5B]/10 to-transparent rounded-3xl blur-2xl opacity-60"></div>
+          
+          {/* Main container with border */}
+          <div className="relative bg-gradient-to-br from-[#1A1F2E]/50 via-[#141824]/50 to-[#0F1218]/50 backdrop-blur-xl border-2 border-[#FF6634]/30 rounded-3xl overflow-hidden">
             
-            <div className="relative bg-gradient-to-br from-gray-800/40 via-gray-900/40 to-black/40 backdrop-blur-sm border border-gray-700/50 rounded-3xl p-8 flex-1 flex flex-col">
-              {/* Header */}
-              <div className="flex flex-col items-center mb-10 relative flex-shrink-0">
-                <div className="relative mb-6">
-                  <div className="absolute inset-0 bg-[#4A4A4A]/30 rounded-full blur-xl"></div>
-                  <div className="relative w-20 h-20 bg-gradient-to-br from-[#4A4A4A] to-[#3A3A3A] rounded-full flex items-center justify-center shadow-2xl border border-[#5A5A5A]">
-                    <Brain className="w-10 h-10 text-[#888888]" strokeWidth={1.5} />
+            {/* Headers Row */}
+            <div className="grid lg:grid-cols-2 border-b-2 border-[#FF6634]/30">
+              {/* Left Header - Generic Chatbot */}
+              <div className="relative group border-r border-[#FF6634]/30">
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-800/20 to-gray-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                <div className="relative p-8 flex flex-col items-center justify-center min-h-[200px]">
+                  <div className="relative mb-4">
+                    <div className="absolute inset-0 bg-[#4A4A4A]/30 rounded-full blur-xl"></div>
+                    <div className="relative w-16 h-16 bg-gradient-to-br from-[#4A4A4A] to-[#3A3A3A] rounded-full flex items-center justify-center shadow-2xl border border-[#5A5A5A]">
+                      <Brain className="w-8 h-8 text-[#888888]" strokeWidth={1.5} />
+                    </div>
+                  </div>
+                  <h3 className="text-3xl font-bold text-[#CCCCCC] mb-2">Chatbot Genérico</h3>
+                  <div className="flex items-center gap-2 text-[#888888] text-sm">
+                    <XCircle className="w-4 h-4" />
+                    <span>Respuestas sin profundidad</span>
                   </div>
                 </div>
-                <h3 className="text-3xl font-bold text-[#CCCCCC] mb-2 font-mono">Chatbot Genérico</h3>
-                <div className="flex items-center gap-2 text-[#888888] text-sm">
-                  <XCircle className="w-4 h-4" />
-                  <span>Respuestas sin profundidad</span>
-                </div>
-              </div>
-              
-              {/* Categories */}
-              <div className="space-y-6 flex-1">
-                {comparisonData.map((category, index) => (
-                  <motion.div
-                    key={category.category}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="border-t border-gray-700/30 pt-6 h-full"
-                  >
-                    <h4 className="font-mono text-sm font-bold text-gray-400 mb-3 tracking-wider uppercase">{category.category}</h4>
-                    <p className="text-gray-400 leading-relaxed text-[15px] font-light min-h-[80px]">{category.chatbot}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Right Column - Synth Participant */}
-          <motion.div
-            initial={{ opacity: 0, x: 60 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            viewport={{ once: true, amount: 0.3 }}
-            className="relative group h-full flex flex-col"
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-[#FF6634]/20 to-[#FF8A5B]/10 rounded-3xl blur-2xl opacity-60 group-hover:opacity-100 transition-opacity duration-500"></div>
-            
-            <div className="relative bg-gradient-to-br from-[#1A1F2E]/95 via-[#141824]/95 to-[#0F1218]/95 backdrop-blur-xl border-2 border-[#FF6634] rounded-3xl p-8 flex-1 flex flex-col">
-              {/* Header */}
-              <div className="flex items-center gap-4 pb-8 border-b border-[#FF6634]/30">
-                <div className="relative">
-                  <div className="absolute inset-0 bg-[#FF6634] blur-lg opacity-50 rounded-xl"></div>
-                  <img
-                    src="https://i.postimg.cc/bvqJBxD6/Logo-Synth-sin-fondo.png"
-                    alt="Synth Logo"
-                    className="h-12 w-12 object-contain relative z-10"
-                  />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-white">Participante</h3>
-                  <p className="text-[#FF6634] text-sm font-medium">Agente Sintético Synth</p>
-                </div>
               </div>
 
-              {/* Categories */}
-              <div className="space-y-6 flex-1">
-                {comparisonData.map((category, index) => (
-                  <motion.div
-                    key={category.category}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="relative group/item border-t border-[#FF6634]/30 pt-6 h-full"
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#FF6634]/5 to-transparent opacity-0 group-hover/item:opacity-100 transition-opacity duration-300 rounded-xl -m-2"></div>
+              {/* Right Header - Synth Participant */}
+              <div className="relative group">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#FF6634]/10 to-[#FF8A5B]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                <div className="relative p-8 flex flex-col items-center justify-center min-h-[200px]">
+                  <div className="flex items-center gap-4 mb-2">
                     <div className="relative">
-                      <h4 className="text-sm font-bold text-[#FF6634] mb-3 tracking-wider uppercase">{category.category}</h4>
-                      <p className="text-white leading-relaxed text-[15px] font-light min-h-[80px]">{category.synth}</p>
+                      <div className="absolute inset-0 bg-[#FF6634] blur-lg opacity-50 rounded-xl"></div>
+                      <img
+                        src="https://i.postimg.cc/bvqJBxD6/Logo-Synth-sin-fondo.png"
+                        alt="Synth Logo"
+                        className="h-16 w-16 object-contain relative z-10"
+                      />
                     </div>
-                  </motion.div>
-                ))}
+                    <h3 className="text-3xl font-bold text-white">Participante</h3>
+                  </div>
+                  <div className="flex items-center gap-2 text-[#FF6634] text-sm">
+                    <CheckCircle2 className="w-4 h-4" />
+                    <span>Insights profundos y humanos</span>
+                  </div>
+                </div>
               </div>
             </div>
-          </motion.div>
-        </div>
+
+            {/* Comparison Rows */}
+            <div>
+              {comparisonData.map((item, index) => (
+                <motion.div
+                  key={item.category}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: index * 0.08 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  className={`grid lg:grid-cols-2 ${index !== comparisonData.length - 1 ? 'border-b border-[#2A3441]' : ''}`}
+                >
+                  {/* Left Side - Chatbot */}
+                  <div className="relative group border-r border-[#2A3441]">
+                    <div className="absolute inset-0 bg-gradient-to-br from-gray-800/10 to-gray-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    
+                    <div className="relative p-6 min-h-[140px] flex flex-col">
+                      <h4 className="text-xs font-bold text-gray-500 mb-3 tracking-wider uppercase">{item.category}</h4>
+                      <p className="text-gray-400 leading-relaxed text-sm font-light">{item.chatbot}</p>
+                    </div>
+                  </div>
+
+                  {/* Right Side - Synth */}
+                  <div className="relative group">
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#FF6634]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    
+                    <div className="relative p-6 min-h-[140px] flex flex-col">
+                      <h4 className="text-xs font-bold text-[#FF6634] mb-3 tracking-wider uppercase">{item.category}</h4>
+                      <p className="text-white leading-relaxed text-sm font-light">{item.synth}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
       </motion.div>
     </section>
   );
