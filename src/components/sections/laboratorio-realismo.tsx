@@ -35,7 +35,7 @@ const modules = [
 {
   id: 4,
   icon: Globe,
-  title: 'El Motor de Cosmovisiones Culturales',
+  title: "Las Cosmovisiones Culturales",
   description: "Nuestro motor calibra el modelo de pensamiento usando marcos cient\xEDficos como las Dimensiones Culturales de Hofstede. Ajustamos las variables que rigen la toma de decisiones, como la percepci\xF3n de la autoridad, para garantizar un realismo regional basado en la ciencia del comportamiento.",
   delay: 0.8,
   color: 'from-emerald-500 to-teal-600',
@@ -280,7 +280,7 @@ export const LaboratorioRealismo = () => {
                           <span className="text-[#FF6634] font-bold text-xs tracking-wider uppercase">Módulo {module.id}</span>
                           <div className="flex-1 h-px bg-gradient-to-r from-[#FF6634]/50 to-transparent"></div>
                         </div>
-                        <h3 className="text-2xl font-bold text-white leading-tight">{module.title}</h3>
+                        <h3 className="text-2xl font-bold text-white leading-tight !whitespace-pre-line">{module.title}</h3>
                       </div>
                     </div>
                     
