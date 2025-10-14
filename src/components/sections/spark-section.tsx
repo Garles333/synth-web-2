@@ -10,22 +10,22 @@ export const SparkSection = () => {
       {/* Enhanced Background Effects */}
       <div className="absolute inset-0 z-0">
         {/* Large gradient orbs */}
-        <motion.div 
+        <motion.div
           className="absolute top-1/4 left-1/4 w-[800px] h-[800px] bg-[#FF6634]/15 rounded-full blur-[150px]"
           animate={{
             scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
+            opacity: [0.3, 0.5, 0.3]
           }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div 
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }} />
+
+        <motion.div
           className="absolute bottom-1/4 right-1/4 w-[900px] h-[900px] bg-[#FF8A5B]/10 rounded-full blur-[180px]"
           animate={{
             scale: [1, 1.15, 1],
-            opacity: [0.2, 0.4, 0.2],
+            opacity: [0.2, 0.4, 0.2]
           }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        />
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }} />
+
         
         {/* Grid pattern overlay */}
         <div className="absolute inset-0 opacity-[0.03]" style={{
@@ -34,30 +34,30 @@ export const SparkSection = () => {
         }} />
         
         {/* Enhanced floating particles */}
-        {Array.from({ length: 40 }).map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full"
-            style={{
-              width: Math.random() * 4 + 2,
-              height: Math.random() * 4 + 2,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              background: `radial-gradient(circle, ${Math.random() > 0.5 ? '#FF6634' : '#FF8A5B'} 0%, transparent 70%)`,
-            }}
-            animate={{
-              y: [0, -40, 0],
-              opacity: [0.1, 0.6, 0.1],
-              scale: [1, 1.5, 1],
-            }}
-            transition={{
-              duration: 4 + Math.random() * 3,
-              repeat: Infinity,
-              delay: Math.random() * 3,
-              ease: "easeInOut",
-            }}
-          />
-        ))}
+        {Array.from({ length: 40 }).map((_, i) =>
+        <motion.div
+          key={i}
+          className="absolute rounded-full"
+          style={{
+            width: Math.random() * 4 + 2,
+            height: Math.random() * 4 + 2,
+            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * 100}%`,
+            background: `radial-gradient(circle, ${Math.random() > 0.5 ? '#FF6634' : '#FF8A5B'} 0%, transparent 70%)`
+          }}
+          animate={{
+            y: [0, -40, 0],
+            opacity: [0.1, 0.6, 0.1],
+            scale: [1, 1.5, 1]
+          }}
+          transition={{
+            duration: 4 + Math.random() * 3,
+            repeat: Infinity,
+            delay: Math.random() * 3,
+            ease: "easeInOut"
+          }} />
+
+        )}
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -67,18 +67,18 @@ export const SparkSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true, amount: 0.3 }}
-          className="text-center mb-24"
-        >
+          className="text-center mb-24">
+
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="inline-flex items-center gap-3 mb-8 px-8 py-3 bg-gradient-to-r from-[#FF6634]/25 via-[#FF8A5B]/20 to-[#FF6634]/25 border-2 border-[#FF6634]/40 rounded-full backdrop-blur-xl shadow-2xl shadow-[#FF6634]/20"
-          >
+            className="inline-flex items-center gap-3 mb-8 px-8 py-3 bg-gradient-to-r from-[#FF6634]/25 via-[#FF8A5B]/20 to-[#FF6634]/25 border-2 border-[#FF6634]/40 rounded-full backdrop-blur-xl shadow-2xl shadow-[#FF6634]/20">
+
             <motion.div
               animate={{ rotate: 360 }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            >
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}>
+
               <Sparkles className="w-5 h-5 text-[#FF6634]" />
             </motion.div>
             <span className="text-[#FF6634] font-bold text-base tracking-widest uppercase">Motor de Creación Spark</span>
@@ -86,12 +86,12 @@ export const SparkSection = () => {
           </motion.div>
 
           <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-            <motion.span 
+            <motion.span
               className="inline-block bg-gradient-to-r from-[#FF6634] via-[#FF8A5B] to-[#FFAA7F] bg-clip-text text-transparent"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
+              transition={{ duration: 0.8, delay: 0.4 }}>
+
               Así Nace
             </motion.span>
             <br />
@@ -99,8 +99,8 @@ export const SparkSection = () => {
               className="inline-block text-white"
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-            >
+              transition={{ duration: 0.8, delay: 0.6 }}>
+
               una Persona Sintética en Segundos
             </motion.span>
           </h2>
@@ -109,8 +109,8 @@ export const SparkSection = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="max-w-4xl mx-auto"
-          >
+            className="max-w-4xl mx-auto">
+
             <p className="text-xl text-[#E1E5EB] leading-relaxed font-light mb-4">
               Presentamos <span className="text-white font-bold bg-gradient-to-r from-[#FF6634]/20 to-transparent px-3 py-1 rounded">Spark</span>, nuestro motor de creación probabilística.
             </p>
@@ -126,8 +126,8 @@ export const SparkSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
           viewport={{ once: true, amount: 0.3 }}
-          className="max-w-5xl mx-auto mb-32"
-        >
+          className="max-w-5xl mx-auto mb-32">
+
           <div className="relative group">
             {/* Glow effect */}
             <div className="absolute inset-0 bg-gradient-to-r from-[#FF6634]/20 via-[#FF8A5B]/30 to-[#FF6634]/20 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
@@ -160,16 +160,16 @@ export const SparkSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
             viewport={{ once: true, amount: 0.3 }}
-            className="relative"
-          >
+            className="relative">
+
             <div className="grid md:grid-cols-2 gap-16 items-center">
               <div className="relative">
                 {/* Step number */}
-                <motion.div 
+                <motion.div
                   className="absolute -top-8 -left-8 w-24 h-24 bg-gradient-to-br from-[#FF6634] to-[#FF8A5B] rounded-3xl flex items-center justify-center shadow-2xl shadow-[#FF6634]/40 transform -rotate-6"
                   whileHover={{ rotate: 0, scale: 1.1 }}
-                  transition={{ duration: 0.3 }}
-                >
+                  transition={{ duration: 0.3 }}>
+
                   <span className="text-5xl font-black text-white">1</span>
                 </motion.div>
 
@@ -197,38 +197,38 @@ export const SparkSection = () => {
                   transition={{ duration: 1, delay: 0.3 }}
                   viewport={{ once: true }}
                   className="relative group"
-                  style={{ transformStyle: 'preserve-3d' }}
-                >
+                  style={{ transformStyle: 'preserve-3d' }}>
+
                   {/* Card glow */}
                   <div className="absolute inset-0 bg-gradient-to-br from-[#FF6634]/30 to-[#FF8A5B]/30 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                   
                   <div className="relative bg-gradient-to-br from-[#1A1F2E] via-[#141824] to-[#0F1218] border-2 border-[#2A3441] rounded-3xl p-10 backdrop-blur-xl hover:border-[#FF6634]/60 transition-all duration-700 shadow-2xl">
                     <div className="space-y-5">
                       {[
-                        { label: 'Rango de Edad', value: '25-35', icon: '👤' },
-                        { label: 'NSE', value: 'Medio-alto-', icon: '💼' },
-                        { label: 'Ubicación', value: 'Madrid (España)', icon: '🌍' }
-                      ].map((field, i) => (
-                        <motion.div
-                          key={i}
-                          initial={{ opacity: 0, x: 30 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.6, delay: 0.5 + i * 0.15 }}
-                          viewport={{ once: true }}
-                          whileHover={{ scale: 1.05, x: 10 }}
-                          className="relative group/item"
-                        >
+                      { label: 'Rango de Edad', value: '25-35', icon: '👤' },
+                      { label: 'NSE', value: "Medio-alto", icon: '💼' },
+                      { label: 'Ubicación', value: 'Madrid (España)', icon: '🌍' }].
+                      map((field, i) =>
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, x: 30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.6, delay: 0.5 + i * 0.15 }}
+                        viewport={{ once: true }}
+                        whileHover={{ scale: 1.05, x: 10 }}
+                        className="relative group/item">
+
                           <div className="absolute inset-0 bg-gradient-to-r from-[#FF6634]/20 to-transparent rounded-xl opacity-0 group-hover/item:opacity-100 transition-opacity duration-300" />
                           <div className="relative flex items-center gap-4 bg-[#0B0E1A]/80 border-2 border-[#FF6634]/40 rounded-xl px-6 py-4 backdrop-blur-sm hover:border-[#FF6634] transition-all duration-300">
                             <span className="text-3xl">{field.icon}</span>
                             <div className="flex-1">
                               <div className="text-xs text-[#FF8A5B] font-bold uppercase tracking-wider mb-1">{field.label}</div>
-                              <div className="text-xl text-white font-bold">{field.value}</div>
+                              <div className="text-xl text-white font-bold !whitespace-pre-line">{field.value}</div>
                             </div>
                             <ArrowRight className="w-5 h-5 text-[#FF6634] opacity-0 group-hover/item:opacity-100 transition-opacity duration-300" />
                           </div>
                         </motion.div>
-                      ))}
+                      )}
                     </div>
                   </div>
                 </motion.div>
@@ -242,16 +242,16 @@ export const SparkSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
             viewport={{ once: true, amount: 0.3 }}
-            className="relative"
-          >
+            className="relative">
+
             <div className="grid md:grid-cols-2 gap-16 items-center">
               <div className="md:order-2 relative">
                 {/* Step number */}
-                <motion.div 
+                <motion.div
                   className="absolute -top-8 -right-8 w-24 h-24 bg-gradient-to-br from-[#FF8A5B] to-[#FF6634] rounded-3xl flex items-center justify-center shadow-2xl shadow-[#FF8A5B]/40 transform rotate-6"
                   whileHover={{ rotate: 0, scale: 1.1 }}
-                  transition={{ duration: 0.3 }}
-                >
+                  transition={{ duration: 0.3 }}>
+
                   <span className="text-5xl font-black text-white">2</span>
                 </motion.div>
 
@@ -271,24 +271,24 @@ export const SparkSection = () => {
                   </p>
                   <ul className="space-y-4">
                     {[
-                      { title: 'Capa 1 (Perfil)', desc: 'Sortear rasgos de personalidad (ej. aversión al riesgo) y sesgos cognitivos, con probabilidades que se ajustan entre sí para mayor coherencia.' },
-                      { title: 'Capa 4 (Cosmovisión)', desc: 'Selecciona automáticamente la Cosmovisión más apropiada de nuestro motor.' },
-                      { title: 'Otras Capas', desc: 'Establece la estructura para la Memoria, Conocimiento y el Modelo de Lenguaje.' }
-                    ].map((item, i) => (
-                      <motion.li 
-                        key={i}
-                        className="flex items-start gap-4 group/li"
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
-                        whileHover={{ x: 10 }}
-                      >
+                    { title: 'Capa 1 (Perfil)', desc: 'Sortear rasgos de personalidad (ej. aversión al riesgo) y sesgos cognitivos, con probabilidades que se ajustan entre sí para mayor coherencia.' },
+                    { title: 'Capa 4 (Cosmovisión)', desc: 'Selecciona automáticamente la Cosmovisión más apropiada de nuestro motor.' },
+                    { title: 'Otras Capas', desc: 'Establece la estructura para la Memoria, Conocimiento y el Modelo de Lenguaje.' }].
+                    map((item, i) =>
+                    <motion.li
+                      key={i}
+                      className="flex items-start gap-4 group/li"
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
+                      whileHover={{ x: 10 }}>
+
                         <div className="w-6 h-6 bg-gradient-to-br from-[#FF6634] to-[#FF8A5B] rounded-lg flex items-center justify-center flex-shrink-0 mt-1 shadow-lg group-hover/li:shadow-[#FF6634]/50 transition-shadow duration-300">
                           <CheckCircle className="w-4 h-4 text-white" />
                         </div>
                         <span className="text-[#E1E5EB] text-lg"><span className="text-white font-bold">{item.title}:</span> {item.desc}</span>
                       </motion.li>
-                    ))}
+                    )}
                   </ul>
                 </div>
               </div>
@@ -299,27 +299,27 @@ export const SparkSection = () => {
                   initial={{ opacity: 0, scale: 0.85 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 1, delay: 0.3 }}
-                  viewport={{ once: true }}
-                >
+                  viewport={{ once: true }}>
+
                   {/* Central Spark Core with enhanced effects */}
                   <div className="relative flex items-center justify-center h-[400px]">
                     {/* Pulsing rings */}
-                    {[0, 1, 2].map((i) => (
-                      <motion.div
-                        key={i}
-                        className="absolute w-32 h-32 border-2 border-[#FF6634]/30 rounded-full"
-                        animate={{
-                          scale: [1 + i * 0.8, 2 + i * 0.8],
-                          opacity: [0.6, 0],
-                        }}
-                        transition={{
-                          duration: 3,
-                          repeat: Infinity,
-                          delay: i * 0.8,
-                          ease: "easeOut"
-                        }}
-                      />
-                    ))}
+                    {[0, 1, 2].map((i) =>
+                    <motion.div
+                      key={i}
+                      className="absolute w-32 h-32 border-2 border-[#FF6634]/30 rounded-full"
+                      animate={{
+                        scale: [1 + i * 0.8, 2 + i * 0.8],
+                        opacity: [0.6, 0]
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        delay: i * 0.8,
+                        ease: "easeOut"
+                      }} />
+
+                    )}
 
                     <motion.div
                       className="relative w-40 h-40 bg-gradient-to-br from-[#FF6634] via-[#FF8A5B] to-[#FFAA7F] rounded-full flex items-center justify-center shadow-2xl"
@@ -327,32 +327,32 @@ export const SparkSection = () => {
                         scale: [1, 1.1, 1],
                         rotate: [0, 180, 360],
                         boxShadow: [
-                          '0 0 40px rgba(255, 102, 52, 0.4)',
-                          '0 0 80px rgba(255, 102, 52, 0.8)',
-                          '0 0 40px rgba(255, 102, 52, 0.4)',
-                        ],
+                        '0 0 40px rgba(255, 102, 52, 0.4)',
+                        '0 0 80px rgba(255, 102, 52, 0.8)',
+                        '0 0 40px rgba(255, 102, 52, 0.4)']
+
                       }}
-                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                    >
+                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}>
+
                       <Sparkles className="w-20 h-20 text-white" />
                     </motion.div>
 
                     {/* Enhanced animated tags with better positioning */}
                     {[
-                      { text: 'Aversión al Riesgo: 25%', angle: 180, delay: 0, icon: '⚠️' },
-                      { text: 'Sesgo Status Quo: +20%', angle: 120, delay: 0.3, icon: '🔄' },
-                      { text: 'Cosmovisión: Jóvenes Urbanos', angle: 240, delay: 0.6, icon: '🌆' },
-                    ].map((tag, i) => {
+                    { text: 'Aversión al Riesgo: 25%', angle: 180, delay: 0, icon: '⚠️' },
+                    { text: 'Sesgo Status Quo: +20%', angle: 120, delay: 0.3, icon: '🔄' },
+                    { text: 'Cosmovisión: Jóvenes Urbanos', angle: 240, delay: 0.6, icon: '🌆' }].
+                    map((tag, i) => {
                       const radius = 140;
-                      const x = Math.cos((tag.angle * Math.PI) / 180) * radius;
-                      const y = Math.sin((tag.angle * Math.PI) / 180) * radius;
+                      const x = Math.cos(tag.angle * Math.PI / 180) * radius;
+                      const y = Math.sin(tag.angle * Math.PI / 180) * radius;
                       return (
                         <motion.div
                           key={i}
                           initial={{ opacity: 0, scale: 0 }}
                           whileInView={{ opacity: 1, scale: 1 }}
-                          transition={{ 
-                            duration: 0.6, 
+                          transition={{
+                            duration: 0.6,
                             delay: 1 + tag.delay,
                             type: "spring",
                             stiffness: 200
@@ -360,18 +360,18 @@ export const SparkSection = () => {
                           viewport={{ once: true }}
                           whileHover={{ scale: 1.15, zIndex: 10 }}
                           className="absolute bg-gradient-to-br from-[#1A1F2E] to-[#0F1218] border-2 border-[#FF6634]/60 rounded-xl px-4 py-3 text-sm text-white font-bold whitespace-nowrap shadow-2xl backdrop-blur-xl hover:border-[#FF6634] transition-all duration-300 cursor-pointer"
-                          style={{ 
-                            left: `calc(50% + ${x}px)`, 
-                            top: `calc(50% + ${y}px)`, 
+                          style={{
+                            left: `calc(50% + ${x}px)`,
+                            top: `calc(50% + ${y}px)`,
                             transform: 'translate(-50%, -50%)'
-                          }}
-                        >
+                          }}>
+
                           <div className="flex items-center gap-2">
                             <span className="text-xl">{tag.icon}</span>
                             <span>{tag.text}</span>
                           </div>
-                        </motion.div>
-                      );
+                        </motion.div>);
+
                     })}
                   </div>
                 </motion.div>
@@ -385,16 +385,16 @@ export const SparkSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
             viewport={{ once: true, amount: 0.3 }}
-            className="relative"
-          >
+            className="relative">
+
             <div className="grid md:grid-cols-2 gap-16 items-center">
               <div className="relative">
                 {/* Step number */}
-                <motion.div 
+                <motion.div
                   className="absolute -top-8 -left-8 w-24 h-24 bg-gradient-to-br from-[#FFAA7F] to-[#FF6634] rounded-3xl flex items-center justify-center shadow-2xl shadow-[#FFAA7F]/40 transform -rotate-6"
                   whileHover={{ rotate: 0, scale: 1.1 }}
-                  transition={{ duration: 0.3 }}
-                >
+                  transition={{ duration: 0.3 }}>
+
                   <span className="text-5xl font-black text-white">3</span>
                 </motion.div>
 
@@ -422,18 +422,18 @@ export const SparkSection = () => {
                   transition={{ duration: 1, delay: 0.3 }}
                   viewport={{ once: true }}
                   className="relative group"
-                  style={{ transformStyle: 'preserve-3d' }}
-                >
+                  style={{ transformStyle: 'preserve-3d' }}>
+
                   {/* Card glow */}
                   <div className="absolute inset-0 bg-gradient-to-br from-[#FFAA7F]/30 to-[#FF6634]/30 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                   
                   <div className="relative bg-gradient-to-br from-[#1A1F2E] via-[#141824] to-[#0F1218] border-2 border-[#FF6634]/60 rounded-3xl p-8 backdrop-blur-xl hover:border-[#FFAA7F] transition-all duration-700 shadow-2xl">
                     <div className="mb-6 text-center">
-                      <motion.div 
+                      <motion.div
                         className="w-24 h-24 bg-gradient-to-br from-[#FF6634] to-[#FFAA7F] rounded-full mx-auto mb-4 shadow-2xl shadow-[#FF6634]/40 flex items-center justify-center text-5xl"
                         whileHover={{ rotate: 360, scale: 1.1 }}
-                        transition={{ duration: 0.6 }}
-                      >
+                        transition={{ duration: 0.6 }}>
+
                         👩
                       </motion.div>
                       <h4 className="text-3xl font-black text-white mb-2">Ana García</h4>
@@ -448,18 +448,18 @@ export const SparkSection = () => {
                     
                     <div className="space-y-4">
                       {[
-                        { label: 'Bio', text: 'Profesional del sector tecnológico, valora la estabilidad...', icon: '📝' },
-                        { label: 'Metas', text: 'Equilibrio vida-trabajo, seguridad financiera...', icon: '🎯' },
-                        { label: 'Frustraciones', text: 'Incertidumbre laboral, cambios rápidos...', icon: '😓' }
-                      ].map((item, i) => (
-                        <motion.div
-                          key={i}
-                          initial={{ opacity: 0, y: 20 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.5, delay: 0.5 + i * 0.15 }}
-                          whileHover={{ x: 5 }}
-                          className="bg-[#0B0E1A]/60 border border-[#2A3441] rounded-xl p-4 hover:border-[#FF6634]/50 transition-all duration-300"
-                        >
+                      { label: 'Bio', text: 'Profesional del sector tecnológico, valora la estabilidad...', icon: '📝' },
+                      { label: 'Metas', text: 'Equilibrio vida-trabajo, seguridad financiera...', icon: '🎯' },
+                      { label: 'Frustraciones', text: 'Incertidumbre laboral, cambios rápidos...', icon: '😓' }].
+                      map((item, i) =>
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.5 + i * 0.15 }}
+                        whileHover={{ x: 5 }}
+                        className="bg-[#0B0E1A]/60 border border-[#2A3441] rounded-xl p-4 hover:border-[#FF6634]/50 transition-all duration-300">
+
                           <div className="flex items-start gap-3">
                             <span className="text-2xl">{item.icon}</span>
                             <div className="flex-1">
@@ -468,7 +468,7 @@ export const SparkSection = () => {
                             </div>
                           </div>
                         </motion.div>
-                      ))}
+                      )}
                     </div>
                   </div>
                 </motion.div>
@@ -483,33 +483,33 @@ export const SparkSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
           viewport={{ once: true, amount: 0.3 }}
-          className="mt-32 text-center"
-        >
+          className="mt-32 text-center">
+
           <div className="relative inline-block max-w-5xl">
             {/* Multiple glow layers */}
-            <motion.div 
+            <motion.div
               className="absolute inset-0 bg-gradient-to-r from-[#FF6634]/30 via-[#FF8A5B]/40 to-[#FF6634]/30 rounded-[2.5rem] blur-3xl"
-              animate={{ 
+              animate={{
                 scale: [1, 1.1, 1],
                 opacity: [0.5, 0.8, 0.5]
               }}
-              transition={{ duration: 4, repeat: Infinity }}
-            />
-            <motion.div 
+              transition={{ duration: 4, repeat: Infinity }} />
+
+            <motion.div
               className="absolute inset-0 bg-gradient-to-br from-[#FFAA7F]/20 to-[#FF6634]/20 rounded-[2.5rem] blur-2xl"
-              animate={{ 
+              animate={{
                 scale: [1.1, 1, 1.1],
                 opacity: [0.3, 0.6, 0.3]
               }}
-              transition={{ duration: 5, repeat: Infinity, delay: 1 }}
-            />
+              transition={{ duration: 5, repeat: Infinity, delay: 1 }} />
+
             
             <div className="relative bg-gradient-to-br from-[#1A1F2E] via-[#141824] to-[#0F1218] backdrop-blur-2xl border-4 border-[#FF6634] rounded-[2rem] px-16 py-14 shadow-[0_0_80px_rgba(255,102,52,0.3)]">
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-              >
+                transition={{ duration: 0.8, delay: 0.4 }}>
+
                 <p className="text-3xl md:text-5xl font-black text-white mb-6 leading-tight">
                   No estás creando desde cero;{' '}
                   <br className="hidden md:block" />
@@ -519,11 +519,11 @@ export const SparkSection = () => {
                   </span>.
                 </p>
                 
-                <motion.div 
+                <motion.div
                   className="w-40 h-1.5 bg-gradient-to-r from-transparent via-[#FF6634] to-transparent mx-auto mb-8 rounded-full"
                   animate={{ scaleX: [0.8, 1, 0.8] }}
-                  transition={{ duration: 3, repeat: Infinity }}
-                />
+                  transition={{ duration: 3, repeat: Infinity }} />
+
                 
                 <p className="text-xl md:text-2xl text-[#E1E5EB] leading-relaxed max-w-3xl mx-auto">
                   Spark te permite generar un panel de participantes diversos y creíbles en segundos, listos para ser refinados en el Laboratorio o usados directamente en una simulación. Es la combinación perfecta de{' '}
@@ -536,6 +536,6 @@ export const SparkSection = () => {
           </div>
         </motion.div>
       </div>
-    </section>
-  );
+    </section>);
+
 };
