@@ -1,8 +1,8 @@
 "use client";
 
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Brain, Heart, Users, Target, Globe } from 'lucide-react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { Brain, Heart, Users, Target, Globe, Zap } from 'lucide-react';
 
 const modules = [
   {
@@ -11,7 +11,8 @@ const modules = [
     title: 'El Estado Anímico Inicial',
     description: 'Define el punto de partida emocional. ¿Tu participante llega a la sesión optimista, estresado o neutral? Un mismo perfil reaccionará de forma muy distinta a tu concepto según su estado anímico. Este simple ajuste desbloquea una nueva dimensión de realismo.',
     delay: 0.2,
-    position: 'top',
+    color: 'from-rose-500 to-pink-600',
+    bgGlow: 'rose-500',
   },
   {
     id: 2,
@@ -19,7 +20,8 @@ const modules = [
     title: 'El Contexto Social',
     description: 'Controla la dinámica de poder. No hablamos igual a una figura de autoridad que a un amigo. Define si el moderador actúa como un "Entrevistador Formal" o un "Amigo Cercano" y observa cómo la formalidad o la cercanía alteran la sinceridad y el detalle de las respuestas.',
     delay: 0.4,
-    position: 'left',
+    color: 'from-blue-500 to-cyan-600',
+    bgGlow: 'blue-500',
   },
   {
     id: 3,
@@ -27,7 +29,8 @@ const modules = [
     title: 'La Agenda Oculta',
     description: '¿Y si un participante "quiere aparentar ser un experto" o "es secretamente leal a la competencia"? Asigna una agenda oculta y observa cómo estas motivaciones influyen sutilmente en la conversación, revelando tensiones que las encuestas jamás capturarían.',
     delay: 0.6,
-    position: 'right',
+    color: 'from-purple-500 to-violet-600',
+    bgGlow: 'purple-500',
   },
   {
     id: 4,
@@ -35,198 +38,333 @@ const modules = [
     title: 'Spark y Cosmovisiones',
     description: 'Con nuestro motor de Cosmovisiones y la creación de perfiles con Spark, nos aseguramos de que cada participante piense y hable de acuerdo a su realidad. Un joven de 22 años en Madrid no usa las mismas referencias que uno de 55 en Lima. Garantizamos un realismo regional inigualable.',
     delay: 0.8,
-    position: 'bottom',
+    color: 'from-emerald-500 to-teal-600',
+    bgGlow: 'emerald-500',
   },
 ];
 
 export const LaboratorioRealismo = () => {
+  const ref = React.useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
+
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+  const y = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [100, 0, 0, -100]);
+
   return (
-    <section className="py-20 px-4 bg-[#0B0E1A] relative overflow-hidden">
-      {/* Background effects */}
+    <section ref={ref} className="py-32 px-4 bg-gradient-to-b from-[#0B0E1A] via-[#0D0F16] to-[#0B0E1A] relative overflow-hidden">
+      {/* Enhanced Background Effects */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#FF6634]/5 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#FF6634]/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }}></div>
+        <div className="absolute top-1/3 left-1/3 w-[700px] h-[700px] bg-[#FF6634]/10 rounded-full blur-[140px] animate-pulse"></div>
+        <div className="absolute bottom-1/3 right-1/3 w-[800px] h-[800px] bg-[#FF8A5B]/8 rounded-full blur-[160px] animate-pulse" style={{ animationDelay: '1.5s' }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-gradient-radial from-[#FF6634]/8 via-transparent to-transparent"></div>
+        
+        {/* Animated grid */}
+        <motion.div 
+          className="absolute inset-0 opacity-[0.02]"
+          style={{
+            backgroundImage: `linear-gradient(#FF6634 1px, transparent 1px), linear-gradient(90deg, #FF6634 1px, transparent 1px)`,
+            backgroundSize: '60px 60px'
+          }}
+          animate={{ backgroundPosition: ['0px 0px', '60px 60px'] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        ></motion.div>
+
+        {/* Floating orbs */}
+        {Array.from({ length: 20 }).map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full"
+            style={{
+              width: Math.random() * 4 + 2,
+              height: Math.random() * 4 + 2,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              background: `radial-gradient(circle, #FF6634 0%, transparent 70%)`,
+            }}
+            animate={{
+              y: [0, -40, 0],
+              opacity: [0.1, 0.4, 0.1],
+              scale: [1, 1.3, 1],
+            }}
+            transition={{
+              duration: 4 + Math.random() * 3,
+              repeat: Infinity,
+              delay: Math.random() * 3,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <motion.div 
+        className="max-w-7xl mx-auto relative z-10"
+        style={{ opacity }}
+      >
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: -40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true, amount: 0.3 }}
-          className="text-center mb-16"
+          className="text-center mb-24"
         >
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white">
-            Tu <span className="text-[#FF6634]">Laboratorio</span> de Comportamiento Humano
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="inline-flex items-center gap-2 mb-6 px-6 py-2 bg-gradient-to-r from-[#FF6634]/20 to-[#FF8A5B]/20 border border-[#FF6634]/30 rounded-full backdrop-blur-sm"
+          >
+            <Zap className="w-4 h-4 text-[#FF6634]" />
+            <span className="text-[#FF6634] font-semibold text-sm tracking-wider uppercase">Control Total</span>
+          </motion.div>
+
+          <h2 className="text-5xl md:text-7xl font-bold mb-8 text-white leading-tight">
+            Tu{' '}
+            <span className="bg-gradient-to-r from-[#FF6634] via-[#FF8A5B] to-[#FFAA7F] bg-clip-text text-transparent">
+              Laboratorio
+            </span>
+            {' '}de<br className="hidden md:block" />
+            Comportamiento Humano
           </h2>
-          <p className="text-xl text-[#E1E5EB] max-w-3xl mx-auto">
-            No solo ejecutes una simulación. Diseña un experimento. Te damos las herramientas para controlar cada variable del realismo.
+          <p className="text-xl md:text-2xl text-[#E1E5EB] max-w-4xl mx-auto leading-relaxed font-light">
+            No solo ejecutes una simulación.{' '}
+            <span className="text-white font-medium">Diseña un experimento</span>.
+            <br className="hidden md:block" />
+            Te damos las herramientas para controlar cada variable del realismo.
           </p>
         </motion.div>
 
         {/* Central Visualization */}
-        <div className="relative max-w-6xl mx-auto">
-          {/* Central Silhouette */}
+        <div className="relative max-w-6xl mx-auto mb-24">
+          {/* Central Hub */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.7 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
             viewport={{ once: true, amount: 0.3 }}
-            className="flex items-center justify-center mb-16 relative"
+            className="flex items-center justify-center relative"
           >
             <div className="relative">
-              {/* Glow effect */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-64 h-64 bg-[#FF6634]/20 rounded-full blur-3xl animate-pulse"></div>
-              </div>
+              {/* Rotating rings */}
+              <motion.div 
+                className="absolute inset-0 flex items-center justify-center"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              >
+                <div className="w-80 h-80 border-2 border-[#FF6634]/20 rounded-full"></div>
+              </motion.div>
+              <motion.div 
+                className="absolute inset-0 flex items-center justify-center"
+                animate={{ rotate: -360 }}
+                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+              >
+                <div className="w-96 h-96 border border-[#FF6634]/10 rounded-full"></div>
+              </motion.div>
+
+              {/* Main glow */}
+              <motion.div 
+                className="absolute inset-0 flex items-center justify-center"
+                animate={{ 
+                  scale: [1, 1.15, 1],
+                  opacity: [0.4, 0.6, 0.4] 
+                }}
+                transition={{ duration: 3, repeat: Infinity }}
+              >
+                <div className="w-72 h-72 bg-gradient-radial from-[#FF6634]/30 via-[#FF6634]/10 to-transparent rounded-full blur-2xl"></div>
+              </motion.div>
               
-              {/* Person silhouette icon */}
-              <div className="relative w-48 h-48 flex items-center justify-center">
+              {/* Person silhouette */}
+              <div className="relative w-56 h-56 flex items-center justify-center z-10">
                 <svg
                   viewBox="0 0 200 200"
-                  className="w-full h-full"
+                  className="w-full h-full drop-shadow-2xl"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
+                  <defs>
+                    <linearGradient id="personGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#FF6634" />
+                      <stop offset="50%" stopColor="#FF7A4D" />
+                      <stop offset="100%" stopColor="#FF8A5B" />
+                    </linearGradient>
+                    <filter id="glow">
+                      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                      <feMerge>
+                        <feMergeNode in="coloredBlur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                      </feMerge>
+                    </filter>
+                  </defs>
+                  
                   {/* Head */}
-                  <circle cx="100" cy="60" r="30" fill="url(#gradient1)" />
+                  <circle cx="100" cy="55" r="28" fill="url(#personGradient)" filter="url(#glow)" />
+                  
                   {/* Body */}
                   <path
-                    d="M 70 90 Q 70 110 70 130 L 70 160 L 80 180 M 130 90 Q 130 110 130 130 L 130 160 L 120 180 M 70 90 Q 100 100 130 90 M 100 90 L 100 140 M 70 160 L 60 190 M 130 160 L 140 190"
-                    stroke="url(#gradient2)"
-                    strokeWidth="8"
+                    d="M 72 85 Q 72 95 72 115 L 72 145 L 80 170 M 128 85 Q 128 95 128 115 L 128 145 L 120 170 M 72 85 Q 100 95 128 85 M 100 85 L 100 130"
+                    stroke="url(#personGradient)"
+                    strokeWidth="10"
                     strokeLinecap="round"
                     strokeLinejoin="round"
+                    filter="url(#glow)"
                   />
-                  <defs>
-                    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#FF6634" />
-                      <stop offset="100%" stopColor="#FF8A5B" />
-                    </linearGradient>
-                    <linearGradient id="gradient2" x1="0%" y1="0%" x2="0%" y2="100%">
-                      <stop offset="0%" stopColor="#FF6634" />
-                      <stop offset="100%" stopColor="#FF8A5B" />
-                    </linearGradient>
-                  </defs>
+                  
+                  {/* Arms */}
+                  <path
+                    d="M 72 100 L 50 130 M 128 100 L 150 130"
+                    stroke="url(#personGradient)"
+                    strokeWidth="10"
+                    strokeLinecap="round"
+                    filter="url(#glow)"
+                  />
+                  
+                  {/* Legs */}
+                  <path
+                    d="M 72 145 L 65 175 M 128 145 L 135 175"
+                    stroke="url(#personGradient)"
+                    strokeWidth="10"
+                    strokeLinecap="round"
+                    filter="url(#glow)"
+                  />
                 </svg>
               </div>
 
-              {/* Connection lines */}
-              <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ width: '200%', height: '200%', left: '-50%', top: '-50%' }}>
-                <motion.line
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  whileInView={{ pathLength: 1, opacity: 0.3 }}
-                  transition={{ duration: 1, delay: 0.5 }}
-                  viewport={{ once: true }}
-                  x1="50%"
-                  y1="50%"
-                  x2="50%"
-                  y2="20%"
-                  stroke="#FF6634"
-                  strokeWidth="2"
-                  strokeDasharray="5,5"
-                />
-                <motion.line
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  whileInView={{ pathLength: 1, opacity: 0.3 }}
-                  transition={{ duration: 1, delay: 0.7 }}
-                  viewport={{ once: true }}
-                  x1="50%"
-                  y1="50%"
-                  x2="20%"
-                  y2="50%"
-                  stroke="#FF6634"
-                  strokeWidth="2"
-                  strokeDasharray="5,5"
-                />
-                <motion.line
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  whileInView={{ pathLength: 1, opacity: 0.3 }}
-                  transition={{ duration: 1, delay: 0.9 }}
-                  viewport={{ once: true }}
-                  x1="50%"
-                  y1="50%"
-                  x2="80%"
-                  y2="50%"
-                  stroke="#FF6634"
-                  strokeWidth="2"
-                  strokeDasharray="5,5"
-                />
-                <motion.line
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  whileInView={{ pathLength: 1, opacity: 0.3 }}
-                  transition={{ duration: 1, delay: 1.1 }}
-                  viewport={{ once: true }}
-                  x1="50%"
-                  y1="50%"
-                  x2="50%"
-                  y2="80%"
-                  stroke="#FF6634"
-                  strokeWidth="2"
-                  strokeDasharray="5,5"
-                />
+              {/* Connection lines to modules */}
+              <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ width: '300%', height: '300%', left: '-100%', top: '-100%' }}>
+                {modules.map((module, i) => {
+                  const angle = (i * 90 - 45) * (Math.PI / 180);
+                  const distance = 280;
+                  const x1 = 50;
+                  const y1 = 50;
+                  const x2 = 50 + Math.cos(angle) * (distance / 3);
+                  const y2 = 50 + Math.sin(angle) * (distance / 3);
+                  
+                  return (
+                    <motion.line
+                      key={i}
+                      initial={{ pathLength: 0, opacity: 0 }}
+                      whileInView={{ pathLength: 1, opacity: 0.4 }}
+                      transition={{ duration: 1.2, delay: 0.6 + i * 0.15, ease: "easeOut" }}
+                      viewport={{ once: true }}
+                      x1={`${x1}%`}
+                      y1={`${y1}%`}
+                      x2={`${x2}%`}
+                      y2={`${y2}%`}
+                      stroke="#FF6634"
+                      strokeWidth="2"
+                      strokeDasharray="6,4"
+                    />
+                  );
+                })}
               </svg>
             </div>
           </motion.div>
+        </div>
 
-          {/* Control Modules Grid */}
-          <div className="grid md:grid-cols-2 gap-8 mt-20">
-            {modules.map((module) => {
-              const IconComponent = module.icon;
-              return (
-                <motion.div
-                  key={module.id}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: module.delay }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  className="bg-gradient-to-br from-[#1A1F2E]/80 to-[#0B0E1A]/60 backdrop-blur-sm border border-[#2A3441] rounded-2xl p-8 hover:border-[#FF6634]/50 transition-all duration-500 group relative overflow-hidden"
-                >
-                  {/* Hover glow effect */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#FF6634]/0 to-[#FF6634]/0 group-hover:from-[#FF6634]/5 group-hover:to-[#FF6634]/10 transition-all duration-500"></div>
+        {/* Control Modules Grid */}
+        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          {modules.map((module) => {
+            const IconComponent = module.icon;
+            return (
+              <motion.div
+                key={module.id}
+                initial={{ opacity: 0, y: 60, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ 
+                  duration: 0.7, 
+                  delay: module.delay,
+                  ease: [0.22, 1, 0.36, 1]
+                }}
+                viewport={{ once: true, amount: 0.3 }}
+                className="relative group"
+              >
+                {/* Glow effect */}
+                <div className={`absolute inset-0 bg-gradient-to-br from-${module.bgGlow}/20 to-${module.bgGlow}/5 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+                
+                <div className="relative bg-gradient-to-br from-[#1A1F2E]/90 via-[#141824]/90 to-[#0F1218]/90 backdrop-blur-xl border border-[#2A3441] rounded-3xl p-8 overflow-hidden hover:border-[#FF6634]/50 transition-all duration-500 group-hover:transform group-hover:scale-[1.02]">
+                  {/* Shine overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   
+                  {/* Content */}
                   <div className="relative z-10">
-                    <div className="flex items-start gap-4 mb-4">
-                      <div className="w-14 h-14 bg-[#FF6634]/20 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-[#FF6634]/30 transition-colors duration-300">
-                        <IconComponent className="w-7 h-7 text-[#FF6634]" strokeWidth={2} />
-                      </div>
-                      <div>
-                        <span className="text-[#FF6634] font-bold text-sm mb-2 block">Módulo {module.id}</span>
-                        <h3 className="text-xl font-bold text-white mb-3">{module.title}</h3>
+                    <div className="flex items-start gap-5 mb-6">
+                      <motion.div 
+                        className={`w-16 h-16 bg-gradient-to-br ${module.color} rounded-2xl flex items-center justify-center flex-shrink-0 shadow-2xl relative`}
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                      >
+                        <div className={`absolute inset-0 bg-gradient-to-br ${module.color} rounded-2xl blur-lg opacity-50`}></div>
+                        <IconComponent className="w-8 h-8 text-white relative z-10" strokeWidth={2} />
+                      </motion.div>
+                      
+                      <div className="flex-1">
+                        <div className="flex items-center gap-3 mb-2">
+                          <span className="text-[#FF6634] font-bold text-xs tracking-wider uppercase">Módulo {module.id}</span>
+                          <div className="flex-1 h-px bg-gradient-to-r from-[#FF6634]/50 to-transparent"></div>
+                        </div>
+                        <h3 className="text-2xl font-bold text-white leading-tight">{module.title}</h3>
                       </div>
                     </div>
-                    <p className="text-[#E1E5EB] leading-relaxed">{module.description}</p>
+                    
+                    <p className="text-[#E1E5EB] leading-relaxed text-[15px] font-light">{module.description}</p>
                   </div>
 
-                  {/* Number indicator */}
-                  <div className="absolute top-4 right-4 w-10 h-10 bg-[#FF6634]/10 rounded-full flex items-center justify-center border border-[#FF6634]/30">
-                    <span className="text-[#FF6634] font-bold text-lg">{module.id}</span>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
+                  {/* Corner accent */}
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[#FF6634]/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
 
-          {/* Bottom CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1 }}
-            viewport={{ once: true, amount: 0.3 }}
-            className="mt-16 text-center"
-          >
-            <div className="inline-block bg-gradient-to-br from-[#1A1F2E]/90 to-[#0B0E1A]/70 border-2 border-[#FF6634] rounded-2xl px-10 py-8 backdrop-blur-lg max-w-4xl">
-              <p className="text-2xl font-bold text-white mb-4">
-                No estás ejecutando una encuesta. Estás dirigiendo un <span className="text-[#FF6634]">experimento de comportamiento humano</span>.
+        {/* Bottom CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          viewport={{ once: true, amount: 0.3 }}
+          className="mt-20 text-center"
+        >
+          <div className="relative inline-block max-w-5xl">
+            {/* Animated glow */}
+            <motion.div 
+              className="absolute inset-0 bg-gradient-to-r from-[#FF6634]/20 via-[#FF8A5B]/30 to-[#FF6634]/20 rounded-3xl blur-2xl"
+              animate={{ 
+                scale: [1, 1.05, 1],
+                opacity: [0.5, 0.7, 0.5]
+              }}
+              transition={{ duration: 3, repeat: Infinity }}
+            ></motion.div>
+            
+            <div className="relative bg-gradient-to-br from-[#1A1F2E]/95 via-[#141824]/95 to-[#0F1218]/95 backdrop-blur-xl border-2 border-[#FF6634] rounded-3xl px-12 py-10 shadow-2xl">
+              <div className="flex items-center justify-center gap-3 mb-6">
+                <Brain className="w-8 h-8 text-[#FF6634]" />
+                <Zap className="w-6 h-6 text-[#FF8A5B]" />
+                <Target className="w-8 h-8 text-[#FF6634]" />
+              </div>
+              
+              <p className="text-3xl md:text-4xl font-bold text-white mb-5 leading-tight">
+                No estás ejecutando una encuesta.
+                <br />
+                Estás dirigiendo un{' '}
+                <span className="bg-gradient-to-r from-[#FF6634] to-[#FF8A5B] bg-clip-text text-transparent">
+                  experimento de comportamiento humano
+                </span>.
               </p>
-              <p className="text-lg text-[#E1E5EB] leading-relaxed">
-                La granularidad de Synth te da el control para hacerlo con una precisión sin precedentes.
+              
+              <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[#FF6634] to-transparent mx-auto mb-5"></div>
+              
+              <p className="text-xl text-[#E1E5EB] leading-relaxed font-light max-w-3xl mx-auto">
+                La granularidad de Synth te da el control para hacerlo con una{' '}
+                <span className="text-white font-medium">precisión sin precedentes</span>.
               </p>
             </div>
-          </motion.div>
-        </div>
-      </div>
+          </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };
