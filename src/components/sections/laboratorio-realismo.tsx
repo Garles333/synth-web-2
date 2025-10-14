@@ -51,51 +51,59 @@ export const LaboratorioRealismo = () => {
   });
 
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-  const y = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [100, 0, 0, -100]);
 
   return (
-    <section ref={ref} className="py-32 px-4 bg-gradient-to-b from-[#0B0E1A] via-[#0D0F16] to-[#0B0E1A] relative overflow-hidden">
-      {/* Enhanced Background Effects */}
+    <section ref={ref} className="py-40 px-4 bg-gradient-to-b from-[#0B0E1A] via-[#0D0F16] to-[#0B0E1A] relative overflow-hidden">
+      {/* Enhanced Background Effects - Spark Style */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-1/3 left-1/3 w-[700px] h-[700px] bg-[#FF6634]/10 rounded-full blur-[140px] animate-pulse"></div>
-        <div className="absolute bottom-1/3 right-1/3 w-[800px] h-[800px] bg-[#FF8A5B]/8 rounded-full blur-[160px] animate-pulse" style={{ animationDelay: '1.5s' }}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-gradient-radial from-[#FF6634]/8 via-transparent to-transparent"></div>
-        
-        {/* Animated grid */}
+        {/* Large gradient orbs */}
         <motion.div
-          className="absolute inset-0 opacity-[0.02]"
-          style={{
-            backgroundImage: `linear-gradient(#FF6634 1px, transparent 1px), linear-gradient(90deg, #FF6634 1px, transparent 1px)`,
-            backgroundSize: '60px 60px'
-          }}
-          animate={{ backgroundPosition: ['0px 0px', '60px 60px'] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}>
-        </motion.div>
-
-        {/* Floating orbs */}
-        {Array.from({ length: 20 }).map((_, i) =>
-        <motion.div
-          key={i}
-          className="absolute rounded-full"
-          style={{
-            width: Math.random() * 4 + 2,
-            height: Math.random() * 4 + 2,
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            background: `radial-gradient(circle, #FF6634 0%, transparent 70%)`
-          }}
+          className="absolute top-1/4 left-1/4 w-[800px] h-[800px] bg-[#FF6634]/15 rounded-full blur-[150px]"
           animate={{
-            y: [0, -40, 0],
-            opacity: [0.1, 0.4, 0.1],
-            scale: [1, 1.3, 1]
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.5, 0.3]
           }}
-          transition={{
-            duration: 4 + Math.random() * 3,
-            repeat: Infinity,
-            delay: Math.random() * 3,
-            ease: "easeInOut"
-          }} />
-
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 right-1/4 w-[900px] h-[900px] bg-[#FF8A5B]/10 rounded-full blur-[180px]"
+          animate={{
+            scale: [1, 1.15, 1],
+            opacity: [0.2, 0.4, 0.2]
+          }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        />
+        
+        {/* Grid pattern overlay */}
+        <div className="absolute inset-0 opacity-[0.03]" style={{
+          backgroundImage: 'linear-gradient(#FF6634 1px, transparent 1px), linear-gradient(90deg, #FF6634 1px, transparent 1px)',
+          backgroundSize: '50px 50px'
+        }} />
+        
+        {/* Enhanced floating particles - 40 like Spark */}
+        {Array.from({ length: 40 }).map((_, i) =>
+          <motion.div
+            key={i}
+            className="absolute rounded-full"
+            style={{
+              width: Math.random() * 4 + 2,
+              height: Math.random() * 4 + 2,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              background: `radial-gradient(circle, ${Math.random() > 0.5 ? '#FF6634' : '#FF8A5B'} 0%, transparent 70%)`
+            }}
+            animate={{
+              y: [0, -40, 0],
+              opacity: [0.1, 0.6, 0.1],
+              scale: [1, 1.5, 1]
+            }}
+            transition={{
+              duration: 4 + Math.random() * 3,
+              repeat: Infinity,
+              delay: Math.random() * 3,
+              ease: "easeInOut"
+            }}
+          />
         )}
       </div>
 
@@ -107,7 +115,7 @@ export const LaboratorioRealismo = () => {
         <motion.div
           initial={{ opacity: 0, y: -40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true, amount: 0.3 }}
           className="text-center mb-24">
 
@@ -115,13 +123,17 @@ export const LaboratorioRealismo = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center gap-2 mb-6 px-6 py-2 bg-gradient-to-r from-[#FF6634]/20 to-[#FF8A5B]/20 border border-[#FF6634]/30 rounded-full backdrop-blur-sm">
+            className="inline-flex items-center gap-3 mb-8 px-8 py-3 bg-gradient-to-r from-[#FF6634]/25 via-[#FF8A5B]/20 to-[#FF6634]/25 border-2 border-[#FF6634]/40 rounded-full backdrop-blur-xl shadow-2xl shadow-[#FF6634]/20">
 
-            <Zap className="w-4 h-4 text-[#FF6634]" />
-            <span className="text-[#FF6634] font-semibold text-sm tracking-wider uppercase">Control Total</span>
+            <motion.div
+              animate={{ rotate: [0, 360] }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}>
+              <Zap className="w-5 h-5 text-[#FF6634]" />
+            </motion.div>
+            <span className="text-[#FF6634] font-bold text-base tracking-widest uppercase">Control Total</span>
           </motion.div>
 
-          <h2 className="text-5xl md:text-7xl font-bold mb-8 text-white leading-tight">
+          <h2 className="text-4xl md:text-6xl font-bold mb-8 text-white leading-tight">
             Tu{' '}
             <span className="bg-gradient-to-r from-[#FF6634] via-[#FF8A5B] to-[#FFAA7F] bg-clip-text text-transparent">
               Laboratorio
@@ -148,62 +160,89 @@ export const LaboratorioRealismo = () => {
             className="flex items-center justify-center relative">
 
             <div className="relative">
-              {/* Rotating rings */}
+              {/* Rotating rings - like Spark */}
               <motion.div
                 className="absolute inset-0 flex items-center justify-center"
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}>
-
-                <div className="w-80 h-80 border-2 border-[#FF6634]/20 rounded-full"></div>
+                <div className="w-80 h-80 border-2 border-[#FF6634]/30 rounded-full"></div>
               </motion.div>
               <motion.div
                 className="absolute inset-0 flex items-center justify-center"
                 animate={{ rotate: -360 }}
                 transition={{ duration: 30, repeat: Infinity, ease: "linear" }}>
-
-                <div className="w-96 h-96 border border-[#FF6634]/10 rounded-full"></div>
+                <div className="w-96 h-96 border border-[#FF6634]/20 rounded-full"></div>
               </motion.div>
 
-              {/* Main glow */}
+              {/* Pulsing rings - like Spark */}
+              {[0, 1, 2].map((i) =>
+                <motion.div
+                  key={i}
+                  className="absolute inset-0 flex items-center justify-center"
+                  animate={{
+                    scale: [1 + i * 0.3, 1.5 + i * 0.3],
+                    opacity: [0.4, 0]
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    delay: i * 0.8,
+                    ease: "easeOut"
+                  }}>
+                  <div className="w-64 h-64 border-2 border-[#FF6634]/30 rounded-full"></div>
+                </motion.div>
+              )}
+
+              {/* Main glow - enhanced */}
               <motion.div
                 className="absolute inset-0 flex items-center justify-center"
                 animate={{
                   scale: [1, 1.15, 1],
-                  opacity: [0.4, 0.6, 0.4]
+                  opacity: [0.5, 0.7, 0.5]
                 }}
-                transition={{ duration: 3, repeat: Infinity }}>
-
-                <div className="w-72 h-72 bg-gradient-radial from-[#FF6634]/30 via-[#FF6634]/10 to-transparent rounded-full blur-2xl"></div>
+                transition={{ duration: 4, repeat: Infinity }}>
+                <div className="w-72 h-72 bg-gradient-radial from-[#FF6634]/40 via-[#FF6634]/20 to-transparent rounded-full blur-3xl"></div>
               </motion.div>
               
-              {/* Person silhouette - IMPROVED */}
+              {/* Person silhouette - enhanced */}
               <div className="relative w-56 h-56 flex items-center justify-center z-10">
                 <motion.div
                   className="relative"
                   animate={{
-                    scale: [1, 1.05, 1]
+                    scale: [1, 1.05, 1],
+                    rotate: [0, 180, 360]
                   }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}>
+                  transition={{ 
+                    scale: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+                    rotate: { duration: 20, repeat: Infinity, ease: "linear" }
+                  }}>
 
                   {/* Outer glow */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-32 h-32 bg-gradient-to-br from-[#FF6634] to-[#FF8A5B] rounded-full blur-3xl opacity-60"></div>
+                    <div className="w-40 h-40 bg-gradient-to-br from-[#FF6634] to-[#FF8A5B] rounded-full blur-3xl opacity-70"></div>
                   </div>
                   
-                  {/* User icon */}
-                  <div className="relative bg-gradient-to-br from-[#FF6634] to-[#FF8A5B] rounded-full p-12 shadow-2xl">
+                  {/* User icon with gradient */}
+                  <div className="relative bg-gradient-to-br from-[#FF6634] via-[#FF8A5B] to-[#FFAA7F] rounded-full p-12 shadow-2xl">
                     <User className="w-20 h-20 text-white" strokeWidth={2.5} />
                   </div>
                   
-                  {/* Pulse ring */}
-                  <motion.div
-                    className="absolute inset-0 border-2 border-[#FF6634] rounded-full"
-                    animate={{
-                      scale: [1, 1.3, 1.3],
-                      opacity: [0.8, 0, 0]
-                    }}
-                    transition={{ duration: 2, repeat: Infinity }} />
-
+                  {/* Multiple pulse rings */}
+                  {[0, 1].map((i) =>
+                    <motion.div
+                      key={i}
+                      className="absolute inset-0 border-2 border-[#FF6634] rounded-full"
+                      animate={{
+                        scale: [1, 1.4, 1.4],
+                        opacity: [0.8, 0, 0]
+                      }}
+                      transition={{ 
+                        duration: 2.5, 
+                        repeat: Infinity,
+                        delay: i * 1.25 
+                      }}
+                    />
+                  )}
                 </motion.div>
               </div>
 
@@ -221,8 +260,8 @@ export const LaboratorioRealismo = () => {
                     <motion.line
                       key={i}
                       initial={{ pathLength: 0, opacity: 0 }}
-                      whileInView={{ pathLength: 1, opacity: 0.4 }}
-                      transition={{ duration: 1.2, delay: 0.6 + i * 0.15, ease: "easeOut" }}
+                      whileInView={{ pathLength: 1, opacity: 0.5 }}
+                      transition={{ duration: 1.5, delay: 0.6 + i * 0.15, ease: [0.22, 1, 0.36, 1] }}
                       viewport={{ once: true }}
                       x1={`${x1}%`}
                       y1={`${y1}%`}
@@ -249,17 +288,17 @@ export const LaboratorioRealismo = () => {
                 initial={{ opacity: 0, y: 60, scale: 0.95 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{
-                  duration: 0.7,
+                  duration: 0.8,
                   delay: module.delay,
                   ease: [0.22, 1, 0.36, 1]
                 }}
                 viewport={{ once: true, amount: 0.3 }}
                 className="relative group">
 
-                {/* Glow effect */}
-                <div className={`absolute inset-0 bg-gradient-to-br from-${module.bgGlow}/20 to-${module.bgGlow}/5 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+                {/* Glow effect - enhanced */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#FF6634]/30 via-[#FF8A5B]/20 to-transparent rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                 
-                <div className="relative bg-gradient-to-br from-[#1A1F2E]/90 via-[#141824]/90 to-[#0F1218]/90 backdrop-blur-xl border border-[#2A3441] rounded-3xl p-8 overflow-hidden hover:border-[#FF6634]/50 transition-all duration-500 group-hover:transform group-hover:scale-[1.02]">
+                <div className="relative bg-gradient-to-br from-[#1A1F2E]/90 via-[#141824]/95 to-[#0F1218]/90 backdrop-blur-2xl border-2 border-[#2A3441] rounded-3xl p-8 overflow-hidden hover:border-[#FF6634]/60 transition-all duration-700 shadow-2xl hover:transform hover:scale-[1.02]">
                   {/* Shine overlay */}
                   <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   
@@ -268,10 +307,9 @@ export const LaboratorioRealismo = () => {
                     <div className="flex items-start gap-5 mb-6">
                       <motion.div
                         className={`w-16 h-16 bg-gradient-to-br ${module.color} rounded-2xl flex items-center justify-center flex-shrink-0 shadow-2xl relative`}
-                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        whileHover={{ scale: 1.15, rotate: 10 }}
                         transition={{ type: "spring", stiffness: 400, damping: 10 }}>
-
-                        <div className={`absolute inset-0 bg-gradient-to-br ${module.color} rounded-2xl blur-lg opacity-50`}></div>
+                        <div className={`absolute inset-0 bg-gradient-to-br ${module.color} rounded-2xl blur-xl opacity-60`}></div>
                         <IconComponent className="w-8 h-8 text-white relative z-10" strokeWidth={2} />
                       </motion.div>
                       
@@ -284,7 +322,7 @@ export const LaboratorioRealismo = () => {
                       </div>
                     </div>
                     
-                    <p className="text-[#E1E5EB] leading-relaxed text-[15px] font-light !whitespace-pre-line !whitespace-pre-line">{module.description}</p>
+                    <p className="text-[#E1E5EB] leading-relaxed text-[15px] font-light !whitespace-pre-line">{module.description}</p>
                   </div>
 
                   {/* Corner accent */}

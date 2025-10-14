@@ -47,41 +47,59 @@ export const DiferenciaFundamental = () => {
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
   return (
-    <section ref={ref} className="py-32 px-4 bg-gradient-to-b from-[#0B0E1A] via-[#0D0F16] to-[#0B0E1A] relative overflow-hidden">
-      {/* Enhanced Background Effects */}
+    <section ref={ref} className="py-40 px-4 bg-gradient-to-b from-[#0B0E1A] via-[#0D0F16] to-[#0B0E1A] relative overflow-hidden">
+      {/* Enhanced Background Effects - Spark Style */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-[#FF6634]/10 rounded-full blur-[120px] animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-[700px] h-[700px] bg-[#FF6634]/5 rounded-full blur-[140px] animate-pulse" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-[#FF6634]/5 via-transparent to-transparent blur-3xl"></div>
+        {/* Large gradient orbs */}
+        <motion.div
+          className="absolute top-1/4 left-1/4 w-[800px] h-[800px] bg-[#FF6634]/15 rounded-full blur-[150px]"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.5, 0.3]
+          }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 right-1/4 w-[900px] h-[900px] bg-[#FF8A5B]/10 rounded-full blur-[180px]"
+          animate={{
+            scale: [1, 1.15, 1],
+            opacity: [0.2, 0.4, 0.2]
+          }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        />
         
-        {/* Floating particles */}
-        {Array.from({ length: 30 }).map((_, i) => (
+        {/* Grid pattern overlay */}
+        <div className="absolute inset-0 opacity-[0.03]" style={{
+          backgroundImage: 'linear-gradient(#FF6634 1px, transparent 1px), linear-gradient(90deg, #FF6634 1px, transparent 1px)',
+          backgroundSize: '50px 50px'
+        }} />
+        
+        {/* Enhanced floating particles - 40 like Spark */}
+        {Array.from({ length: 40 }).map((_, i) =>
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-[#FF6634] rounded-full"
+            className="absolute rounded-full"
             style={{
+              width: Math.random() * 4 + 2,
+              height: Math.random() * 4 + 2,
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
+              background: `radial-gradient(circle, ${Math.random() > 0.5 ? '#FF6634' : '#FF8A5B'} 0%, transparent 70%)`
             }}
             animate={{
-              y: [0, -30, 0],
-              opacity: [0.2, 0.5, 0.2],
-              scale: [1, 1.5, 1],
+              y: [0, -40, 0],
+              opacity: [0.1, 0.6, 0.1],
+              scale: [1, 1.5, 1]
             }}
             transition={{
-              duration: 3 + Math.random() * 2,
+              duration: 4 + Math.random() * 3,
               repeat: Infinity,
-              delay: Math.random() * 2,
+              delay: Math.random() * 3,
+              ease: "easeInOut"
             }}
           />
-        ))}
+        )}
       </div>
-
-      {/* Grid overlay */}
-      <div className="absolute inset-0 z-0 opacity-[0.03]" style={{
-        backgroundImage: `linear-gradient(#FF6634 1px, transparent 1px), linear-gradient(90deg, #FF6634 1px, transparent 1px)`,
-        backgroundSize: '50px 50px'
-      }}></div>
 
       <motion.div 
         className="max-w-7xl mx-auto relative z-10"
@@ -91,7 +109,7 @@ export const DiferenciaFundamental = () => {
         <motion.div
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true, amount: 0.3 }}
           className="text-center mb-20"
         >
@@ -99,15 +117,16 @@ export const DiferenciaFundamental = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-block mb-6 px-6 py-2 bg-gradient-to-r from-[#FF6634]/20 to-[#FF8A5B]/20 border border-[#FF6634]/30 rounded-full backdrop-blur-sm"
+            className="inline-flex items-center gap-3 mb-8 px-8 py-3 bg-gradient-to-r from-[#FF6634]/25 via-[#FF8A5B]/20 to-[#FF6634]/25 border-2 border-[#FF6634]/40 rounded-full backdrop-blur-xl shadow-2xl shadow-[#FF6634]/20"
           >
-            <span className="text-[#FF6634] font-semibold text-sm tracking-wider uppercase">Comparativa Técnica</span>
+            <Sparkles className="w-5 h-5 text-[#FF6634]" />
+            <span className="text-[#FF6634] font-bold text-base tracking-widest uppercase">Comparativa Técnica</span>
           </motion.div>
           
-          <h2 className="text-5xl md:text-7xl font-bold mb-8 text-white leading-tight">
+          <h2 className="text-4xl md:text-6xl font-bold mb-8 text-white leading-tight">
             La Diferencia es el{' '}
             <motion.span 
-              className="bg-gradient-to-r from-[#FF6634] via-[#FF8A5B] to-[#FF6634] bg-clip-text text-transparent"
+              className="bg-gradient-to-r from-[#FF6634] via-[#FF8A5B] to-[#FFAA7F] bg-clip-text text-transparent"
               style={{ backgroundSize: '200% 200%' }}
               animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
               transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
@@ -126,15 +145,41 @@ export const DiferenciaFundamental = () => {
         <motion.div
           initial={{ opacity: 0, scale: 0 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.4, type: "spring" }}
+          transition={{ duration: 0.6, delay: 0.4, type: "spring", stiffness: 200 }}
           viewport={{ once: true }}
           className="flex justify-center mb-12 relative z-20"
         >
           <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-[#FF6634] to-[#FF8A5B] rounded-full blur-xl opacity-50 animate-pulse"></div>
-            <div className="relative bg-gradient-to-r from-[#FF6634] to-[#FF8A5B] text-white font-bold text-2xl px-8 py-4 rounded-full shadow-2xl">
+            {/* Multiple pulsing rings */}
+            {[0, 1, 2].map((i) =>
+              <motion.div
+                key={i}
+                className="absolute inset-0 bg-gradient-to-r from-[#FF6634] to-[#FF8A5B] rounded-full blur-xl"
+                animate={{
+                  scale: [1 + i * 0.3, 1.5 + i * 0.3],
+                  opacity: [0.5, 0]
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  delay: i * 0.6,
+                  ease: "easeOut"
+                }}
+              />
+            )}
+            <motion.div 
+              className="relative bg-gradient-to-r from-[#FF6634] to-[#FF8A5B] text-white font-black text-2xl px-8 py-4 rounded-full shadow-2xl"
+              animate={{
+                boxShadow: [
+                  '0 0 40px rgba(255, 102, 52, 0.4)',
+                  '0 0 80px rgba(255, 102, 52, 0.8)',
+                  '0 0 40px rgba(255, 102, 52, 0.4)'
+                ]
+              }}
+              transition={{ duration: 3, repeat: Infinity }}
+            >
               VS
-            </div>
+            </motion.div>
           </div>
         </motion.div>
 
@@ -142,15 +187,15 @@ export const DiferenciaFundamental = () => {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true, amount: 0.2 }}
           className="relative max-w-7xl mx-auto"
         >
-          {/* Outer glow */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#FF6634]/20 via-[#FF8A5B]/10 to-transparent rounded-3xl blur-2xl opacity-60"></div>
+          {/* Outer glow - enhanced */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#FF6634]/30 via-[#FF8A5B]/20 to-transparent rounded-3xl blur-3xl opacity-80"></div>
           
           {/* Main container with border */}
-          <div className="relative bg-gradient-to-br from-[#1A1F2E]/50 via-[#141824]/50 to-[#0F1218]/50 backdrop-blur-xl border-2 border-[#FF6634]/30 rounded-3xl overflow-hidden">
+          <div className="relative bg-gradient-to-br from-[#1A1F2E]/90 via-[#141824]/95 to-[#0F1218]/90 backdrop-blur-2xl border-2 border-[#FF6634]/40 rounded-3xl overflow-hidden shadow-2xl">
             
             {/* Headers Row */}
             <div className="grid lg:grid-cols-2 border-b-2 border-[#FF6634]/30">
@@ -204,7 +249,7 @@ export const DiferenciaFundamental = () => {
                   key={item.category}
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
-                  transition={{ duration: 0.5, delay: index * 0.08 }}
+                  transition={{ duration: 0.6, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
                   viewport={{ once: true, amount: 0.3 }}
                   className={`grid lg:grid-cols-2 ${index !== comparisonData.length - 1 ? 'border-b border-[#2A3441]' : ''}`}
                 >
@@ -218,15 +263,19 @@ export const DiferenciaFundamental = () => {
                     </div>
                   </div>
 
-                  {/* Right Side - Synth */}
-                  <div className="relative group">
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#FF6634]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  {/* Right Side - Synth - Enhanced hover */}
+                  <motion.div 
+                    className="relative group"
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#FF6634]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     
                     <div className="relative p-6 min-h-[140px] flex flex-col">
                       <h4 className="text-xs font-bold text-[#FF6634] mb-3 tracking-wider uppercase">{item.category}</h4>
                       <p className="text-white leading-relaxed text-sm font-light">{item.synth}</p>
                     </div>
-                  </div>
+                  </motion.div>
                 </motion.div>
               ))}
             </div>

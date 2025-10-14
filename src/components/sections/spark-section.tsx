@@ -343,7 +343,7 @@ export const SparkSection = () => {
                     { text: 'Sesgo Status Quo: +20%', angle: 120, delay: 0.3, icon: '🔄' },
                     { text: 'Cosmovisión: Jóvenes Urbanos', angle: 240, delay: 0.6, icon: '🌆' }].
                     map((tag, i) => {
-                      const radius = 140;
+                      const radius = 170;
                       const x = Math.cos(tag.angle * Math.PI / 180) * radius;
                       const y = Math.sin(tag.angle * Math.PI / 180) * radius;
                       return (
