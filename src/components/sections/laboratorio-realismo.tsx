@@ -4,46 +4,86 @@ import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Brain, Heart, Users, Target, Globe, Zap, User } from 'lucide-react';
 
-const modules = [
-{
-  id: 1,
-  icon: Heart,
-  title: 'El Estado Anímico Inicial',
-  description: 'Define el punto de partida emocional. ¿Tu participante llega a la sesión optimista, estresado o neutral? Un mismo perfil reaccionará de forma muy distinta a tu concepto según su estado anímico. Este simple ajuste desbloquea una nueva dimensión de realismo.',
-  delay: 0.2,
-  color: 'from-rose-500 to-pink-600',
-  bgGlow: 'rose-500'
-},
-{
-  id: 2,
-  icon: Users,
-  title: 'El Contexto Social',
-  description: 'Controla la dinámica de poder. No hablamos igual a una figura de autoridad que a un amigo. Define si el moderador actúa como un "Entrevistador Formal" o un "Amigo Cercano" y observa cómo la formalidad o la cercanía alteran la sinceridad y el detalle de las respuestas.',
-  delay: 0.4,
-  color: 'from-blue-500 to-cyan-600',
-  bgGlow: 'blue-500'
-},
-{
-  id: 3,
-  icon: Target,
-  title: 'La Agenda Oculta',
-  description: '¿Y si un participante "quiere aparentar ser un experto" o "es secretamente leal a la competencia"? Asigna una agenda oculta y observa cómo estas motivaciones influyen sutilmente en la conversación, revelando tensiones que las encuestas jamás capturarían.',
-  delay: 0.6,
-  color: 'from-purple-500 to-violet-600',
-  bgGlow: 'purple-500'
-},
-{
-  id: 4,
-  icon: Globe,
-  title: "Las Cosmovisiones Culturales",
-  description: "Nuestro motor calibra el modelo de pensamiento usando marcos cient\xEDficos como las Dimensiones Culturales de Hofstede. Ajustamos las variables que rigen la toma de decisiones, como la percepci\xF3n de la autoridad, para garantizar un realismo regional basado en la ciencia del comportamiento.",
-  delay: 0.8,
-  color: 'from-emerald-500 to-teal-600',
-  bgGlow: 'emerald-500'
-}];
+const modulesContent = {
+  es: [
+    {
+      id: 1,
+      icon: Heart,
+      title: 'El Estado Anímico Inicial',
+      description: 'Define el punto de partida emocional. ¿Tu participante llega a la sesión optimista, estresado o neutral? Un mismo perfil reaccionará de forma muy distinta a tu concepto según su estado anímico. Este simple ajuste desbloquea una nueva dimensión de realismo.',
+      delay: 0.2,
+      color: 'from-rose-500 to-pink-600',
+      bgGlow: 'rose-500'
+    },
+    {
+      id: 2,
+      icon: Users,
+      title: 'El Contexto Social',
+      description: 'Controla la dinámica de poder. No hablamos igual a una figura de autoridad que a un amigo. Define si el moderador actúa como un "Entrevistador Formal" o un "Amigo Cercano" y observa cómo la formalidad o la cercanía alteran la sinceridad y el detalle de las respuestas.',
+      delay: 0.4,
+      color: 'from-blue-500 to-cyan-600',
+      bgGlow: 'blue-500'
+    },
+    {
+      id: 3,
+      icon: Target,
+      title: 'La Agenda Oculta',
+      description: '¿Y si un participante "quiere aparentar ser un experto" o "es secretamente leal a la competencia"? Asigna una agenda oculta y observa cómo estas motivaciones influyen sutilmente en la conversación, revelando tensiones que las encuestas jamás capturarían.',
+      delay: 0.6,
+      color: 'from-purple-500 to-violet-600',
+      bgGlow: 'purple-500'
+    },
+    {
+      id: 4,
+      icon: Globe,
+      title: "Las Cosmovisiones Culturales",
+      description: "Nuestro motor calibra el modelo de pensamiento usando marcos científicos como las Dimensiones Culturales de Hofstede. Ajustamos las variables que rigen la toma de decisiones, como la percepción de la autoridad, para garantizar un realismo regional basado en la ciencia del comportamiento.",
+      delay: 0.8,
+      color: 'from-emerald-500 to-teal-600',
+      bgGlow: 'emerald-500'
+    }
+  ],
+  en: [
+    {
+      id: 1,
+      icon: Heart,
+      title: 'The Initial Mood State',
+      description: 'Define the emotional starting point. Does your participant arrive at the session optimistic, stressed, or neutral? The same profile will react very differently to your concept depending on their mood state. This simple adjustment unlocks a new dimension of realism.',
+      delay: 0.2,
+      color: 'from-rose-500 to-pink-600',
+      bgGlow: 'rose-500'
+    },
+    {
+      id: 2,
+      icon: Users,
+      title: 'The Social Context',
+      description: 'Control the power dynamics. We don\'t speak the same way to an authority figure as to a friend. Define whether the moderator acts as a "Formal Interviewer" or a "Close Friend" and observe how formality or closeness alter the sincerity and detail of responses.',
+      delay: 0.4,
+      color: 'from-blue-500 to-cyan-600',
+      bgGlow: 'blue-500'
+    },
+    {
+      id: 3,
+      icon: Target,
+      title: 'The Hidden Agenda',
+      description: 'What if a participant "wants to appear as an expert" or "is secretly loyal to the competition"? Assign a hidden agenda and watch how these motivations subtly influence the conversation, revealing tensions that surveys would never capture.',
+      delay: 0.6,
+      color: 'from-purple-500 to-violet-600',
+      bgGlow: 'purple-500'
+    },
+    {
+      id: 4,
+      icon: Globe,
+      title: "Cultural Worldviews",
+      description: "Our engine calibrates the thinking model using scientific frameworks like Hofstede's Cultural Dimensions. We adjust the variables that govern decision-making, such as perception of authority, to guarantee regional realism based on behavioral science.",
+      delay: 0.8,
+      color: 'from-emerald-500 to-teal-600',
+      bgGlow: 'emerald-500'
+    }
+  ]
+} as const;
 
-
-export const LaboratorioRealismo = () => {
+export const LaboratorioRealismo = ({ locale = 'es' }: { locale?: 'es' | 'en' }) => {
   const ref = React.useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -51,6 +91,43 @@ export const LaboratorioRealismo = () => {
   });
 
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+
+  const modules = modulesContent[locale];
+
+  const headerTitle = locale === 'en' 
+    ? (<>
+        Your{' '}
+        <span className="bg-gradient-to-r from-[#FF6634] via-[#FF8A5B] to-[#FFAA7F] bg-clip-text text-transparent">
+          Laboratory
+        </span>
+        {' '}of<br className="hidden md:block" />
+        Human Behavior
+      </>)
+    : (<>
+        Tu{' '}
+        <span className="bg-gradient-to-r from-[#FF6634] via-[#FF8A5B] to-[#FFAA7F] bg-clip-text text-transparent">
+          Laboratorio
+        </span>
+        {' '}de<br className="hidden md:block" />
+        Comportamiento Humano
+      </>);
+
+  const headerSubtitle = locale === 'en'
+    ? (<>
+        Don't just run a simulation.{' '}
+        <span className="text-white font-medium">Design an experiment</span>.
+        <br className="hidden md:block" />
+        We give you the tools to control every variable of realism.
+      </>)
+    : (<>
+        No solo ejecutes una simulación.{' '}
+        <span className="text-white font-medium">Diseña un experimento</span>.
+        <br className="hidden md:block" />
+        Te damos las herramientas para controlar cada variable del realismo.
+      </>);
+
+  const controlTotalLabel = locale === 'en' ? 'Full Control' : 'Control Total';
+  const moduleLabel = locale === 'en' ? 'Module' : 'Módulo';
 
   return (
     <section ref={ref} className="py-40 px-4 bg-gradient-to-b from-[#0B0E1A] via-[#0D0F16] to-[#0B0E1A] relative overflow-hidden">
@@ -130,22 +207,14 @@ export const LaboratorioRealismo = () => {
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}>
               <Zap className="w-5 h-5 text-[#FF6634]" />
             </motion.div>
-            <span className="text-[#FF6634] font-bold text-base tracking-widest uppercase">Control Total</span>
+            <span className="text-[#FF6634] font-bold text-base tracking-widest uppercase">{controlTotalLabel}</span>
           </motion.div>
 
           <h2 className="text-4xl md:text-6xl font-bold mb-8 text-white leading-tight">
-            Tu{' '}
-            <span className="bg-gradient-to-r from-[#FF6634] via-[#FF8A5B] to-[#FFAA7F] bg-clip-text text-transparent">
-              Laboratorio
-            </span>
-            {' '}de<br className="hidden md:block" />
-            Comportamiento Humano
+            {headerTitle}
           </h2>
           <p className="text-xl md:text-2xl text-[#E1E5EB] max-w-4xl mx-auto leading-relaxed font-light">
-            No solo ejecutes una simulación.{' '}
-            <span className="text-white font-medium">Diseña un experimento</span>.
-            <br className="hidden md:block" />
-            Te damos las herramientas para controlar cada variable del realismo.
+            {headerSubtitle}
           </p>
         </motion.div>
 
@@ -315,7 +384,7 @@ export const LaboratorioRealismo = () => {
                       
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-2">
-                          <span className="text-[#FF6634] font-bold text-xs tracking-wider uppercase">Módulo {module.id}</span>
+                          <span className="text-[#FF6634] font-bold text-xs tracking-wider uppercase">{moduleLabel} {module.id}</span>
                           <div className="flex-1 h-px bg-gradient-to-r from-[#FF6634]/50 to-transparent"></div>
                         </div>
                         <h3 className="text-2xl font-bold text-white leading-tight !whitespace-pre-line">{module.title}</h3>
@@ -328,11 +397,11 @@ export const LaboratorioRealismo = () => {
                   {/* Corner accent */}
                   <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[#FF6634]/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
-              </motion.div>);
-
+              </motion.div>
+            );
           })}
         </div>
       </motion.div>
-    </section>);
-
+    </section>
+  );
 };

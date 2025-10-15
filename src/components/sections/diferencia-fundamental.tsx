@@ -4,40 +4,74 @@ import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Brain, Sparkles, CheckCircle2, XCircle } from 'lucide-react';
 
-const comparisonData = [
-  {
-    category: 'Personalidad',
-    chatbot: 'Responde de forma genérica, sin una identidad coherente que la sustente. Es un "eco" de sus datos.',
-    synth: 'Construye y mantiene una personalidad profunda, con historia, valores y un carácter consistente.',
-  },
-  {
-    category: 'Cosmovisión',
-    chatbot: 'Carece de un marco de creencias; sus respuestas son un reflejo estadístico de la web, sin un punto de vista propio.',
-    synth: 'Opera desde un sistema de valores definido, lo que da coherencia y profundidad a todas sus interacciones.',
-  },
-  {
-    category: 'Granularidad',
-    chatbot: 'Ofrece respuestas de "libro de texto", sin la riqueza, las anécdotas y los matices de la experiencia personal.',
-    synth: 'Revela detalles y anécdotas únicas, basadas en su perfil psico-demográfico y su memoria contextual.',
-  },
-  {
-    category: 'Sesgos Cognitivos',
-    chatbot: 'Está diseñado para ser objetivo y neutral, eliminando las "imperfecciones" del juicio humano real.',
-    synth: 'Incorpora deliberadamente sesgos para simular con alta fidelidad los atajos mentales del pensamiento humano.',
-  },
-  {
-    category: 'Estado Anímico',
-    chatbot: 'Es incapaz de sentir o simular emociones, lo que resulta en interacciones monótonas y predecibles.',
-    synth: 'Simula un estado anímico dinámico (frustración, entusiasmo) que evoluciona de forma realista durante la charla.',
-  },
-  {
-    category: 'Agenda Oculta',
-    chatbot: 'No tiene metas propias más allá de responder. Es un interlocutor pasivo que espera la siguiente pregunta.',
-    synth: 'Posee motivaciones subyacentes (ej. "quiere aparentar ser experto") que influyen sutilmente en la conversación.',
-  },
-];
+const comparisonDataContent = {
+  es: [
+    {
+      category: 'Personalidad',
+      chatbot: 'Responde de forma genérica, sin una identidad coherente que la sustente. Es un "eco" de sus datos.',
+      synth: 'Construye y mantiene una personalidad profunda, con historia, valores y un carácter consistente.',
+    },
+    {
+      category: 'Cosmovisión',
+      chatbot: 'Carece de un marco de creencias; sus respuestas son un reflejo estadístico de la web, sin un punto de vista propio.',
+      synth: 'Opera desde un sistema de valores definido, lo que da coherencia y profundidad a todas sus interacciones.',
+    },
+    {
+      category: 'Granularidad',
+      chatbot: 'Ofrece respuestas de "libro de texto", sin la riqueza, las anécdotas y los matices de la experiencia personal.',
+      synth: 'Revela detalles y anécdotas únicas, basadas en su perfil psico-demográfico y su memoria contextual.',
+    },
+    {
+      category: 'Sesgos Cognitivos',
+      chatbot: 'Está diseñado para ser objetivo y neutral, eliminando las "imperfecciones" del juicio humano real.',
+      synth: 'Incorpora deliberadamente sesgos para simular con alta fidelidad los atajos mentales del pensamiento humano.',
+    },
+    {
+      category: 'Estado Anímico',
+      chatbot: 'Es incapaz de sentir o simular emociones, lo que resulta en interacciones monótonas y predecibles.',
+      synth: 'Simula un estado anímico dinámico (frustración, entusiasmo) que evoluciona de forma realista durante la charla.',
+    },
+    {
+      category: 'Agenda Oculta',
+      chatbot: 'No tiene metas propias más allá de responder. Es un interlocutor pasivo que espera la siguiente pregunta.',
+      synth: 'Posee motivaciones subyacentes (ej. "quiere aparentar ser experto") que influyen sutilmente en la conversación.',
+    },
+  ],
+  en: [
+    {
+      category: 'Personality',
+      chatbot: 'Responds generically, without a coherent underlying identity. It\'s an "echo" of its data.',
+      synth: 'Builds and maintains a deep personality, with history, values, and consistent character.',
+    },
+    {
+      category: 'Worldview',
+      chatbot: 'Lacks a belief framework; its responses are a statistical reflection of the web, without its own point of view.',
+      synth: 'Operates from a defined value system, giving coherence and depth to all its interactions.',
+    },
+    {
+      category: 'Granularity',
+      chatbot: 'Offers "textbook" answers, without the richness, anecdotes, and nuances of personal experience.',
+      synth: 'Reveals unique details and anecdotes, based on its psycho-demographic profile and contextual memory.',
+    },
+    {
+      category: 'Cognitive Biases',
+      chatbot: 'Designed to be objective and neutral, eliminating the "imperfections" of real human judgment.',
+      synth: 'Deliberately incorporates biases to high-fidelity simulate the mental shortcuts of human thinking.',
+    },
+    {
+      category: 'Mood State',
+      chatbot: 'Unable to feel or simulate emotions, resulting in monotonous and predictable interactions.',
+      synth: 'Simulates a dynamic mood state (frustration, enthusiasm) that evolves realistically during the conversation.',
+    },
+    {
+      category: 'Hidden Agenda',
+      chatbot: 'Has no goals beyond answering. It\'s a passive interlocutor waiting for the next question.',
+      synth: 'Possesses underlying motivations (e.g., "wants to appear as an expert") that subtly influence the conversation.',
+    },
+  ]
+} as const;
 
-export const DiferenciaFundamental = () => {
+export const DiferenciaFundamental = ({ locale = 'es' }: { locale?: 'es' | 'en' }) => {
   const ref = React.useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -45,6 +79,50 @@ export const DiferenciaFundamental = () => {
   });
 
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+
+  const comparisonData = comparisonDataContent[locale];
+
+  const headerBadge = locale === 'en' ? 'Technical Comparison' : 'Comparativa Técnica';
+  const headerTitle = locale === 'en'
+    ? (<>
+        The Difference is the{' '}
+        <motion.span 
+          className="bg-gradient-to-r from-[#FF6634] via-[#FF8A5B] to-[#FFAA7F] bg-clip-text text-transparent"
+          style={{ backgroundSize: '200% 200%' }}
+          animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+        >
+          Insight
+        </motion.span>
+        ,<br className="hidden md:block" /> not the Answer
+      </>)
+    : (<>
+        La Diferencia es el{' '}
+        <motion.span 
+          className="bg-gradient-to-r from-[#FF6634] via-[#FF8A5B] to-[#FFAA7F] bg-clip-text text-transparent"
+          style={{ backgroundSize: '200% 200%' }}
+          animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+        >
+          Insight
+        </motion.span>
+        ,<br className="hidden md:block" /> no la Respuesta
+      </>);
+
+  const headerSubtitle = locale === 'en'
+    ? (<>
+        A chatbot gives you generic information. A Synth synthetic participant reveals{' '}
+        <span className="text-white font-medium">human motivations</span>.
+      </>)
+    : (<>
+        Un chatbot te da información genérica. Un participante sintético de Synth te revela{' '}
+        <span className="text-white font-medium">motivaciones humanas</span>.
+      </>);
+
+  const chatbotHeader = locale === 'en' ? 'Generic Chatbot' : 'Chatbot Genérico';
+  const chatbotSubheader = locale === 'en' ? 'Answers without depth' : 'Respuestas sin profundidad';
+  const synthHeader = locale === 'en' ? 'Participant' : 'Participante';
+  const synthSubheader = locale === 'en' ? 'Deep and human insights' : 'Insights profundos y humanos';
 
   return (
     <section ref={ref} className="py-40 px-4 bg-gradient-to-b from-[#0B0E1A] via-[#0D0F16] to-[#0B0E1A] relative overflow-hidden">
@@ -120,24 +198,14 @@ export const DiferenciaFundamental = () => {
             className="inline-flex items-center gap-3 mb-8 px-8 py-3 bg-gradient-to-r from-[#FF6634]/25 via-[#FF8A5B]/20 to-[#FF6634]/25 border-2 border-[#FF6634]/40 rounded-full backdrop-blur-xl shadow-2xl shadow-[#FF6634]/20"
           >
             <Sparkles className="w-5 h-5 text-[#FF6634]" />
-            <span className="text-[#FF6634] font-bold text-base tracking-widest uppercase">Comparativa Técnica</span>
+            <span className="text-[#FF6634] font-bold text-base tracking-widest uppercase">{headerBadge}</span>
           </motion.div>
           
           <h2 className="text-4xl md:text-6xl font-bold mb-8 text-white leading-tight">
-            La Diferencia es el{' '}
-            <motion.span 
-              className="bg-gradient-to-r from-[#FF6634] via-[#FF8A5B] to-[#FFAA7F] bg-clip-text text-transparent"
-              style={{ backgroundSize: '200% 200%' }}
-              animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-            >
-              Insight
-            </motion.span>
-            ,<br className="hidden md:block" /> no la Respuesta
+            {headerTitle}
           </h2>
           <p className="text-xl md:text-2xl text-[#E1E5EB] max-w-4xl mx-auto leading-relaxed font-light">
-            Un chatbot te da información genérica. Un participante sintético de Synth te revela{' '}
-            <span className="text-white font-medium">motivaciones humanas</span>.
+            {headerSubtitle}
           </p>
         </motion.div>
 
@@ -210,10 +278,10 @@ export const DiferenciaFundamental = () => {
                       <Brain className="w-8 h-8 text-[#888888]" strokeWidth={1.5} />
                     </div>
                   </div>
-                  <h3 className="text-3xl font-bold text-[#CCCCCC] mb-2">Chatbot Genérico</h3>
+                  <h3 className="text-3xl font-bold text-[#CCCCCC] mb-2">{chatbotHeader}</h3>
                   <div className="flex items-center gap-2 text-[#888888] text-sm">
                     <XCircle className="w-4 h-4" />
-                    <span>Respuestas sin profundidad</span>
+                    <span>{chatbotSubheader}</span>
                   </div>
                 </div>
               </div>
@@ -232,11 +300,11 @@ export const DiferenciaFundamental = () => {
                         className="h-16 w-16 object-contain relative z-10"
                       />
                     </div>
-                    <h3 className="text-3xl font-bold text-white">Participante</h3>
+                    <h3 className="text-3xl font-bold text-white">{synthHeader}</h3>
                   </div>
                   <div className="flex items-center gap-2 text-[#FF6634] text-sm">
                     <CheckCircle2 className="w-4 h-4" />
-                    <span>Insights profundos y humanos</span>
+                    <span>{synthSubheader}</span>
                   </div>
                 </div>
               </div>

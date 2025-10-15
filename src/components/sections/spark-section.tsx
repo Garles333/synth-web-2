@@ -4,7 +4,130 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Sparkles, Settings, Database, Brain, CheckCircle, Zap, ArrowRight } from 'lucide-react';
 
-export const SparkSection = () => {
+const contentByLocale = {
+  es: {
+    badge: 'Motor de Creación Spark',
+    title1: 'Así Nace',
+    title2: 'una Persona Sintética en Segundos',
+    subtitle1: 'Presentamos',
+    sparkLabel: 'Spark',
+    subtitle2: ', nuestro motor de creación probabilística.',
+    subtitle3: 'La herramienta definitiva para eliminar el sesgo del \'lienzo en blanco\' y descubrir perfiles que no sabías que necesitabas.',
+    problemTitle: 'El Problema que Resuelve',
+    problemText: 'El mayor riesgo al inicio de una investigación es nuestro propio sesgo. Inconscientemente, diseñamos perfiles que confirman nuestras hipótesis.',
+    problemHighlight: 'Spark rompe este ciclo',
+    problemText2: '. No es un generador aleatorio; es un catalizador de ideas que crea perfiles realistas y coherentes, introduciendo la variabilidad del mundo real en tu estudio.',
+    step1Badge: 'Paso 1',
+    step1Title: 'El Ancla',
+    step1Subtitle: '(Tu Control)',
+    step1Text: 'Tú defines los pilares no negociables. A través de una interfaz simple, proporcionas los anclajes demográficos:',
+    step1Bold: 'Rango de Edad, NSE y País',
+    step1Text2: '. Esto asegura que cada \'chispa\' sea siempre relevante para tu investigación.',
+    step1Field1: 'Rango de Edad',
+    step1Value1: '25-35',
+    step1Field2: 'NSE',
+    step1Value2: 'Medio-alto',
+    step1Field3: 'Ubicación',
+    step1Value3: 'Madrid (España)',
+    step2Badge: 'Paso 2',
+    step2Title: 'La Lógica',
+    step2Subtitle: '(El Sorteo Probabilístico)',
+    step2Text: 'Aquí ocurre la magia. Spark utiliza un motor de datos socioculturales para asignar las 5 capas de la emulación humana. Imagina que tiramos unos dados cargados basados en la realidad de esa demografía:',
+    step2Item1Title: 'Capa 1 (Perfil)',
+    step2Item1Desc: 'Sortear rasgos de personalidad (ej. aversión al riesgo) y sesgos cognitivos, con probabilidades que se ajustan entre sí para mayor coherencia.',
+    step2Item2Title: 'Capa 4 (Cosmovisión)',
+    step2Item2Desc: 'Selecciona automáticamente la Cosmovisión más apropiada de nuestro motor.',
+    step2Item3Title: 'Otras Capas',
+    step2Item3Desc: 'Establece la estructura para la Memoria, Conocimiento y el Modelo de Lenguaje.',
+    step2Tag1: 'Aversión al Riesgo: 25%',
+    step2Tag2: 'Sesgo Status Quo: +20%',
+    step2Tag3: 'Cosmovisión: Jóvenes Urbanos',
+    step3Badge: 'Paso 3',
+    step3Title: 'La Narrativa',
+    step3Subtitle: '(La Síntesis con IA)',
+    step3Text: 'Finalmente, la IA recibe esta ficha de datos estructurada y actúa como un psicólogo experto, sintetizando una narrativa humana y creíble.',
+    step3Bold: 'No inventa; deduce lógicamente',
+    step3Text2: ' las metas, miedos y motivaciones a partir de los rasgos sorteados.',
+    step3Name: 'Ana García',
+    step3Gender: 'Mujer',
+    step3Age: '28 años',
+    step3Location: 'Madrid',
+    step3BioLabel: 'Bio',
+    step3BioText: 'Profesional del sector tecnológico, valora la estabilidad...',
+    step3GoalsLabel: 'Metas',
+    step3GoalsText: 'Equilibrio vida-trabajo, seguridad financiera...',
+    step3FrustLabel: 'Frustraciones',
+    step3FrustText: 'Incertidumbre laboral, cambios rápidos...',
+    conclusionText1: 'No estás creando desde cero;',
+    conclusionHighlight: 'dirigiendo la creación',
+    conclusionText2: 'Genera participantes diversos y creíbles en segundos, listos para el Laboratorio o simulación directa. La combinación perfecta de',
+    conclusionBold1: 'control estratégico',
+    conclusionBold2: 'descubrimiento inspirado'
+  },
+  en: {
+    badge: 'Spark Creation Engine',
+    title1: 'How a Synthetic Person',
+    title2: 'is Born in Seconds',
+    subtitle1: 'Introducing',
+    sparkLabel: 'Spark',
+    subtitle2: ', our probabilistic creation engine.',
+    subtitle3: 'The ultimate tool to eliminate \'blank canvas\' bias and discover profiles you didn\'t know you needed.',
+    problemTitle: 'The Problem It Solves',
+    problemText: 'The biggest risk at the start of research is our own bias. Unconsciously, we design profiles that confirm our hypotheses.',
+    problemHighlight: 'Spark breaks this cycle',
+    problemText2: '. It\'s not a random generator; it\'s an idea catalyst that creates realistic and coherent profiles, introducing real-world variability into your study.',
+    step1Badge: 'Step 1',
+    step1Title: 'The Anchor',
+    step1Subtitle: '(Your Control)',
+    step1Text: 'You define the non-negotiable pillars. Through a simple interface, you provide demographic anchors:',
+    step1Bold: 'Age Range, Socioeconomic Status, and Country',
+    step1Text2: '. This ensures every \'spark\' is always relevant to your research.',
+    step1Field1: 'Age Range',
+    step1Value1: '25-35',
+    step1Field2: 'SES',
+    step1Value2: 'Upper-middle',
+    step1Field3: 'Location',
+    step1Value3: 'Madrid (Spain)',
+    step2Badge: 'Step 2',
+    step2Title: 'The Logic',
+    step2Subtitle: '(The Probabilistic Draw)',
+    step2Text: 'Here\'s where the magic happens. Spark uses a sociocultural data engine to assign the 5 layers of human emulation. Imagine rolling loaded dice based on that demographic\'s reality:',
+    step2Item1Title: 'Layer 1 (Profile)',
+    step2Item1Desc: 'Draw personality traits (e.g., risk aversion) and cognitive biases, with probabilities that adjust to each other for greater coherence.',
+    step2Item2Title: 'Layer 4 (Worldview)',
+    step2Item2Desc: 'Automatically selects the most appropriate Worldview from our engine.',
+    step2Item3Title: 'Other Layers',
+    step2Item3Desc: 'Establishes the structure for Memory, Knowledge, and the Language Model.',
+    step2Tag1: 'Risk Aversion: 25%',
+    step2Tag2: 'Status Quo Bias: +20%',
+    step2Tag3: 'Worldview: Urban Youth',
+    step3Badge: 'Step 3',
+    step3Title: 'The Narrative',
+    step3Subtitle: '(AI Synthesis)',
+    step3Text: 'Finally, the AI receives this structured data sheet and acts like an expert psychologist, synthesizing a credible human narrative.',
+    step3Bold: 'It doesn\'t invent; it logically deduces',
+    step3Text2: ' goals, fears, and motivations from the drawn traits.',
+    step3Name: 'Ana García',
+    step3Gender: 'Woman',
+    step3Age: '28 years old',
+    step3Location: 'Madrid',
+    step3BioLabel: 'Bio',
+    step3BioText: 'Tech sector professional, values stability...',
+    step3GoalsLabel: 'Goals',
+    step3GoalsText: 'Work-life balance, financial security...',
+    step3FrustLabel: 'Frustrations',
+    step3FrustText: 'Job uncertainty, rapid changes...',
+    conclusionText1: 'You\'re not creating from scratch;',
+    conclusionHighlight: 'directing creation',
+    conclusionText2: 'Generate diverse and credible participants in seconds, ready for the Laboratory or direct simulation. The perfect combination of',
+    conclusionBold1: 'strategic control',
+    conclusionBold2: 'inspired discovery'
+  }
+} as const;
+
+export const SparkSection = ({ locale = 'es' }: { locale?: 'es' | 'en' }) => {
+  const content = contentByLocale[locale];
+
   return (
     <section className="py-40 px-4 bg-gradient-to-b from-[#0B0E1A] via-[#0D0F16] to-[#0B0E1A] relative overflow-hidden">
       {/* Enhanced Background Effects */}
@@ -81,7 +204,7 @@ export const SparkSection = () => {
 
               <Sparkles className="w-5 h-5 text-[#FF6634]" />
             </motion.div>
-            <span className="text-[#FF6634] font-bold text-base tracking-widest uppercase">Motor de Creación Spark</span>
+            <span className="text-[#FF6634] font-bold text-base tracking-widest uppercase">{content.badge}</span>
             <Zap className="w-5 h-5 text-[#FF8A5B]" />
           </motion.div>
 
@@ -92,7 +215,7 @@ export const SparkSection = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}>
 
-              Así Nace
+              {content.title1}
             </motion.span>
             <br />
             <motion.span
@@ -101,7 +224,7 @@ export const SparkSection = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}>
 
-              una Persona Sintética en Segundos
+              {content.title2}
             </motion.span>
           </h2>
           
@@ -112,10 +235,10 @@ export const SparkSection = () => {
             className="max-w-4xl mx-auto">
 
             <p className="text-xl text-[#E1E5EB] leading-relaxed font-light mb-4">
-              Presentamos <span className="text-white font-bold bg-gradient-to-r from-[#FF6634]/20 to-transparent px-3 py-1 rounded">Spark</span>, nuestro motor de creación probabilística.
+              {content.subtitle1} <span className="text-white font-bold bg-gradient-to-r from-[#FF6634]/20 to-transparent px-3 py-1 rounded">{content.sparkLabel}</span>{content.subtitle2}
             </p>
             <p className="text-base md:text-lg text-[#E1E5EB]/80 leading-relaxed">
-              La herramienta definitiva para eliminar el sesgo del 'lienzo en blanco' y descubrir perfiles que no sabías que necesitabas.
+              {content.subtitle3}
             </p>
           </motion.div>
         </motion.div>
@@ -138,12 +261,12 @@ export const SparkSection = () => {
                   <Sparkles className="w-8 h-8 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-3xl md:text-4xl font-black text-white mb-3">El Problema que Resuelve</h3>
+                  <h3 className="text-3xl md:text-4xl font-black text-white mb-3">{content.problemTitle}</h3>
                   <div className="w-32 h-1 bg-gradient-to-r from-[#FF6634] to-transparent rounded-full" />
                 </div>
               </div>
               <p className="text-xl text-[#E1E5EB] leading-relaxed">
-                El mayor riesgo al inicio de una investigación es nuestro propio sesgo. Inconscientemente, diseñamos perfiles que confirman nuestras hipótesis. <span className="text-white font-bold bg-gradient-to-r from-[#FF6634]/20 to-transparent px-2 py-1 rounded">Spark rompe este ciclo</span>. No es un generador aleatorio; es un catalizador de ideas que crea perfiles realistas y coherentes, introduciendo la variabilidad del mundo real en tu estudio.
+                {content.problemText} <span className="text-white font-bold bg-gradient-to-r from-[#FF6634]/20 to-transparent px-2 py-1 rounded">{content.problemHighlight}</span>{content.problemText2}
               </p>
             </div>
           </div>
@@ -179,13 +302,13 @@ export const SparkSection = () => {
                       <Settings className="w-8 h-8 text-white" />
                     </div>
                     <div>
-                      <span className="text-[#FF6634] font-bold text-sm tracking-widest uppercase block mb-1">Paso 1</span>
-                      <h3 className="text-4xl font-black text-white">El Ancla</h3>
-                      <p className="text-[#FF8A5B] text-sm font-semibold">(Tu Control)</p>
+                      <span className="text-[#FF6634] font-bold text-sm tracking-widest uppercase block mb-1">{content.step1Badge}</span>
+                      <h3 className="text-4xl font-black text-white">{content.step1Title}</h3>
+                      <p className="text-[#FF8A5B] text-sm font-semibold">{content.step1Subtitle}</p>
                     </div>
                   </div>
                   <p className="text-xl text-[#E1E5EB] leading-relaxed mb-6">
-                    Tú defines los pilares no negociables. A través de una interfaz simple, proporcionas los anclajes demográficos: <span className="text-white font-bold">Rango de Edad, NSE y País</span>. Esto asegura que cada 'chispa' sea siempre relevante para tu investigación.
+                    {content.step1Text} <span className="text-white font-bold">{content.step1Bold}</span>{content.step1Text2}
                   </p>
                 </div>
               </div>
@@ -205,9 +328,9 @@ export const SparkSection = () => {
                   <div className="relative bg-gradient-to-br from-[#1A1F2E] via-[#141824] to-[#0F1218] border-2 border-[#2A3441] rounded-3xl p-10 backdrop-blur-xl hover:border-[#FF6634]/60 transition-all duration-700 shadow-2xl">
                     <div className="space-y-5">
                       {[
-                      { label: 'Rango de Edad', value: '25-35', icon: '👤' },
-                      { label: 'NSE', value: "Medio-alto", icon: '💼' },
-                      { label: 'Ubicación', value: 'Madrid (España)', icon: '🌍' }].
+                      { label: content.step1Field1, value: content.step1Value1, icon: '👤' },
+                      { label: content.step1Field2, value: content.step1Value2, icon: '💼' },
+                      { label: content.step1Field3, value: content.step1Value3, icon: '🌍' }].
                       map((field, i) =>
                       <motion.div
                         key={i}
@@ -261,19 +384,19 @@ export const SparkSection = () => {
                       <Database className="w-8 h-8 text-white" />
                     </div>
                     <div>
-                      <span className="text-[#FF8A5B] font-bold text-sm tracking-widest uppercase block mb-1">Paso 2</span>
-                      <h3 className="text-4xl font-black text-white">La Lógica</h3>
-                      <p className="text-[#FF8A5B] text-sm font-semibold">(El Sorteo Probabilístico)</p>
+                      <span className="text-[#FF8A5B] font-bold text-sm tracking-widest uppercase block mb-1">{content.step2Badge}</span>
+                      <h3 className="text-4xl font-black text-white">{content.step2Title}</h3>
+                      <p className="text-[#FF8A5B] text-sm font-semibold">{content.step2Subtitle}</p>
                     </div>
                   </div>
                   <p className="text-xl text-[#E1E5EB] leading-relaxed mb-8">
-                    Aquí ocurre la magia. Spark utiliza un motor de datos socioculturales para asignar las 5 capas de la emulación humana. Imagina que tiramos unos dados cargados basados en la realidad de esa demografía:
+                    {content.step2Text}
                   </p>
                   <ul className="space-y-4">
                     {[
-                    { title: 'Capa 1 (Perfil)', desc: 'Sortear rasgos de personalidad (ej. aversión al riesgo) y sesgos cognitivos, con probabilidades que se ajustan entre sí para mayor coherencia.' },
-                    { title: 'Capa 4 (Cosmovisión)', desc: 'Selecciona automáticamente la Cosmovisión más apropiada de nuestro motor.' },
-                    { title: 'Otras Capas', desc: 'Establece la estructura para la Memoria, Conocimiento y el Modelo de Lenguaje.' }].
+                    { title: content.step2Item1Title, desc: content.step2Item1Desc },
+                    { title: content.step2Item2Title, desc: content.step2Item2Desc },
+                    { title: content.step2Item3Title, desc: content.step2Item3Desc }].
                     map((item, i) =>
                     <motion.li
                       key={i}
@@ -339,9 +462,9 @@ export const SparkSection = () => {
 
                     {/* Enhanced animated tags with better positioning */}
                     {[
-                    { text: 'Aversión al Riesgo: 25%', angle: 210, delay: 0, icon: '⚠️' },
-                    { text: 'Sesgo Status Quo: +20%', angle: 120, delay: 0.3, icon: '🔄' },
-                    { text: 'Cosmovisión: Jóvenes Urbanos', angle: 240, delay: 0.6, icon: '🌆' }].
+                    { text: content.step2Tag1, angle: 210, delay: 0, icon: '⚠️' },
+                    { text: content.step2Tag2, angle: 120, delay: 0.3, icon: '🔄' },
+                    { text: content.step2Tag3, angle: 240, delay: 0.6, icon: '🌆' }].
                     map((tag, i) => {
                       const radius = 170;
                       const x = Math.cos(tag.angle * Math.PI / 180) * radius;
@@ -404,13 +527,13 @@ export const SparkSection = () => {
                       <Brain className="w-8 h-8 text-white" />
                     </div>
                     <div>
-                      <span className="text-[#FFAA7F] font-bold text-sm tracking-widest uppercase block mb-1">Paso 3</span>
-                      <h3 className="text-4xl font-black text-white">La Narrativa</h3>
-                      <p className="text-[#FFAA7F] text-sm font-semibold">(La Síntesis con IA)</p>
+                      <span className="text-[#FFAA7F] font-bold text-sm tracking-widest uppercase block mb-1">{content.step3Badge}</span>
+                      <h3 className="text-4xl font-black text-white">{content.step3Title}</h3>
+                      <p className="text-[#FFAA7F] text-sm font-semibold">{content.step3Subtitle}</p>
                     </div>
                   </div>
                   <p className="text-xl text-[#E1E5EB] leading-relaxed">
-                    Finalmente, la IA recibe esta ficha de datos estructurada y actúa como un psicólogo experto, sintetizando una narrativa humana y creíble. <span className="text-white font-bold bg-gradient-to-r from-[#FF6634]/20 to-transparent px-2 py-1 rounded">No inventa; deduce lógicamente</span> las metas, miedos y motivaciones a partir de los rasgos sorteados.
+                    {content.step3Text} <span className="text-white font-bold bg-gradient-to-r from-[#FF6634]/20 to-transparent px-2 py-1 rounded">{content.step3Bold}</span>{content.step3Text2}
                   </p>
                 </div>
               </div>
@@ -436,21 +559,21 @@ export const SparkSection = () => {
 
                         👩
                       </motion.div>
-                      <h4 className="text-3xl font-black text-white mb-2">Ana García</h4>
+                      <h4 className="text-3xl font-black text-white mb-2">{content.step3Name}</h4>
                       <div className="flex items-center justify-center gap-2 text-[#FF6634] font-semibold">
-                        <span>Mujer</span>
+                        <span>{content.step3Gender}</span>
                         <span className="w-1 h-1 bg-[#FF6634] rounded-full" />
-                        <span>28 años</span>
+                        <span>{content.step3Age}</span>
                         <span className="w-1 h-1 bg-[#FF6634] rounded-full" />
-                        <span>Madrid</span>
+                        <span>{content.step3Location}</span>
                       </div>
                     </div>
                     
                     <div className="space-y-4">
                       {[
-                      { label: 'Bio', text: 'Profesional del sector tecnológico, valora la estabilidad...', icon: '📝' },
-                      { label: 'Metas', text: 'Equilibrio vida-trabajo, seguridad financiera...', icon: '🎯' },
-                      { label: 'Frustraciones', text: 'Incertidumbre laboral, cambios rápidos...', icon: '😓' }].
+                      { label: content.step3BioLabel, text: content.step3BioText, icon: '📝' },
+                      { label: content.step3GoalsLabel, text: content.step3GoalsText, icon: '🎯' },
+                      { label: content.step3FrustLabel, text: content.step3FrustText, icon: '😓' }].
                       map((item, i) =>
                       <motion.div
                         key={i}
@@ -511,11 +634,11 @@ export const SparkSection = () => {
                 transition={{ duration: 0.8, delay: 0.4 }}>
 
                 <p className="text-3xl md:text-5xl font-black text-white mb-6 leading-tight">
-                  No estás creando desde cero;{' '}
+                  {content.conclusionText1}{' '}
                   <br className="hidden md:block" />
-                  estás{' '}
+                  {locale === 'es' ? 'estás' : 'you\'re'}{' '}
                   <span className="inline-block bg-gradient-to-r from-[#FF6634] via-[#FF8A5B] to-[#FFAA7F] bg-clip-text text-transparent">
-                    dirigiendo la creación
+                    {content.conclusionHighlight}
                   </span>.
                 </p>
                 
@@ -526,16 +649,16 @@ export const SparkSection = () => {
 
                 
                 <p className="text-base md:text-lg text-[#E1E5EB] leading-relaxed max-w-3xl mx-auto">
-                  Genera participantes diversos y creíbles en segundos, listos para el Laboratorio o simulación directa. La combinación perfecta de{' '}
-                  <span className="text-white font-bold bg-gradient-to-r from-[#FF6634]/20 to-transparent px-2 py-1 rounded">control estratégico</span>
-                  {' '}y{' '}
-                  <span className="text-white font-bold bg-gradient-to-r from-[#FF8A5B]/20 to-transparent px-2 py-1 rounded">descubrimiento inspirado</span>.
+                  {content.conclusionText2}{' '}
+                  <span className="text-white font-bold bg-gradient-to-r from-[#FF6634]/20 to-transparent px-2 py-1 rounded">{content.conclusionBold1}</span>
+                  {' '}{locale === 'es' ? 'y' : 'and'}{' '}
+                  <span className="text-white font-bold bg-gradient-to-r from-[#FF8A5B]/20 to-transparent px-2 py-1 rounded">{content.conclusionBold2}</span>.
                 </p>
               </motion.div>
             </div>
           </div>
         </motion.div>
       </div>
-    </section>);
-
+    </section>
+  );
 };
