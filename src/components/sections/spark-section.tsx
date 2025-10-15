@@ -49,6 +49,7 @@ const contentByLocale = {
     step3Bold: 'No inventa; deduce lógicamente',
     step3Text2: ' las metas, miedos y motivaciones a partir de los rasgos sorteados.',
     step3Name: 'Ana García',
+    step3ParticipantLabel: 'Participante',
     step3Gender: 'Mujer',
     step3Age: '28 años',
     step3Location: 'Madrid',
@@ -107,7 +108,8 @@ const contentByLocale = {
     step3Text: 'Finally, the AI receives this structured data sheet and acts like an expert psychologist, synthesizing a credible human narrative.',
     step3Bold: 'It doesn\'t invent; it logically deduces',
     step3Text2: ' goals, fears, and motivations from the drawn traits.',
-    step3Name: 'Ana García',
+    step3Name: 'Ann Smith',
+    step3ParticipantLabel: 'Participant',
     step3Gender: 'Woman',
     step3Age: '28 years old',
     step3Location: 'Madrid',
@@ -552,6 +554,16 @@ export const SparkSection = ({ locale = 'es' }: { locale?: 'es' | 'en' }) => {
                   
                   <div className="relative bg-gradient-to-br from-[#1A1F2E] via-[#141824] to-[#0F1218] border-2 border-[#FF6634]/60 rounded-3xl p-8 backdrop-blur-xl hover:border-[#FFAA7F] transition-all duration-700 shadow-2xl">
                     <div className="mb-6 text-center">
+                      {/* Participant Badge with Synth Logo */}
+                      <div className="flex items-center justify-center gap-2 mb-4">
+                        <span className="text-sm font-bold text-[#E1E5EB] uppercase tracking-wider">{content.step3ParticipantLabel}</span>
+                        <img 
+                          src="https://i.postimg.cc/bvqJBxD6/Logo-Synth-sin-fondo.png" 
+                          alt="Synth" 
+                          className="h-5 w-auto object-contain"
+                        />
+                      </div>
+                      
                       <motion.div
                         className="w-24 h-24 bg-gradient-to-br from-[#FF6634] to-[#FFAA7F] rounded-full mx-auto mb-4 shadow-2xl shadow-[#FF6634]/40 flex items-center justify-center text-5xl"
                         whileHover={{ rotate: 360, scale: 1.1 }}
