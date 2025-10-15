@@ -339,7 +339,7 @@ export const SparkSection = () => {
 
                     {/* Enhanced animated tags with better positioning */}
                     {[
-                    { text: 'Aversión al Riesgo: 25%', angle: 180, delay: 0, icon: '⚠️' },
+                    { text: 'Aversión al Riesgo: 25%', angle: 210, delay: 0, icon: '⚠️' },
                     { text: 'Sesgo Status Quo: +20%', angle: 120, delay: 0.3, icon: '🔄' },
                     { text: 'Cosmovisión: Jóvenes Urbanos', angle: 240, delay: 0.6, icon: '🌆' }].
                     map((tag, i) => {
