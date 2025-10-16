@@ -409,46 +409,6 @@ export const Pricing = ({ locale = 'es' }: { locale?: 'es' | 'en' }) => {
           </div>
         )}
       </div>
-      {/* Animaciones globales propias (solo para pricing) */}
-      <style jsx>{`
-        @keyframes fadeInRightPricing {
-          from {
-            opacity: 0;
-            transform: translateX(80px) scale(0.97);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0) scale(1);
-          }
-        }
-        .animate-fadeInRightPricing {
-          animation-name: fadeInRightPricing;
-          animation-timing-function: cubic-bezier(.41,1.64,.41,.85);
-          animation-fill-mode: both;
-        }
-        @keyframes fadeInPrice {
-          from {
-            opacity: 0;
-            transform: scale(0.85) translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: scale(1) translateY(0);
-          }
-        }
-        .animate-fadeInPrice {
-          animation: fadeInPrice 0.95s 0.13s both cubic-bezier(.62,1.32,.55,.96);
-        }
-        .pricing-card {
-          box-shadow: 0 4px 32px 0 #10162655, 0 0.5px 6px 0 #FF663418;
-        }
-        .pricing-card:hover, .pricing-card:focus-within {
-          box-shadow: 0 6px 64px 0 #FF663490, 0 16px 48px 0 #0B0E1A44, 0 0.5px 12px 0 #FF663447;
-          border-color: #FF6634 !important;
-          transform: scale(1.035) translateY(-6px);
-          z-index: 2;
-        }
-      `}</style>
     </section>
   )
 }
