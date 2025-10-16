@@ -1,6 +1,6 @@
 "use client";
 import { Layers, Database, Network, Brain, Activity } from "lucide-react";
-import { motion, useInView } from "motion/react";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
 // Variantes para animación tipo puzzle (suaves)
