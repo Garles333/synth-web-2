@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -91,6 +91,29 @@ export const Testimonial3DRoulette = ({ locale = "es" }: Testimonial3DRoulettePr
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const testimonials = locale === "en" ? testimonialsEn : testimonialsEs;
   const testimonialCount = testimonials.length;
+
+  // Inject styles safely on mount
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
+    const styleId = 'testimonial-roulette-styles';
+    if (document.getElementById(styleId)) return;
+    
+    const style = document.createElement('style');
+    style.id = styleId;
+    style.innerHTML = `
+      .clientes-highlight:hover {
+        text-shadow: 0 0 18px #FF6634, 0 0 32px #FF663491;
+        color: #FF6634 !important;
+      }
+    `;
+    document.head.appendChild(style);
+    
+    return () => {
+      const existingStyle = document.getElementById(styleId);
+      if (existingStyle) existingStyle.remove();
+    };
+  }, []);
 
   useEffect(() => {
     if (!isAutoPlaying) return;
@@ -379,14 +402,3 @@ export const Testimonial3DRoulette = ({ locale = "es" }: Testimonial3DRoulettePr
     </section>
   );
 };
-
-if (typeof window !== 'undefined') {
-  const style = document.createElement('style');
-  style.innerHTML = `
-    .clientes-highlight:hover {
-      text-shadow: 0 0 18px #FF6634, 0 0 32px #FF663491;
-      color: #FF6634 !important;
-    }
-  `;
-  document.head.appendChild(style);
-}
