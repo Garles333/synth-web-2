@@ -112,7 +112,7 @@ export const RealismSynthLayers = ({ locale = 'es' }: { locale?: 'es' | 'en' }) 
   const layers = layersContent[locale];
 
   return (
-    <section id="realismo-synth" className="py-32 px-4 bg-gradient-to-b from-[#0B0E1A] via-[#0D0F16] to-[#0B0E1A] text-white overflow-hidden relative">
+    <section id="motor-realismo" className="py-32 px-4 bg-gradient-to-b from-[#0B0E1A] via-[#0D0F16] to-[#0B0E1A] text-white overflow-hidden relative">
       {/* Enhanced Background Effects - Spark Style */}
       <div className="absolute inset-0 z-0">
         {/* Large gradient orbs */}
