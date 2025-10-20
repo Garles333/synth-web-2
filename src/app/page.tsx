@@ -16,7 +16,10 @@ import {
   Play,
   Mail,
   Phone,
-  MapPin
+  MapPin,
+  DollarSign,
+  Sparkles,
+  Zap
 } from "lucide-react";
 import { AhorroSynthCalculator } from "@/components/sections/ahorro-synth-calculator";
 import { NewsletterBannerHome } from "@/components/blocks/newsletter-sections/newsletter-banner-home";
@@ -31,7 +34,6 @@ import { RealismSynthLayers } from "@/components/sections/realism-synth-layers";
 import { SparkSection } from "@/components/sections/spark-section";
 import { DiferenciaFundamental } from "@/components/sections/diferencia-fundamental";
 import { LaboratorioRealismo } from "@/components/sections/laboratorio-realismo";
-import { Navigation } from "@/components/sections/navigation";
 import Link from "next/link";
 // import { fetchPosts } from "@/lib/contentful";
 
@@ -138,7 +140,33 @@ export default async function HomePage() {
       <h2 className="sr-only">Cómo funciona nuestra IA modelo-agnóstica</h2>
       <h2 className="sr-only">Plataforma de investigación de mercado con IA, focus group sintético, software de insights del consumidor, investigación cualitativa online, herramienta de focus groups online, análisis de consumidor con IA, plataforma de validación de mercado</h2>
 
-      <Navigation />
+      <nav className="fixed top-0 w-full z-50 bg-[#0B0E1A]/80 backdrop-blur-md border-b border-[#2A3441]">
+        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+          <div className="flex items-center">
+            <img
+              src="https://i.postimg.cc/bvqJBxD6/Logo-Synth-sin-fondo.png"
+              alt="Synth"
+              className="h-8 w-auto object-contain"
+            />
+          </div>
+          <div className="hidden md:flex items-center space-x-8">
+            <a href="#inicio" className="hover:text-[#FF6634] transition-colors">Inicio</a>
+            <a href="#motor-realismo" className="hover:text-[#FF6634] transition-colors">Qué nos diferencia</a>
+            <a href="/casos-de-exito" className="hover:text-[#FF6634] transition-colors">Casos de Éxito</a>
+            <a href="#precios" className="hover:text-[#FF6634] transition-colors">Precios</a>
+          </div>
+          <div className="hidden md:flex items-center gap-2">
+            <div className="flex items-center gap-1 mr-2">
+              <Link href="/en" className="inline-flex items-center px-2 py-1 rounded-md border border-[#2A3441] text-white hover:border-[#FF6634] transition">
+                <span role="img" aria-label="English (US)">🇺🇸</span>
+              </Link>
+            </div>
+            <Button asChild className="bg-[#FF6634] hover:bg-[#FF6634]/90 text-white">
+              <Link href="/onboarding">Pruébalo gratis</Link>
+            </Button>
+          </div>
+        </div>
+      </nav>
 
       <section id="inicio" className="pt-24 pb-16 px-4 max-w-6xl mx-auto text-center relative overflow-hidden">
         <div className="mb-12 relative z-10">
@@ -157,7 +185,6 @@ export default async function HomePage() {
               className="text-5xl sm:text-6xl font-bold leading-tight relative z-10 min-h-[64px] max-w-[460px] mx-auto"
               lineClassName="block mb-2 sm:mb-0"
               highlightClassName="text-[#FF6634] font-bold"
-              highlightWords={["Reales", "Inmediatos"]}
             />
           </div>
           <div className="hidden md:block">
@@ -166,7 +193,6 @@ export default async function HomePage() {
               className="text-5xl md:text-7xl font-bold leading-tight relative z-10 min-h-[80px] max-w-[900px] mx-auto"
               lineClassName="block mb-2 sm:mb-0"
               highlightClassName="text-[#FF6634] font-bold"
-              highlightWords={["Reales", "Inmediatos"]}
             />
           </div>
         </div>
@@ -230,102 +256,82 @@ export default async function HomePage() {
       <ScrollReveal direction="up" distance={60}>
         <section className="py-20 px-4 bg-gradient-to-b from-[#0B0E1A] to-[#1A1F2E]/30 relative overflow-hidden">
           <div className="absolute inset-0 z-0">
-            <div className="absolute top-10 left-10 w-32 h-32 bg-[#FF6634]/10 rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute bottom-20 right-20 w-48 h-48 bg-[#FF6634]/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
-            <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-[#FF6634]/8 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+            <div className="absolute top-20 left-20 w-64 h-64 bg-[#FF6634]/5 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute bottom-10 right-10 w-80 h-80 bg-[#FF6634]/8 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }}></div>
           </div>
 
-          <div className="absolute inset-0 z-0 overflow-hidden">
-            {Array.from({ length: 20 }).map((_, i) => (
-              <div
-                key={i}
-                className="absolute w-1 h-1 bg-[#FF6634]/30 rounded-full animate-float"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                  animationDelay: `${Math.random() * 3}s`,
-                  animationDuration: `${3 + Math.random() * 2}s`
-                }}
-              />
-            ))}
-          </div>
-
-          <div className="max-w-5xl mx-auto text-center relative z-10">
-            <div className="mb-12 overflow-hidden">
-              <h2 className="text-4xl md:text-6xl font-bold mb-8 animate-slideUpStagger">
-                <span className="inline-block text-white animate-slideInLeft" style={{ animationDelay: '0.2s' }}>
-                  Menos Logística.
-                </span>{' '}
-                <span className="inline-block text-[#FF6634] animate-slideInRight" style={{ animationDelay: '0.4s' }}>
-                  Más Valor
-                </span>
+          <div className="max-w-6xl mx-auto relative z-10">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                Facturación Simple y <span className="text-[#FF6634]">Transparente</span>
               </h2>
+              <p className="text-xl text-[#E1E5EB] max-w-3xl mx-auto leading-relaxed">
+                Paga por Interacción, no por Preparación
+              </p>
+              <p className="text-lg text-[#E1E5EB] max-w-3xl mx-auto mt-4 leading-relaxed">
+                Nuestro modelo de precios está diseñado para ser justo y predecible. Queremos que inviertas tu tiempo en explorar ideas, no en preocuparte por costes ocultos.
+              </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8 mb-12">
-              <div className="animate-fadeInScale" style={{ animationDelay: '0.6s', animationFillMode: 'both' }}>
-                <div className="bg-gradient-to-br from-[#1A1F2E]/80 to-[#0B0E1A]/60 backdrop-blur-sm border border-[#2A3441] rounded-2xl p-8 text-left group hover:border-[#FF6634]/30 transition-all duration-500 hover:transform hover:scale-105 h-full flex flex-col">
-                  <div className="flex items-center mb-6">
-                    <div className="w-12 h-12 bg-[#FF6634]/20 rounded-lg flex items-center justify-center mr-4 group-hover:bg-[#FF6634]/30 transition-colors duration-300">
-                      <Clock className="w-6 h-6 text-[#FF6634]" />
-                    </div>
-                    <h3 className="text-xl font-bold text-white">El Problema</h3>
+            <div className="grid md:grid-cols-3 gap-8 mb-12">
+              <Card className="bg-gradient-to-br from-[#1A1F2E]/90 to-[#0B0E1A]/70 border-[#2A3441] hover:border-[#FF6634]/50 transition-all duration-500 hover:transform hover:scale-105 p-8 relative overflow-hidden group">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#FF6634]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative z-10">
+                  <div className="w-14 h-14 bg-[#FF6634]/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#FF6634]/30 transition-colors duration-300">
+                    <DollarSign className="w-7 h-7 text-[#FF6634]" />
                   </div>
-                  <p className="text-[#E1E5EB] leading-relaxed flex-grow">
-                    La investigación tradicional no está construida para la velocidad de hoy. Tu equipo pierde tiempo valioso en logística operativa.
+                  <h3 className="text-2xl font-bold text-white mb-4">Pago por Participante, una Sola Vez</h3>
+                  <p className="text-[#E1E5EB] leading-relaxed">
+                    El coste se genera únicamente en el momento en que integras un participante sintético en una simulación (entrevista o focus group). Es un pago único por participante y simulación.
                   </p>
                 </div>
-              </div>
+              </Card>
 
-              <div className="animate-fadeInScale" style={{ animationDelay: '0.8s', animationFillMode: 'both' }}>
-                <div className="bg-gradient-to-br from-[#1A1F2E]/80 to-[#0B0E1A]/60 backdrop-blur-sm border border-[#2A3441] rounded-2xl p-8 text-left group hover:border-[#FF6634]/30 transition-all duration-500 hover:transform hover:scale-105 h-full flex flex-col">
-                  <div className="flex items-center mb-6">
-                    <div className="w-12 h-12 bg-[#FF6634]/20 rounded-lg flex items-center justify-center mr-4 group-hover:bg-[#FF6634]/30 transition-colors duration-300">
-                      <Rocket className="w-6 h-6 text-[#FF6634]" />
-                    </div>
-                    <h3 className="text-xl font-bold text-white">La Solución</h3>
+              <Card className="bg-gradient-to-br from-[#1A1F2E]/90 to-[#0B0E1A]/70 border-[#2A3441] hover:border-[#FF6634]/50 transition-all duration-500 hover:transform hover:scale-105 p-8 relative overflow-hidden group">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#FF6634]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative z-10">
+                  <div className="w-14 h-14 bg-[#FF6634]/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#FF6634]/30 transition-colors duration-300">
+                    <Clock className="w-7 h-7 text-[#FF6634]" />
                   </div>
-                  <p className="text-[#E1E5EB] leading-relaxed flex-grow">
-                    Synth automatiza el 90% del trabajo operativo para que tu equipo invierta su talento donde es irremplazable.
+                  <h3 className="text-2xl font-bold text-white mb-4">24 Horas de Interacción Ilimitada</h3>
+                  <p className="text-[#E1E5EB] leading-relaxed">
+                    Una vez iniciada la simulación, se abre una ventana de 24 horas de diálogo sin límites. Durante este tiempo, puedes hacer todas las preguntas que necesites a los participantes de esa sesión sin ningún coste adicional.
                   </p>
                 </div>
-              </div>
+              </Card>
+
+              <Card className="bg-gradient-to-br from-[#1A1F2E]/90 to-[#0B0E1A]/70 border-[#2A3441] hover:border-[#FF6634]/50 transition-all duration-500 hover:transform hover:scale-105 p-8 relative overflow-hidden group">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#FF6634]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative z-10">
+                  <div className="w-14 h-14 bg-[#FF6634]/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#FF6634]/30 transition-colors duration-300">
+                    <Sparkles className="w-7 h-7 text-[#FF6634]" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-4">Todo lo Demás es Gratis</h3>
+                  <p className="text-[#E1E5EB] leading-relaxed mb-4">
+                    Creemos que la creatividad no debe tener barreras. Por eso, todo el trabajo de preparación y análisis no tiene coste asociado. Puedes, de forma ilimitada:
+                  </p>
+                  <ul className="space-y-2">
+                    <li className="flex items-start text-sm text-[#E1E5EB]">
+                      <CheckCircle className="w-4 h-4 text-[#FF6634] mr-2 mt-0.5 flex-shrink-0" />
+                      <span>Crear y refinar Personas Sintéticas en tu biblioteca</span>
+                    </li>
+                    <li className="flex items-start text-sm text-[#E1E5EB]">
+                      <CheckCircle className="w-4 h-4 text-[#FF6634] mr-2 mt-0.5 flex-shrink-0" />
+                      <span>Diseñar Guías de Moderación y Estímulos Visuales con IA</span>
+                    </li>
+                    <li className="flex items-start text-sm text-[#E1E5EB]">
+                      <CheckCircle className="w-4 h-4 text-[#FF6634] mr-2 mt-0.5 flex-shrink-0" />
+                      <span>Generar resúmenes ejecutivos y análisis de hallazgos clave post-simulación</span>
+                    </li>
+                  </ul>
+                </div>
+              </Card>
             </div>
 
-            <div className="animate-fadeInUp" style={{ animationDelay: '1s', animationFillMode: 'both' }}>
-              <div className="relative max-w-4xl mx-auto">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#FF6634]/10 to-transparent blur-2xl animate-pulse"></div>
-
-                <div className="relative bg-gradient-to-br from-[#1A1F2E]/90 to-[#0B0E1A]/70 border border-[#2A3441] hover:border-[#FF6634]/40 rounded-2xl px-10 py-8 backdrop-blur-lg transition-all duration-700 group hover:shadow-2xl hover:shadow-[#FF6634]/10">
-                  <div className="flex items-center justify-center mb-6">
-                    <div className="w-16 h-16 bg-gradient-to-br from-[#FF6634] to-[#FF8A5B] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <Lightbulb className="w-8 h-8 text-white" />
-                    </div>
-                  </div>
-
-                  <p className="text-xl md:text-2xl font-semibold text-white mb-4 leading-relaxed">
-                    Synth no reemplaza tu expertise, <span className="text-[#FF6634] font-bold">la libera</span>
-                  </p>
-
-                  <p className="text-lg text-[#E1E5EB] leading-relaxed max-w-3xl mx-auto">
-                    Enfócate en estrategia, análisis y la consultoría de alto valor que tus clientes demandan mientras nosotros nos encargamos del resto.
-                  </p>
-
-                  <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div className="text-center group-hover:scale-105 transition-transform duration-300">
-                      <div className="text-3xl font-bold text-[#FF6634] mb-2">90%</div>
-                      <p className="text-sm text-[#E1E5EB]">Trabajo Automatizado</p>
-                    </div>
-                    <div className="text-center group-hover:scale-105 transition-transform duration-300" style={{ transitionDelay: '0.1s' }}>
-                      <div className="text-3xl font-bold text-[#FF6634] mb-2">100%</div>
-                      <p className="text-sm text-[#E1E5EB]">Expertise Liberada</p>
-                    </div>
-                    <div className="text-center group-hover:scale-105 transition-transform duration-300" style={{ transitionDelay: '0.2s' }}>
-                      <div className="text-3xl font-bold text-[#FF6634] mb-2">∞</div>
-                      <p className="text-sm text-[#E1E5EB]">Valor Estratégico</p>
-                    </div>
-                  </div>
-                </div>
+            <div className="flex justify-center">
+              <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-[#FF6634]/20 to-[#FF8A5B]/20 border border-[#FF6634]/30">
+                <Zap className="w-5 h-5 text-[#FF6634] mr-2" />
+                <span className="text-white font-semibold">Modelo justo y predecible para explorar sin límites</span>
               </div>
             </div>
           </div>
