@@ -31,7 +31,6 @@ import { RealismSynthLayers } from "@/components/sections/realism-synth-layers";
 import { LaboratorioRealismo } from "@/components/sections/laboratorio-realismo";
 import { DiferenciaFundamental } from "@/components/sections/diferencia-fundamental";
 import { SparkSection } from "@/components/sections/spark-section";
-import { Navigation } from "@/components/sections/navigation";
 import Link from "next/link";
 // import { fetchPosts } from "@/lib/contentful";
 
@@ -136,7 +135,33 @@ export default async function HomePageEN() {
       <h2 className="sr-only">How our model-agnostic AI works</h2>
       <h2 className="sr-only">AI-powered market research platform, synthetic focus group, consumer insights software, online qualitative research, online focus groups tool, AI consumer analysis, market validation platform</h2>
 
-      <Navigation />
+      <nav className="fixed top-0 w-full z-50 bg-[#0B0E1A]/80 backdrop-blur-md border-b border-[#2A3441]">
+        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+          <div className="flex items-center">
+            <img
+              src="https://i.postimg.cc/bvqJBxD6/Logo-Synth-sin-fondo.png"
+              alt="Synth"
+              className="h-8 w-auto object-contain"
+            />
+          </div>
+          <div className="hidden md:flex items-center space-x-8">
+            <a href="#inicio" className="hover:text-[#FF6634] transition-colors">Home</a>
+            <a href="#motor-realismo" className="hover:text-[#FF6634] transition-colors">What makes us different</a>
+            <a href="/en/case-studies" className="hover:text-[#FF6634] transition-colors">Case Studies</a>
+            <a href="#precios" className="hover:text-[#FF6634] transition-colors">Pricing</a>
+          </div>
+          <div className="hidden md:flex items-center gap-2">
+            <div className="flex items-center gap-1 mr-2">
+              <Link href="/" className="inline-flex items-center px-2 py-1 rounded-md border border-[#FF6634] text-white transition">
+                <span role="img" aria-label="Spanish">🇪🇸</span>
+              </Link>
+            </div>
+            <Button asChild className="bg-[#FF6634] hover:bg-[#FF6634]/90 text-white">
+              <Link href="/en/onboarding">Try it free</Link>
+            </Button>
+          </div>
+        </div>
+      </nav>
 
       <section id="inicio" className="pt-24 pb-16 px-4 max-w-6xl mx-auto text-center relative overflow-hidden">
         <div className="mb-12 relative z-10">

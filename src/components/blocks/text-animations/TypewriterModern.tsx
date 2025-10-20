@@ -9,7 +9,7 @@ interface TypewriterModernProps {
   className?: string;
   lineClassName?: string;
   highlightClassName?: string;
-  highlightWords?: string[]; // Make highlight words configurable
+  highlightWords?: string[];
 }
 
 export const TypewriterModern: React.FC<TypewriterModernProps> = ({
@@ -18,7 +18,7 @@ export const TypewriterModern: React.FC<TypewriterModernProps> = ({
   className = "",
   lineClassName = "",
   highlightClassName = "text-[#FF6634] font-medium",
-  highlightWords = ["Reales", "Inmediatos"] // Default to Spanish
+  highlightWords = ["Reales", "Inmediatos"]
 }) => {
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
   const [currentText, setCurrentText] = useState("");
@@ -98,7 +98,6 @@ export const TypewriterModern: React.FC<TypewriterModernProps> = ({
           </div>
         )}
       </div>);
-
   }
 
   return (
@@ -123,5 +122,4 @@ export const TypewriterModern: React.FC<TypewriterModernProps> = ({
         </div>
       }
     </div>);
-
 };
