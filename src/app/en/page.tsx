@@ -16,7 +16,10 @@ import {
   Play,
   Mail,
   Phone,
-  MapPin
+  MapPin,
+  DollarSign,
+  Sparkles,
+  Zap
 } from "lucide-react";
 import { AhorroSynthCalculator } from "@/components/sections/ahorro-synth-calculator";
 import { NewsletterBannerHome } from "@/components/blocks/newsletter-sections/newsletter-banner-home";
@@ -560,6 +563,91 @@ export default async function HomePageEN() {
           </div>
         </div>
       </section>
+
+      <ScrollReveal direction="up" distance={60}>
+        <section className="py-20 px-4 bg-gradient-to-b from-[#0B0E1A] to-[#1A1F2E]/30 relative overflow-hidden">
+          <div className="absolute inset-0 z-0">
+            <div className="absolute top-20 left-20 w-64 h-64 bg-[#FF6634]/5 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute bottom-10 right-10 w-80 h-80 bg-[#FF6634]/8 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }}></div>
+          </div>
+
+          <div className="max-w-6xl mx-auto relative z-10">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                Simple and <span className="text-[#FF6634]">Transparent</span> Billing
+              </h2>
+              <p className="text-xl text-[#E1E5EB] max-w-3xl mx-auto leading-relaxed">
+                Pay per Interaction, not Preparation
+              </p>
+              <p className="text-lg text-[#E1E5EB] max-w-3xl mx-auto mt-4 leading-relaxed">
+                Our pricing model is designed to be fair and predictable. We want you to invest your time exploring ideas, not worrying about hidden costs.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8 mb-12">
+              <Card className="bg-gradient-to-br from-[#1A1F2E]/90 to-[#0B0E1A]/70 border-[#2A3441] hover:border-[#FF6634]/50 transition-all duration-500 hover:transform hover:scale-105 p-8 relative overflow-hidden group">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#FF6634]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative z-10">
+                  <div className="w-14 h-14 bg-[#FF6634]/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#FF6634]/30 transition-colors duration-300">
+                    <DollarSign className="w-7 h-7 text-[#FF6634]" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-4">Pay per Participant, One Time</h3>
+                  <p className="text-[#E1E5EB] leading-relaxed">
+                    The cost is only generated when you integrate a synthetic participant into a simulation (interview or focus group). It's a one-time payment per participant and simulation.
+                  </p>
+                </div>
+              </Card>
+
+              <Card className="bg-gradient-to-br from-[#1A1F2E]/90 to-[#0B0E1A]/70 border-[#2A3441] hover:border-[#FF6634]/50 transition-all duration-500 hover:transform hover:scale-105 p-8 relative overflow-hidden group">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#FF6634]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative z-10">
+                  <div className="w-14 h-14 bg-[#FF6634]/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#FF6634]/30 transition-colors duration-300">
+                    <Clock className="w-7 h-7 text-[#FF6634]" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-4">24 Hours of Unlimited Interaction</h3>
+                  <p className="text-[#E1E5EB] leading-relaxed">
+                    Once the simulation starts, a 24-hour window of unlimited dialogue opens. During this time, you can ask all the questions you need to the participants of that session at no additional cost.
+                  </p>
+                </div>
+              </Card>
+
+              <Card className="bg-gradient-to-br from-[#1A1F2E]/90 to-[#0B0E1A]/70 border-[#2A3441] hover:border-[#FF6634]/50 transition-all duration-500 hover:transform hover:scale-105 p-8 relative overflow-hidden group">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#FF6634]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative z-10">
+                  <div className="w-14 h-14 bg-[#FF6634]/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#FF6634]/30 transition-colors duration-300">
+                    <Sparkles className="w-7 h-7 text-[#FF6634]" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-4">Everything Else is Free</h3>
+                  <p className="text-[#E1E5EB] leading-relaxed mb-4">
+                    We believe creativity should have no barriers. That's why all preparation and analysis work has no associated cost. You can, without limits:
+                  </p>
+                  <ul className="space-y-2">
+                    <li className="flex items-start text-sm text-[#E1E5EB]">
+                      <CheckCircle className="w-4 h-4 text-[#FF6634] mr-2 mt-0.5 flex-shrink-0" />
+                      <span>Create and refine Synthetic Personas in your library</span>
+                    </li>
+                    <li className="flex items-start text-sm text-[#E1E5EB]">
+                      <CheckCircle className="w-4 h-4 text-[#FF6634] mr-2 mt-0.5 flex-shrink-0" />
+                      <span>Design Moderation Guides and Visual Stimuli with AI</span>
+                    </li>
+                    <li className="flex items-start text-sm text-[#E1E5EB]">
+                      <CheckCircle className="w-4 h-4 text-[#FF6634] mr-2 mt-0.5 flex-shrink-0" />
+                      <span>Generate executive summaries and key findings analysis post-simulation</span>
+                    </li>
+                  </ul>
+                </div>
+              </Card>
+            </div>
+
+            <div className="flex justify-center">
+              <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-[#FF6634]/20 to-[#FF8A5B]/20 border border-[#FF6634]/30">
+                <Zap className="w-5 h-5 text-[#FF6634] mr-2" />
+                <span className="text-white font-semibold">Fair and predictable model to explore without limits</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </ScrollReveal>
 
       <section id="precios" className="py-20 px-4 bg-gradient-to-b from-[#171B28] to-[#0B0E1A] relative overflow-hidden">
         <div className="max-w-6xl mx-auto relative z-20">
