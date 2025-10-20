@@ -14,10 +14,10 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Enviar email a carlos@synth-insights.com con la info del suscriptor
+    // Enviar email a carlos@thesignal.com.es (dirección verificada en Resend)
     const { data, error } = await resend.emails.send({
       from: 'Synth Newsletter <onboarding@resend.dev>',
-      to: ['carlos@synth-insights.com'],
+      to: ['carlos@thesignal.com.es'],
       subject: `Nueva suscripción al newsletter - ${locale === 'en' ? 'English' : 'Español'}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
