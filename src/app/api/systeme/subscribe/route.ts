@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Resend } from "resend";
 
 // Minimal Systeme.io newsletter subscription proxy with robust fallbacks
 // - Expects JSON: { email: string, firstName?: string, lastName?: string, tags?: string[] }
@@ -251,29 +250,35 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    // 3) Enviar notificación por email a carlos@synth-insights.com
+    // 3) Enviar notificación por email a carlos@synth-insights.com usando Resend API directamente
     try {
       const resendApiKey = process.env.RESEND_API_KEY;
       if (resendApiKey) {
-        const resend = new Resend(resendApiKey);
-        await resend.emails.send({
-          from: "Newsletter Synth <notificaciones@synth-insights.com>",
-          to: "carlos@synth-insights.com",
-          subject: "🔔 Nueva suscripción a Newsletter",
-          html: `
-            <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
-              <h2 style="color: #FF6634;">Nueva suscripción recibida</h2>
-              <p style="font-size: 16px; color: #333;">
-                <strong>Email:</strong> ${email}
-              </p>
-              ${firstName ? `<p style="font-size: 16px; color: #333;"><strong>Nombre:</strong> ${firstName}</p>` : ''}
-              ${lastName ? `<p style="font-size: 16px; color: #333;"><strong>Apellido:</strong> ${lastName}</p>` : ''}
-              ${tags && tags.length > 0 ? `<p style="font-size: 16px; color: #333;"><strong>Tags:</strong> ${tags.join(', ')}</p>` : ''}
-              <p style="font-size: 14px; color: #666; margin-top: 20px;">
-                Suscriptor registrado exitosamente en tu lista de Systeme.io
-              </p>
-            </div>
-          `,
+        await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: {
+            "Authorization": `Bearer ${resendApiKey}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            from: "Newsletter Synth <notificaciones@synth-insights.com>",
+            to: ["carlos@synth-insights.com"],
+            subject: "🔔 Nueva suscripción a Newsletter",
+            html: `
+              <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
+                <h2 style="color: #FF6634;">Nueva suscripción recibida</h2>
+                <p style="font-size: 16px; color: #333;">
+                  <strong>Email:</strong> ${email}
+                </p>
+                ${firstName ? `<p style="font-size: 16px; color: #333;"><strong>Nombre:</strong> ${firstName}</p>` : ''}
+                ${lastName ? `<p style="font-size: 16px; color: #333;"><strong>Apellido:</strong> ${lastName}</p>` : ''}
+                ${tags && tags.length > 0 ? `<p style="font-size: 16px; color: #333;"><strong>Tags:</strong> ${tags.join(', ')}</p>` : ''}
+                <p style="font-size: 14px; color: #666; margin-top: 20px;">
+                  Suscriptor registrado exitosamente en tu lista de Systeme.io
+                </p>
+              </div>
+            `,
+          }),
         });
       }
     } catch (emailError) {
