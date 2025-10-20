@@ -100,27 +100,37 @@ export const Navigation = () => {
             
             {/* CTA + Language Switcher */}
             <div className="flex items-center gap-3">
-              {/* Language flags */}
-              <div className="hidden md:flex items-center gap-1 mr-1">
+              {/* Language toggle button - Single button for case studies */}
+              {isCaseStudies ? (
                 <Link
-                  href="/"
-                  className={`inline-flex items-center px-2 py-1 rounded-md border text-white/80 hover:text-white transition ${
-                    !isEN ? 'border-[#FF6634] text-white' : 'border-[#2A3441] hover:border-[#FF6634]/50'
-                  }`}
-                  aria-label="Español"
+                  href={isEN ? "/casos-de-exito" : "/en/case-studies"}
+                  className="hidden md:inline-flex items-center px-2 py-1 rounded-md border border-[#FF6634] text-white hover:bg-[#FF6634]/10 transition"
+                  aria-label={isEN ? "Cambiar a Español" : "Switch to English"}
                 >
-                  <span role="img" aria-hidden>🇪🇸</span>
+                  <span role="img" aria-hidden>{isEN ? "🇪🇸" : "🇺🇸"}</span>
                 </Link>
-                <Link
-                  href="/en"
-                  className={`inline-flex items-center px-2 py-1 rounded-md border text-white/80 hover:text-white transition ${
-                    isEN ? 'border-[#FF6634] text-white' : 'border-[#2A3441] hover:border-[#FF6634]/50'
-                  }`}
-                  aria-label="English (US)"
-                >
-                  <span role="img" aria-hidden>🇺🇸</span>
-                </Link>
-              </div>
+              ) : (
+                <div className="hidden md:flex items-center gap-1 mr-1">
+                  <Link
+                    href="/"
+                    className={`inline-flex items-center px-2 py-1 rounded-md border text-white/80 hover:text-white transition ${
+                      !isEN ? 'border-[#FF6634] text-white' : 'border-[#2A3441] hover:border-[#FF6634]/50'
+                    }`}
+                    aria-label="Español"
+                  >
+                    <span role="img" aria-hidden>🇪🇸</span>
+                  </Link>
+                  <Link
+                    href="/en"
+                    className={`inline-flex items-center px-2 py-1 rounded-md border text-white/80 hover:text-white transition ${
+                      isEN ? 'border-[#FF6634] text-white' : 'border-[#2A3441] hover:border-[#FF6634]/50'
+                    }`}
+                    aria-label="English (US)"
+                  >
+                    <span role="img" aria-hidden>🇺🇸</span>
+                  </Link>
+                </div>
+              )}
 
               <Link href={isBlog || isCaseStudies ? (isEN ? "/en/onboarding" : "/onboarding") : `${base}#precios`}>
                 <Button className={`${isBlog || isCaseStudies ? 'bg-[#FF6634] hover:bg-[#FF6634]/90' : 'bg-black hover:bg-gray-900'} text-white px-6 py-2 text-sm font-medium transition-all hover:scale-105`}>
