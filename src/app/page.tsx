@@ -557,11 +557,7 @@ export default async function HomePage() {
               Recibe insights sobre cómo la IA está <span className="text-[#FF6634]">transformando</span> la Investigación de Mercado
             </span>
             <div className="flex-1 w-full max-w-md min-w-[270px]">
-              <NewsletterBannerHome
-                buttonLabel="Suscribirse"
-                placeholder="Tu correo electrónico"
-                description="Recibe los insights y técnicas de IA que están redefiniendo la investigación de mercado."
-              />
+              <NewsletterBannerHome locale="es" />
             </div>
           </div>
         </div>

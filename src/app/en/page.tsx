@@ -657,6 +657,19 @@ export default async function HomePageEN() {
 
       <Testimonial3DRoulette locale="en" />
 
+      <ScrollReveal direction="left" distance={80}>
+        <div className="py-16 px-4 flex items-center justify-center bg-gradient-to-r from-[#1A1F2E]/80 to-[#0B0E1A]/90 border-y border-[#2A3441]">
+          <div className="w-full max-w-5xl flex flex-col sm:flex-row items-center justify-between gap-8 sm:gap-10">
+            <span className="flex-1 min-w-[270px] text-2xl md:text-3xl font-bold text-center sm:text-left text-white sm:pr-8 leading-tight whitespace-pre-line">
+              Get insights on how AI is <span className="text-[#FF6634]">transforming</span> Market Research
+            </span>
+            <div className="flex-1 w-full max-w-md min-w-[270px]">
+              <NewsletterBannerHome locale="en" buttonLabel="Join" placeholder="Your email" />
+            </div>
+          </div>
+        </div>
+      </ScrollReveal>
+
       <section id="faq" className="px-4 pt-20 -mt-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Frequently Asked Questions</h2>
