@@ -463,7 +463,88 @@ export default async function HomePage() {
       </ScrollReveal>
 
       <ScrollReveal direction="up" distance={60}>
-        <SparkSection />
+        <section className="py-20 px-4 bg-gradient-to-b from-[#0B0E1A] to-[#1A1F2E]/30 relative overflow-hidden">
+          <div className="absolute inset-0 z-0">
+            <div className="absolute top-20 left-20 w-64 h-64 bg-[#FF6634]/5 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute bottom-10 right-10 w-80 h-80 bg-[#FF6634]/8 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }}></div>
+          </div>
+
+          <div className="max-w-6xl mx-auto relative z-10">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                Facturación Simple y <span className="text-[#FF6634]">Transparente</span>
+              </h2>
+              <p className="text-xl text-[#E1E5EB] max-w-3xl mx-auto leading-relaxed">
+                Paga por Interacción, no por Preparación
+              </p>
+              <p className="text-lg text-[#E1E5EB] max-w-3xl mx-auto mt-4 leading-relaxed">
+                Nuestro modelo de precios está diseñado para ser justo y predecible. Queremos que inviertas tu tiempo en explorar ideas, no en preocuparte por costes ocultos.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8 mb-12">
+              <Card className="bg-gradient-to-br from-[#1A1F2E]/90 to-[#0B0E1A]/70 border-[#2A3441] hover:border-[#FF6634]/50 transition-all duration-500 hover:transform hover:scale-105 p-8 relative overflow-hidden group">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#FF6634]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative z-10">
+                  <div className="w-14 h-14 bg-[#FF6634]/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#FF6634]/30 transition-colors duration-300">
+                    <DollarSign className="w-7 h-7 text-[#FF6634]" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-4">Pago por Participante, una Sola Vez</h3>
+                  <p className="text-[#E1E5EB] leading-relaxed">
+                    El coste se genera únicamente en el momento en que integras un participante sintético en una simulación (entrevista o focus group). Es un pago único por participante y simulación.
+                  </p>
+                </div>
+              </Card>
+
+              <Card className="bg-gradient-to-br from-[#1A1F2E]/90 to-[#0B0E1A]/70 border-[#2A3441] hover:border-[#FF6634]/50 transition-all duration-500 hover:transform hover:scale-105 p-8 relative overflow-hidden group">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#FF6634]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative z-10">
+                  <div className="w-14 h-14 bg-[#FF6634]/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#FF6634]/30 transition-colors duration-300">
+                    <Clock className="w-7 h-7 text-[#FF6634]" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-4">24 Horas de Interacción Ilimitada</h3>
+                  <p className="text-[#E1E5EB] leading-relaxed">
+                    Una vez iniciada la simulación, se abre una ventana de 24 horas de diálogo sin límites. Durante este tiempo, puedes hacer todas las preguntas que necesites a los participantes de esa sesión sin ningún coste adicional.
+                  </p>
+                </div>
+              </Card>
+
+              <Card className="bg-gradient-to-br from-[#1A1F2E]/90 to-[#0B0E1A]/70 border-[#2A3441] hover:border-[#FF6634]/50 transition-all duration-500 hover:transform hover:scale-105 p-8 relative overflow-hidden group">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#FF6634]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative z-10">
+                  <div className="w-14 h-14 bg-[#FF6634]/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#FF6634]/30 transition-colors duration-300">
+                    <Sparkles className="w-7 h-7 text-[#FF6634]" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-4">Todo lo Demás es Gratis</h3>
+                  <p className="text-[#E1E5EB] leading-relaxed mb-4">
+                    Creemos que la creatividad no debe tener barreras. Por eso, todo el trabajo de preparación y análisis no tiene coste asociado. Puedes, de forma ilimitada:
+                  </p>
+                  <ul className="space-y-2">
+                    <li className="flex items-start text-sm text-[#E1E5EB]">
+                      <CheckCircle className="w-4 h-4 text-[#FF6634] mr-2 mt-0.5 flex-shrink-0" />
+                      <span>Crear y refinar Personas Sintéticas en tu biblioteca</span>
+                    </li>
+                    <li className="flex items-start text-sm text-[#E1E5EB]">
+                      <CheckCircle className="w-4 h-4 text-[#FF6634] mr-2 mt-0.5 flex-shrink-0" />
+                      <span>Diseñar Guías de Moderación y Estímulos Visuales con IA</span>
+                    </li>
+                    <li className="flex items-start text-sm text-[#E1E5EB]">
+                      <CheckCircle className="w-4 h-4 text-[#FF6634] mr-2 mt-0.5 flex-shrink-0" />
+                      <span>Generar resúmenes ejecutivos y análisis de hallazgos clave post-simulación</span>
+                    </li>
+                  </ul>
+                </div>
+              </Card>
+            </div>
+
+            <div className="flex justify-center">
+              <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-[#FF6634]/20 to-[#FF8A5B]/20 border border-[#FF6634]/30">
+                <Zap className="w-5 h-5 text-[#FF6634] mr-2" />
+                <span className="text-white font-semibold">Modelo justo y predecible para explorar sin límites</span>
+              </div>
+            </div>
+          </div>
+        </section>
       </ScrollReveal>
 
       <section id="equipo" className="py-20 px-4">
