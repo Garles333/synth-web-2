@@ -16,7 +16,6 @@ const nextConfig: NextConfig = {
   }),
   // Production optimizations
   reactStrictMode: true,
-  swcMinify: true,
   images: {
     domains: ['i.postimg.cc', 'slelguoygbfzlpylpxfs.supabase.co'],
     remotePatterns: [
@@ -26,7 +25,15 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // Exclude resend package from bundling (we use fetch API directly)
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      config.externals = config.externals || [];
+      config.externals.push('resend', '@react-email/render', '@react-email/components');
+    }
+    return config;
+  },
 };
 
 export default nextConfig;
-// Orchids restart: 1759324213536
+// Orchids restart: 1760967405296
