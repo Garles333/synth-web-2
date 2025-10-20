@@ -31,6 +31,7 @@ import { RealismSynthLayers } from "@/components/sections/realism-synth-layers";
 import { SparkSection } from "@/components/sections/spark-section";
 import { DiferenciaFundamental } from "@/components/sections/diferencia-fundamental";
 import { LaboratorioRealismo } from "@/components/sections/laboratorio-realismo";
+import { Navigation } from "@/components/sections/navigation";
 import Link from "next/link";
 // import { fetchPosts } from "@/lib/contentful";
 
@@ -137,33 +138,7 @@ export default async function HomePage() {
       <h2 className="sr-only">Cómo funciona nuestra IA modelo-agnóstica</h2>
       <h2 className="sr-only">Plataforma de investigación de mercado con IA, focus group sintético, software de insights del consumidor, investigación cualitativa online, herramienta de focus groups online, análisis de consumidor con IA, plataforma de validación de mercado</h2>
 
-      <nav className="fixed top-0 w-full z-50 bg-[#0B0E1A]/80 backdrop-blur-md border-b border-[#2A3441]">
-        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center">
-            <img
-              src="https://i.postimg.cc/bvqJBxD6/Logo-Synth-sin-fondo.png"
-              alt="Synth"
-              className="h-8 w-auto object-contain"
-            />
-          </div>
-          <div className="hidden md:flex items-center space-x-8">
-            <a href="#inicio" className="hover:text-[#FF6634] transition-colors">Inicio</a>
-            <a href="#motor-realismo" className="hover:text-[#FF6634] transition-colors">Qué nos diferencia</a>
-            <a href="/casos-de-exito" className="hover:text-[#FF6634] transition-colors">Casos de Éxito</a>
-            <a href="#precios" className="hover:text-[#FF6634] transition-colors">Precios</a>
-          </div>
-          <div className="hidden md:flex items-center gap-2">
-            <div className="flex items-center gap-1 mr-2">
-              <Link href="/en" className="inline-flex items-center px-2 py-1 rounded-md border border-[#2A3441] text-white hover:border-[#FF6634] transition">
-                <span role="img" aria-label="English (US)">🇺🇸</span>
-              </Link>
-            </div>
-            <Button asChild className="bg-[#FF6634] hover:bg-[#FF6634]/90 text-white">
-              <Link href="/onboarding">Pruébalo gratis</Link>
-            </Button>
-          </div>
-        </div>
-      </nav>
+      <Navigation />
 
       <section id="inicio" className="pt-24 pb-16 px-4 max-w-6xl mx-auto text-center relative overflow-hidden">
         <div className="mb-12 relative z-10">
@@ -182,6 +157,7 @@ export default async function HomePage() {
               className="text-5xl sm:text-6xl font-bold leading-tight relative z-10 min-h-[64px] max-w-[460px] mx-auto"
               lineClassName="block mb-2 sm:mb-0"
               highlightClassName="text-[#FF6634] font-bold"
+              highlightWords={["Reales", "Inmediatos"]}
             />
           </div>
           <div className="hidden md:block">
@@ -190,6 +166,7 @@ export default async function HomePage() {
               className="text-5xl md:text-7xl font-bold leading-tight relative z-10 min-h-[80px] max-w-[900px] mx-auto"
               lineClassName="block mb-2 sm:mb-0"
               highlightClassName="text-[#FF6634] font-bold"
+              highlightWords={["Reales", "Inmediatos"]}
             />
           </div>
         </div>

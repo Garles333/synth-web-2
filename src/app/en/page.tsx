@@ -20,7 +20,7 @@ import {
 } from "lucide-react";
 import { AhorroSynthCalculator } from "@/components/sections/ahorro-synth-calculator";
 import { NewsletterBannerHome } from "@/components/blocks/newsletter-sections/newsletter-banner-home";
-import { BlogPreviewSection } from "@/components/sections/blog-preview-section";
+// import { BlogPreviewSection } from "@/components/sections/blog-preview-section";
 import { FaqSection } from "@/components/blocks/faqs/faq-section";
 import { Testimonial3DRoulette } from "@/components/blocks/testimonials/testimonials-3d-roulette";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
@@ -31,8 +31,9 @@ import { RealismSynthLayers } from "@/components/sections/realism-synth-layers";
 import { LaboratorioRealismo } from "@/components/sections/laboratorio-realismo";
 import { DiferenciaFundamental } from "@/components/sections/diferencia-fundamental";
 import { SparkSection } from "@/components/sections/spark-section";
+import { Navigation } from "@/components/sections/navigation";
 import Link from "next/link";
-import { fetchPosts } from "@/lib/contentful";
+// import { fetchPosts } from "@/lib/contentful";
 
 export const metadata = {
   title: 'Synthetic-data simulation platform: Test, validate, and refine business decisions before real-world impact.',
@@ -50,13 +51,13 @@ export const revalidate = 60;
 export const dynamic = "force-dynamic";
 
 export default async function HomePageEN() {
-  const posts = await fetchPosts();
-  const articles = posts.map((p) => ({
-    title: p.title,
-    excerpt: p.excerpt || "",
-    image: p.coverImageUrl || p.imageUrl,
-    slug: p.slug,
-  }));
+  // const posts = await fetchPosts();
+  // const articles = posts.map((p) => ({
+  //   title: p.title,
+  //   excerpt: p.excerpt || "",
+  //   image: p.coverImageUrl || p.imageUrl,
+  //   slug: p.slug,
+  // }));
 
   function formatFaqHtml(raw: string) {
     const keys = [
@@ -135,33 +136,7 @@ export default async function HomePageEN() {
       <h2 className="sr-only">How our model-agnostic AI works</h2>
       <h2 className="sr-only">AI-powered market research platform, synthetic focus group, consumer insights software, online qualitative research, online focus groups tool, AI consumer analysis, market validation platform</h2>
 
-      <nav className="fixed top-0 w-full z-50 bg-[#0B0E1A]/80 backdrop-blur-md border-b border-[#2A3441]">
-        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center">
-            <img
-              src="https://i.postimg.cc/bvqJBxD6/Logo-Synth-sin-fondo.png"
-              alt="Synth"
-              className="h-8 w-auto object-contain"
-            />
-          </div>
-          <div className="hidden md:flex items-center space-x-8">
-            <a href="#inicio" className="hover:text-[#FF6634] transition-colors">Home</a>
-            <a href="#motor-realismo" className="hover:text-[#FF6634] transition-colors">What makes us different</a>
-            <a href="/en/case-studies" className="hover:text-[#FF6634] transition-colors">Case Studies</a>
-            <a href="#precios" className="hover:text-[#FF6634] transition-colors">Pricing</a>
-          </div>
-          <div className="hidden md:flex items-center gap-2">
-            <div className="flex items-center gap-1 mr-2">
-              <Link href="/" className="inline-flex items-center px-2 py-1 rounded-md border border-[#FF6634] text-white transition">
-                <span role="img" aria-label="Spanish">🇪🇸</span>
-              </Link>
-            </div>
-            <Button asChild className="bg-[#FF6634] hover:bg-[#FF6634]/90 text-white">
-              <Link href="/en/onboarding">Try it free</Link>
-            </Button>
-          </div>
-        </div>
-      </nav>
+      <Navigation />
 
       <section id="inicio" className="pt-24 pb-16 px-4 max-w-6xl mx-auto text-center relative overflow-hidden">
         <div className="mb-12 relative z-10">
@@ -180,6 +155,7 @@ export default async function HomePageEN() {
               className="text-5xl sm:text-6xl font-bold leading-tight relative z-10 min-h-[64px] max-w-[460px] mx-auto"
               lineClassName="block mb-2 sm:mb-0"
               highlightClassName="text-[#FF6634] font-bold"
+              highlightWords={["Insights", "Results"]}
             />
           </div>
           <div className="hidden md:block">
@@ -188,6 +164,7 @@ export default async function HomePageEN() {
               className="text-5xl md:text-7xl font-bold leading-tight relative z-10 min-h-[80px] max-w-[900px] mx-auto"
               lineClassName="block mb-2 sm:mb-0"
               highlightClassName="text-[#FF6634] font-bold"
+              highlightWords={["Insights", "Results"]}
             />
           </div>
         </div>
@@ -566,25 +543,6 @@ export default async function HomePageEN() {
       </section>
 
       <Testimonial3DRoulette locale="en" />
-
-      <BlogPreviewSection locale="en" articles={articles.slice(0, 3)} />
-
-      <ScrollReveal direction="left" distance={80}>
-        <div className="py-16 px-4 flex items-center justify-center bg-gradient-to-r from-[#1A1F2E]/80 to-[#0B0E1A]/90 border-y border-[#2A3441]">
-          <div className="w-full max-w-5xl flex flex-col sm:flex-row items-center justify-between gap-8 sm:gap-10">
-            <span className="flex-1 min-w-[270px] text-2xl md:text-3xl font-bold text-center sm:text-left text-white sm:pr-8 leading-tight whitespace-pre-line">
-              Get insights on how AI is <span className="text-[#FF6634]">transforming</span> Market Research
-            </span>
-            <div className="flex-1 w-full max-w-md min-w-[270px]">
-              <NewsletterBannerHome
-                buttonLabel="Subscribe"
-                placeholder="Your email"
-                description="Receive the AI insights and techniques that are redefining market research."
-              />
-            </div>
-          </div>
-        </div>
-      </ScrollReveal>
 
       <section id="faq" className="px-4 pt-20 -mt-8">
         <div className="text-center mb-16">

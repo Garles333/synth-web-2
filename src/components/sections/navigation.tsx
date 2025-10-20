@@ -54,6 +54,14 @@ export const Navigation = () => {
         { name: "Precios", href: "#precios" }
       ];
 
+  // Get the target language route
+  const getLanguageToggleHref = () => {
+    if (isCaseStudies) {
+      return isEN ? "/casos-de-exito" : "/en/case-studies";
+    }
+    return isEN ? "/" : "/en";
+  };
+
   return (
     <>
       <motion.nav 
@@ -100,25 +108,15 @@ export const Navigation = () => {
             
             {/* CTA + Language Switcher */}
             <div className="flex items-center gap-3">
-              {/* Language flags */}
-              <div className="hidden md:flex items-center gap-1 mr-1">
+              {/* Single language toggle button */}
+              <div className="hidden md:flex items-center mr-1">
                 <Link
-                  href={isCaseStudies ? "/casos-de-exito" : "/"}
-                  className={`inline-flex items-center px-2 py-1 rounded-md border text-white/80 hover:text-white transition ${
-                    !isEN ? 'border-[#FF6634] text-white' : 'border-[#2A3441] hover:border-[#FF6634]/50'
-                  }`}
-                  aria-label="Español"
+                  href={getLanguageToggleHref()}
+                  className="inline-flex items-center px-3 py-1.5 rounded-md border border-[#FF6634] text-white hover:bg-[#FF6634]/10 transition"
+                  aria-label={isEN ? "Cambiar a Español" : "Switch to English"}
                 >
-                  <span role="img" aria-hidden>🇪🇸</span>
-                </Link>
-                <Link
-                  href={isCaseStudies ? "/en/case-studies" : "/en"}
-                  className={`inline-flex items-center px-2 py-1 rounded-md border text-white/80 hover:text-white transition ${
-                    isEN ? 'border-[#FF6634] text-white' : 'border-[#2A3441] hover:border-[#FF6634]/50'
-                  }`}
-                  aria-label="English (US)"
-                >
-                  <span role="img" aria-hidden>🇺🇸</span>
+                  <span role="img" aria-hidden className="mr-1.5">{isEN ? "🇪🇸" : "🇺🇸"}</span>
+                  <span className="text-sm font-medium">{isEN ? "ES" : "US"}</span>
                 </Link>
               </div>
 
