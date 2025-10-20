@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, Building2, Users, Target, Lightbulb, Rocket, Zap, Mail, Phone, MapPin } from "lucide-react";
+import { ArrowRight, Building2, Users, Target, Lightbulb, Rocket, Zap, Mail, Phone, MapPin, Star, Quote } from "lucide-react";
 import Link from "next/link";
 import { Navigation } from "@/components/sections/navigation";
 
