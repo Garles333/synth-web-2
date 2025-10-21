@@ -39,11 +39,13 @@ export const Pricing = ({ locale = 'es' }: {locale?: 'es' | 'en';}) => {
       description: "Perfect to get started and discover the power of synthetic research with zero commitment.",
       features: [
       "2 Synth Participants / month for your first sessions.",
-      "Save up to 2 Synthetic Personas in your library.",
-      "1 User Seat.",
-      "Basic AI Analysis (Session summary)."],
-
-      cta: "Try it free",
+      "Create up to 2 Synthetic Personas in your library.",
+      "Access to Spark tool, to generate realistic synthetic personas with unexpected nuances and contradictions.",
+      "Access to the Synthetic Personas library.",
+      "Access to AI-powered Moderation Guide and stimulus generation.",
+      "Full access to advanced results module.",
+      "1 User Seat."],
+      cta: "Start Free",
       popular: false,
       prevPrice: null as number | null,
       promoMsg: null as string | null
@@ -56,13 +58,12 @@ export const Pricing = ({ locale = 'es' }: {locale?: 'es' | 'en';}) => {
       features: [
       "50 Synth Participants / month.",
       `Additional Synth Participant: ${formatFromEURDisplay(39)}/unit.`,
-      "Unlimited Synthetic Personas.",
-      "2 User Seats.",
-      "Basic AI Analysis (Session summary).",
-      "Transcript export.",
-      "GDPR compliance.",
-      "Email support."],
-
+      "Unlimited Synthetic Personas creation.",
+      "Access to Spark tool, to generate realistic synthetic personas with unexpected nuances and contradictions.",
+      "Access to the Synthetic Personas library.",
+      "Full access to advanced results module.",
+      "Email support.",
+      "2 User Seats."],
       cta: "Get Essential",
       popular: false,
       prevPrice: 1950,
@@ -76,13 +77,13 @@ export const Pricing = ({ locale = 'es' }: {locale?: 'es' | 'en';}) => {
       features: [
       "150 Synth Participants / month.",
       `Additional Synth Participant: ${formatFromEURDisplay(39)}/unit.`,
-      "Unlimited Synthetic Personas.",
+      "Unlimited Synthetic Personas creation.",
+      "Access to Spark tool, to generate realistic synthetic personas with unexpected nuances and contradictions.",
+      "Access to the Synthetic Personas library.",
+      "Full access to advanced results module.",
       "Knowledge Library (RAG): Train your synthetics with your own documents for unmatched brand realism.",
-      "5 User Seats.",
-      "Advanced AI Analysis (Theme detection, sentiment analysis).",
-      "Automatic executive reports.",
-      "Priority chat support."],
-
+      "Priority email support.",
+      "5 User Seats."],
       cta: "Choose Pro",
       popular: true,
       prevPrice: 5850,
@@ -116,10 +117,12 @@ export const Pricing = ({ locale = 'es' }: {locale?: 'es' | 'en';}) => {
     description: "Ideal para dar los primeros pasos y descubrir el potencial de la investigación sintética sin ningún compromiso.",
     features: [
     "2 Participantes Synth / mes para tus primeras sesiones.",
-    "Guarda hasta 2 Personas Sintéticas en tu biblioteca.",
-    "1 Asiento de Usuario.",
-    "Análisis Básico con IA (Resumen de sesión)."],
-
+    "Crea hasta 2 Personas Sintéticas en tu biblioteca.",
+    "Acceso herramienta Spark, para generar personas sintéticas realistas con matices y contradicciones inesperadas.",
+    "Acceso a la biblioteca de Personas Sintéticas.",
+    "Acceso a la Generación de Guías de Moderación y estímulos con IA.",
+    "Acceso completo al modulo de resultados avanzado.",
+    "1 Asiento de Usuario."],
     cta: "Comenzar Gratis",
     popular: false,
     prevPrice: null as number | null,
@@ -132,14 +135,13 @@ export const Pricing = ({ locale = 'es' }: {locale?: 'es' | 'en';}) => {
     description: "La solución perfecta para equipos pequeños y proyectos puntuales que buscan agilidad e insights rápidos.",
     features: [
     "50 Participantes Synth / mes.",
-    `Partipante Synth adicional: ${formatFromEUR(39)}/unidad.`,
+    `Participante Synth adicional: ${formatFromEUR(39)}/unidad.`,
     "Creación Personas Sintéticas ilimitadas.",
-    "2 Asientos de Usuario.",
-    "Análisis Básico con IA (Resumen de sesión).",
-    "Exportación de transcripciones.",
-    "Cumplimiento GDPR.",
-    "Soporte por email."],
-
+    "Acceso herramienta Spark, para generar personas sintéticas realistas con matices y contradicciones inesperadas.",
+    "Acceso a la biblioteca de Personas Sintéticas.",
+    "Acceso completo al modulo de resultados avanzado.",
+    "Soporte por email.",
+    "2 Asientos de Usuario."],
     cta: "Empezar con Esencial",
     popular: false,
     prevPrice: 1950,
@@ -152,20 +154,19 @@ export const Pricing = ({ locale = 'es' }: {locale?: 'es' | 'en';}) => {
     description: "La solución completa para agencias en crecimiento que buscan diferenciarse con insights más profundos y específicos de marca.",
     features: [
     "150 Participantes Synth / mes.",
-    `Partipante Synth adicional: ${formatFromEUR(39)}/unidad.`,
-    "Personas Sintéticas ilimitadas.",
+    `Participante Synth adicional: ${formatFromEUR(39)}/unidad.`,
+    "Creación Personas Sintéticas ilimitadas.",
+    "Acceso herramienta Spark, para generar personas sintéticas realistas con matices y contradicciones inesperadas.",
+    "Acceso a la biblioteca de Personas Sintéticas.",
+    "Acceso completo al modulo de resultados avanzado.",
     "Biblioteca de Conocimiento (RAG): Entrena a tus sintéticos con tus propios documentos para un realismo de marca inigualable.",
-    "5 Asientos de Usuario.",
-    "Análisis Avanzado con IA (Identificación de temas, análisis de sentimiento).",
-    "Reportes ejecutivos automáticos.",
-    "Soporte prioritario por chat."],
-
+    "Soporte prioritario por email.",
+    "5 Asientos de Usuario."],
     cta: "Quiero Pro",
     popular: true,
     prevPrice: 5850,
     promoMsg: "¡Ahorra más de 50% por tiempo limitado"
   }];
-
 
   const plans = locale === 'en' ? t.plans : plansES;
 
