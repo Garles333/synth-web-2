@@ -318,7 +318,7 @@ export const Pricing = ({ locale = 'es' }: {locale?: 'es' | 'en';}) => {
                 <ul className="space-y-3">
                   {plan.features.map((feature: string, featureIndex: number) =>
                 <li key={featureIndex} className="flex items-start">
-                      <Check className="h-5 w-5 text-[var(--color-accent-orange)] mt-0.5 mr-3 flex-shrink-0" />
+                      <Check className="text-[var(--color-accent-orange)] mt-0.5 mr-3 flex-shrink-0 !w-5 !h-5" />
                       <span className="text-[var(--color-light-text)] text-sm !whitespace-pre-line">{feature}</span>
                     </li>
                 )}
