@@ -25,14 +25,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // Exclude resend package from bundling (we use fetch API directly)
-  webpack: (config, { isServer }) => {
-    if (isServer) {
-      config.externals = config.externals || [];
-      config.externals.push('resend', '@react-email/render', '@react-email/components');
-    }
-    return config;
-  },
 };
 
 export default nextConfig;
