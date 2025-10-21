@@ -108,7 +108,7 @@ export const Pricing = ({ locale = 'es' }: {locale?: 'es' | 'en';}) => {
     plans: [] as any
   };
 
-  // If ES locale, build plans in Spanish using current currency formatting
+  // Spanish plans with updated texts
   const plansES = [
   {
     name: "Gratuito",
