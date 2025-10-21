@@ -99,7 +99,7 @@ export default async function HomePage() {
       answer: formatFaqHtml(`Es nuestra arquitectura de 5 capas que asegura autenticidad. Como Director de Simulación, defines la <strong>Identidad</strong> (el ADN), inyectas <strong>Sesgos Cognitivos</strong> (el subconsciente), y modulas el <strong>Contexto</strong> (emoción, agenda). Nuestro motor añade la <strong>Capa Cultural</strong> (la tribu). ¿El resultado? Una réplica muy humana, no una máquina.`)
     },
     {
-      question: `¿Qué son las "Visiones del Mundo" y por qué importan?`,
+      question: `¿Qué son las "Cosmovisiones" y por qué importan?`,
       answer: formatFaqHtml(`Son los sistemas operativos culturales de tus clientes. Nuestro motor asigna automáticamente a cada participante un arquetipo cultural que define sus valores y lenguaje no escritos. Esto te permite validar si tu mensaje resuena con el <em>código</em> de la tribu. Ejecuta una simulación y ve si tu marca habla su idioma.`)
     },
     {
@@ -108,7 +108,10 @@ export default async function HomePage() {
     },
     {
       question: `Con tanto control, ¿cómo evito confirmar mis propios sesgos?`,
-      answer: formatFaqHtml(`Ese es el genio de ser el Director de Simulación. Synth no es un oráculo; es tu laboratorio de pruebas de estrés. Mejor práctica: ejecuta múltiples escenarios—una simulación base (neutral), una pesimista (participantes escépticos), y una competitiva (defensores de un competidor). Descubre bajo qué condiciones sobrevive tu idea, no si es buena en el vacío.`)
+      answer: formatFaqHtml(`Atajamos el sesgo en dos frentes:
+Antes de la simulación, con Spark: En lugar de que crees perfiles que confirmen tus propias ideas, Spark genera personas sintéticas realistas con matices y contradicciones inesperadas. Te obliga a empezar la investigación desde un punto de vista neutral y desafiante.
+Durante la simulación, con tu rol de Director: Recuerda la regla de oro: Synth no es un oráculo para validar, es tu laboratorio de pruebas de estrés. La mejor práctica es aplicar el "triángulo de estrés": una simulación base (neutral), una con participantes escépticos y otra con defensores de la competencia.
+Al final, no buscas saber si tu idea es buena en el vacío, sino descubrir bajo qué condiciones sobrevive y prospera.`)
     },
     {
       question: `¿Cuál es el valor real de cambiar la emoción o agenda de un participante?`,
@@ -377,6 +380,8 @@ export default async function HomePage() {
         <DiferenciaFundamental />
       </ScrollReveal>
 
+      <SparkSection locale="es" />
+
       <section id="equipo" className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
@@ -566,7 +571,7 @@ export default async function HomePage() {
       <section id="faq" className="px-4 pt-20 -mt-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Preguntas Frecuentes</h2>
-          <p className="text-xl text-[#E1E5EB] max-w-2xl mx-auto">Resuelve tus dudas sobre nuestros agentes de IA y plataforma.</p>
+          <p className="text-xl text-[#E1E5EB] max-w-2xl mx-auto">Resuelve tus dudas sobre nuestra plataforma.</p>
         </div>
       </section>
 
