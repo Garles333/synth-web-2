@@ -136,7 +136,7 @@ export const Pricing = ({ locale = 'es' }: {locale?: 'es' | 'en';}) => {
     description: "La solución perfecta para equipos pequeños y proyectos puntuales que buscan agilidad e insights rápidos.",
     features: [
       "✓ 50 Participantes Synth / mes.",
-      "✓ Participante Synth adicional: 39 €/unidad.",
+      "✓ Participante Synth adicional: 39€/unidad.",
       "✓ Creación Personas Sintéticas ilimitadas.",
       "✓ Acceso herramienta Spark, para generar personas sintéticas realistas con matices y contradicciones inesperadas.",
       "✓ Acceso a la biblioteca de Personas Sintéticas.",
@@ -156,7 +156,7 @@ export const Pricing = ({ locale = 'es' }: {locale?: 'es' | 'en';}) => {
     description: "La solución completa para agencias en crecimiento que buscan diferenciarse con insights más profundos y específicos de marca.",
     features: [
       "✓ 150 Participantes Synth / mes.",
-      "✓ Participante Synth adicional: 39 €/unidad.",
+      "✓ Participante Synth adicional: 39€/unidad.",
       "✓ Creación Personas Sintéticas ilimitadas.",
       "✓ Acceso herramienta Spark, para generar personas sintéticas realistas con matices y contradicciones inesperadas.",
       "✓ Acceso a la biblioteca de Personas Sintéticas.",
