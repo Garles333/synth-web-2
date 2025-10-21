@@ -108,7 +108,7 @@ export const Pricing = ({ locale = 'es' }: {locale?: 'es' | 'en';}) => {
     plans: [] as any
   };
 
-  // Spanish plans with updated texts
+  // Spanish plans with EXACT texts as specified by user
   const plansES = [
   {
     name: "Gratuito",
@@ -116,13 +116,14 @@ export const Pricing = ({ locale = 'es' }: {locale?: 'es' | 'en';}) => {
     period: "/ mes",
     description: "Ideal para dar los primeros pasos y descubrir el potencial de la investigación sintética sin ningún compromiso.",
     features: [
-    "2 Participantes Synth / mes para tus primeras sesiones.",
-    "Crea hasta 2 Personas Sintéticas en tu biblioteca.",
-    "Acceso herramienta Spark, para generar personas sintéticas realistas con matices y contradicciones inesperadas.",
-    "Acceso a la biblioteca de Personas Sintéticas.",
-    "Acceso a la Generación de Guías de Moderación y estímulos con IA",
-    "Acceso completo al modulo de resultados avanzado.",
-    "1 Asiento de Usuario."],
+      "✓ 2 Participantes Synth / mes para tus primeras sesiones.",
+      "✓ Crea hasta 2 Personas Sintéticas en tu biblioteca.",
+      "✓ Acceso herramienta Spark, para generar personas sintéticas realistas con matices y contradicciones inesperadas.",
+      "✓ Acceso a la biblioteca de Personas Sintéticas.",
+      "✓ Acceso a la Generación de Guías de Moderación y estímulos con IA",
+      "✓ Acceso completo al modulo de resultados avanzado.",
+      "✓ 1 Asiento de Usuario."
+    ],
     cta: "Comenzar Gratis",
     popular: false,
     prevPrice: null as number | null,
@@ -134,14 +135,15 @@ export const Pricing = ({ locale = 'es' }: {locale?: 'es' | 'en';}) => {
     period: "/ mes",
     description: "La solución perfecta para equipos pequeños y proyectos puntuales que buscan agilidad e insights rápidos.",
     features: [
-    "50 Participantes Synth / mes.",
-    `Participante Synth adicional: 39 €/unidad.`,
-    "Creación Personas Sintéticas ilimitadas.",
-    "Acceso herramienta Spark, para generar personas sintéticas realistas con matices y contradicciones inesperadas.",
-    "Acceso a la biblioteca de Personas Sintéticas.",
-    "Acceso completo al modulo de resultados avanzado.",
-    "Soporte por email.",
-    "2 Asientos de Usuario."],
+      "✓ 50 Participantes Synth / mes.",
+      "✓ Participante Synth adicional: 39 €/unidad.",
+      "✓ Creación Personas Sintéticas ilimitadas.",
+      "✓ Acceso herramienta Spark, para generar personas sintéticas realistas con matices y contradicciones inesperadas.",
+      "✓ Acceso a la biblioteca de Personas Sintéticas.",
+      "✓ Acceso completo al modulo de resultados avanzado.",
+      "✓ Soporte por email.",
+      "✓ 2 Asientos de Usuario."
+    ],
     cta: "Empezar con Esencial",
     popular: false,
     prevPrice: 1950,
@@ -153,15 +155,16 @@ export const Pricing = ({ locale = 'es' }: {locale?: 'es' | 'en';}) => {
     period: "/ mes",
     description: "La solución completa para agencias en crecimiento que buscan diferenciarse con insights más profundos y específicos de marca.",
     features: [
-    "150 Participantes Synth / mes.",
-    `Participante Synth adicional: 39 €/unidad.`,
-    "Creación Personas Sintéticas ilimitadas.",
-    "Acceso herramienta Spark, para generar personas sintéticas realistas con matices y contradicciones inesperadas.",
-    "Acceso a la biblioteca de Personas Sintéticas.",
-    "Acceso completo al modulo de resultados avanzado.",
-    "Biblioteca de Conocimiento (RAG): Entrena a tus sintéticos con tus propios documentos para un realismo de marca inigualable.",
-    "Soporte prioritario por email.",
-    "5 Asientos de Usuario."],
+      "✓ 150 Participantes Synth / mes.",
+      "✓ Participante Synth adicional: 39 €/unidad.",
+      "✓ Creación Personas Sintéticas ilimitadas.",
+      "✓ Acceso herramienta Spark, para generar personas sintéticas realistas con matices y contradicciones inesperadas.",
+      "✓ Acceso a la biblioteca de Personas Sintéticas.",
+      "✓ Acceso completo al modulo de resultados avanzado.",
+      "✓ Biblioteca de Conocimiento (RAG): Entrena a tus sintéticos con tus propios documentos para un realismo de marca inigualable.",
+      "✓ Soporte prioritario por email.",
+      "✓ 5 Asientos de Usuario."
+    ],
     cta: "Quiero Pro",
     popular: true,
     prevPrice: 5850,
@@ -209,19 +212,16 @@ export const Pricing = ({ locale = 'es' }: {locale?: 'es' | 'en';}) => {
             <button
             onClick={() => (window as any).testColombia?.()}
             className="text-xs bg-[#1A1F2E]/80 text-[#E1E5EB] px-2 py-1 rounded hover:bg-[#FF6634]/20 transition-colors">
-
               Test CO
             </button>
             <button
             onClick={() => (window as any).testPeru?.()}
             className="text-xs bg-[#1A1F2E]/80 text-[#E1E5EB] px-2 py-1 rounded hover:bg-[#FF6634]/20 transition-colors">
-
               Test PE
             </button>
             <button
             onClick={() => (window as any).debugCurrencyDetection?.()}
             className="text-xs bg-[#1A1F2E]/80 text-[#E1E5EB] px-2 py-1 rounded hover:bg-[#FF6634]/20 transition-colors">
-
               Debug
             </button>
           </div>
@@ -254,7 +254,7 @@ export const Pricing = ({ locale = 'es' }: {locale?: 'es' | 'en';}) => {
           </div>
         </div>
 
-        {/* Pricing Cards: solo 3 columnas en desktop, con animación */}
+        {/* Pricing Cards */}
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {plans.map((plan, index) =>
           <div
@@ -285,7 +285,7 @@ export const Pricing = ({ locale = 'es' }: {locale?: 'es' | 'en';}) => {
                   <p className="text-[var(--color-light-text)] mt-2 text-center text-base">{plan.description}</p>
                 </div>
 
-                {/* Price con tachado si aplica, conversión de moneda */}
+                {/* Price */}
                 <div className="text-center">
                   {plan.prevPrice &&
                 <div className="mb-1 text-base">
@@ -311,11 +311,10 @@ export const Pricing = ({ locale = 'es' }: {locale?: 'es' | 'en';}) => {
                 }
                 </div>
 
-                {/* Features */}
+                {/* Features - WITHOUT check icons, using the ✓ from the text */}
                 <ul className="space-y-3">
                   {plan.features.map((feature: string, featureIndex: number) =>
                 <li key={featureIndex} className="flex items-start">
-                      <Check className="text-[var(--color-accent-orange)] mt-0.5 mr-3 flex-shrink-0 !w-5 !h-5" />
                       <span className="text-[var(--color-light-text)] text-sm !whitespace-pre-line">{feature}</span>
                     </li>
                 )}
