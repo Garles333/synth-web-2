@@ -23,7 +23,7 @@ import {
 } from "lucide-react";
 import { AhorroSynthCalculator } from "@/components/sections/ahorro-synth-calculator";
 import { NewsletterBannerHome } from "@/components/blocks/newsletter-sections/newsletter-banner-home";
-// import { BlogPreviewSection } from "@/components/sections/blog-preview-section";
+import { BlogPreviewSection } from "@/components/sections/blog-preview-section";
 import { FaqSection } from "@/components/blocks/faqs/faq-section";
 import { Testimonial3DRoulette } from "@/components/blocks/testimonials/testimonials-3d-roulette";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
@@ -35,7 +35,7 @@ import { LaboratorioRealismo } from "@/components/sections/laboratorio-realismo"
 import { DiferenciaFundamental } from "@/components/sections/diferencia-fundamental";
 import { SparkSection } from "@/components/sections/spark-section";
 import Link from "next/link";
-// import { fetchPosts } from "@/lib/contentful";
+import { fetchPosts } from "@/lib/contentful";
 
 export const metadata = {
   title: 'Synthetic-data simulation platform: Test, validate, and refine business decisions before real-world impact.',
@@ -53,13 +53,13 @@ export const revalidate = 60;
 export const dynamic = "force-dynamic";
 
 export default async function HomePageEN() {
-  // const posts = await fetchPosts();
-  // const articles = posts.map((p) => ({
-  //   title: p.title,
-  //   excerpt: p.excerpt || "",
-  //   image: p.coverImageUrl || p.imageUrl,
-  //   slug: p.slug,
-  // }));
+  const posts = await fetchPosts();
+  const articles = posts.map((p) => ({
+    title: p.title,
+    excerpt: p.excerpt || "",
+    image: p.coverImageUrl || p.imageUrl,
+    slug: p.slug,
+  }));
 
   function formatFaqHtml(raw: string) {
     const keys = [

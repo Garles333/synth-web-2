@@ -23,7 +23,7 @@ import {
 } from "lucide-react";
 import { AhorroSynthCalculator } from "@/components/sections/ahorro-synth-calculator";
 import { NewsletterBannerHome } from "@/components/blocks/newsletter-sections/newsletter-banner-home";
-// import { BlogPreviewSection } from "@/components/sections/blog-preview-section";
+import { BlogPreviewSection } from "@/components/sections/blog-preview-section";
 import { FaqSection } from "@/components/blocks/faqs/faq-section";
 import { Testimonial3DRoulette } from "@/components/blocks/testimonials/testimonials-3d-roulette";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
@@ -35,7 +35,7 @@ import { SparkSection } from "@/components/sections/spark-section";
 import { DiferenciaFundamental } from "@/components/sections/diferencia-fundamental";
 import { LaboratorioRealismo } from "@/components/sections/laboratorio-realismo";
 import Link from "next/link";
-// import { fetchPosts } from "@/lib/contentful";
+import { fetchPosts } from "@/lib/contentful";
 
 export const metadata = {
   title: 'Plataforma de simulación con datos sintéticos: Testea, valida y refina tus decisiones de negocio antes del impacto real.',
@@ -55,13 +55,13 @@ export const revalidate = 60;
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
-  // const posts = await fetchPosts();
-  // const articles = posts.map((p) => ({
-  //   title: p.title,
-  //   excerpt: p.excerpt || "",
-  //   image: p.coverImageUrl || p.imageUrl,
-  //   slug: p.slug,
-  // }));
+  const posts = await fetchPosts();
+  const articles = posts.map((p) => ({
+    title: p.title,
+    excerpt: p.excerpt || "",
+    image: p.coverImageUrl || p.imageUrl,
+    slug: p.slug,
+  }));
 
   function formatFaqHtml(raw: string) {
     const keys = [
@@ -553,7 +553,7 @@ Al final, no buscas saber si tu idea es buena en el vacío, sino descubrir bajo 
 
       <Testimonial3DRoulette locale="es" />
 
-      {/* <BlogPreviewSection locale="es" articles={articles.slice(0, 3)} /> */}
+      <BlogPreviewSection locale="es" articles={articles.slice(0, 3)} />
 
       <ScrollReveal direction="left" distance={80}>
         <div className="py-16 px-4 flex items-center justify-center bg-gradient-to-r from-[#1A1F2E]/80 to-[#0B0E1A]/90 border-y border-[#2A3441]">
