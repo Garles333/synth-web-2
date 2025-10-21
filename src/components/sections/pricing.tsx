@@ -120,7 +120,7 @@ export const Pricing = ({ locale = 'es' }: {locale?: 'es' | 'en';}) => {
     "Crea hasta 2 Personas Sintéticas en tu biblioteca.",
     "Acceso herramienta Spark, para generar personas sintéticas realistas con matices y contradicciones inesperadas.",
     "Acceso a la biblioteca de Personas Sintéticas.",
-    "Acceso a la Generación de Guías de Moderación y estímulos con IA.",
+    "Acceso a la Generación de Guías de Moderación y estímulos con IA",
     "Acceso completo al modulo de resultados avanzado.",
     "1 Asiento de Usuario."],
     cta: "Comenzar Gratis",
@@ -135,7 +135,7 @@ export const Pricing = ({ locale = 'es' }: {locale?: 'es' | 'en';}) => {
     description: "La solución perfecta para equipos pequeños y proyectos puntuales que buscan agilidad e insights rápidos.",
     features: [
     "50 Participantes Synth / mes.",
-    `Participante Synth adicional: ${formatFromEUR(39)}/unidad.`,
+    `Participante Synth adicional: 39 €/unidad.`,
     "Creación Personas Sintéticas ilimitadas.",
     "Acceso herramienta Spark, para generar personas sintéticas realistas con matices y contradicciones inesperadas.",
     "Acceso a la biblioteca de Personas Sintéticas.",
@@ -154,7 +154,7 @@ export const Pricing = ({ locale = 'es' }: {locale?: 'es' | 'en';}) => {
     description: "La solución completa para agencias en crecimiento que buscan diferenciarse con insights más profundos y específicos de marca.",
     features: [
     "150 Participantes Synth / mes.",
-    `Participante Synth adicional: ${formatFromEUR(39)}/unidad.`,
+    `Participante Synth adicional: 39 €/unidad.`,
     "Creación Personas Sintéticas ilimitadas.",
     "Acceso herramienta Spark, para generar personas sintéticas realistas con matices y contradicciones inesperadas.",
     "Acceso a la biblioteca de Personas Sintéticas.",
