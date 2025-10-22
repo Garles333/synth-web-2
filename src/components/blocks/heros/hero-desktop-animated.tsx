@@ -11,13 +11,29 @@ export const HeroDesktopAnimated = ({ locale = "es" }: HeroDesktopAnimatedProps)
   const [displayedLines, setDisplayedLines] = useState<string[]>(["", ""]);
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
+  const [isComplete, setIsComplete] = useState(false);
 
   const lines = locale === "es" 
     ? ["Insights Reales.", "Resultados Inmediatos."]
     : ["Real Insights.", "Immediate Results."];
 
   useEffect(() => {
-    if (currentLineIndex >= lines.length) return;
+    // Si ya completamos, esperamos antes de reiniciar
+    if (isComplete) {
+      const timeout = setTimeout(() => {
+        setDisplayedLines(["", ""]);
+        setCurrentLineIndex(0);
+        setCharIndex(0);
+        setIsComplete(false);
+      }, 3000); // Pausa de 3 segundos cuando está completo
+
+      return () => clearTimeout(timeout);
+    }
+
+    if (currentLineIndex >= lines.length) {
+      setIsComplete(true);
+      return;
+    }
 
     const currentLine = lines[currentLineIndex];
     
@@ -39,8 +55,10 @@ export const HeroDesktopAnimated = ({ locale = "es" }: HeroDesktopAnimatedProps)
       }, 300); // Pausa entre líneas
 
       return () => clearTimeout(timeout);
+    } else {
+      setIsComplete(true);
     }
-  }, [charIndex, currentLineIndex, lines]);
+  }, [charIndex, currentLineIndex, lines, isComplete]);
 
   const renderLineWithHighlight = (text: string, lineIndex: number) => {
     const words = text.split(" ");
