@@ -1,35 +1,81 @@
 "use client";
 
-import { motion } from 'framer-motion';
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
-export const HeroMobileAnimated = () => {
+interface HeroMobileAnimatedProps {
+  locale?: "es" | "en";
+}
+
+export const HeroMobileAnimated = ({ locale = "es" }: HeroMobileAnimatedProps) => {
+  const [displayedLines, setDisplayedLines] = useState<string[]>(["", ""]);
+  const [currentLineIndex, setCurrentLineIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+
+  const lines = locale === "es" 
+    ? ["Insights Reales.", "Resultados Inmediatos."]
+    : ["Real Insights.", "Immediate Results."];
+
+  useEffect(() => {
+    if (currentLineIndex >= lines.length) return;
+
+    const currentLine = lines[currentLineIndex];
+    
+    if (charIndex < currentLine.length) {
+      const timeout = setTimeout(() => {
+        setDisplayedLines(prev => {
+          const newLines = [...prev];
+          newLines[currentLineIndex] = currentLine.slice(0, charIndex + 1);
+          return newLines;
+        });
+        setCharIndex(charIndex + 1);
+      }, 50); // Velocidad de escritura
+
+      return () => clearTimeout(timeout);
+    } else if (currentLineIndex < lines.length - 1) {
+      const timeout = setTimeout(() => {
+        setCurrentLineIndex(currentLineIndex + 1);
+        setCharIndex(0);
+      }, 300); // Pausa entre líneas
+
+      return () => clearTimeout(timeout);
+    }
+  }, [charIndex, currentLineIndex, lines]);
+
+  const renderLineWithHighlight = (text: string, lineIndex: number) => {
+    const words = text.split(" ");
+    const lastWord = words[words.length - 1];
+    const restOfText = words.slice(0, -1).join(" ");
+
+    return (
+      <span className="font-extrabold text-5xl leading-tight relative z-10 block">
+        {restOfText && <span className="text-white">{restOfText} </span>}
+        <span style={{ color: "#FF6634" }}>{lastWord}</span>
+      </span>
+    );
+  };
+
   return (
-    <>
-      <motion.span
-        initial={{ opacity: 0, y: 32 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          duration: 0.74,
-          delay: 0.18,
-          ease: [0.39, 0.13, 0.38, 0.94]
-        }}
-        className="font-extrabold text-5xl leading-tight relative z-10 text-white block mb-2"
-      >
-        Insights Reales.
-      </motion.span>
-      <motion.span
-        initial={{ opacity: 0, y: 28 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          duration: 0.74,
-          delay: 1.01,
-          ease: [0.39, 0.13, 0.38, 0.94]
-        }}
-        className="font-extrabold text-5xl leading-tight relative z-10 block"
-      >
-        Resultados{' '}
-        <span style={{ color: '#FF6634' }}>Inmediatos.</span>
-      </motion.span>
-    </>
+    <div className="flex flex-col items-center justify-center min-h-[160px]">
+      {displayedLines[0] && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+          className="mb-2"
+        >
+          {renderLineWithHighlight(displayedLines[0], 0)}
+        </motion.div>
+      )}
+      {displayedLines[1] && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+        >
+          {renderLineWithHighlight(displayedLines[1], 1)}
+        </motion.div>
+      )}
+    </div>
   );
 };

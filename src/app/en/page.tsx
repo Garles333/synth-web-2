@@ -1,8 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { AnimatedTextHighlight } from "@/components/ui/animated-text-highlight";
-import { TypewriterModern } from "@/components/blocks/text-animations/TypewriterModern";
+import { AnimatedTextHighlight } from "@/components/blocks/text-animations/animated-text-highlight";
+import { HeroMobileAnimated } from "@/components/blocks/heros/hero-mobile-animated";
+import { HeroDesktopAnimated } from "@/components/blocks/heros/hero-desktop-animated";
 import {
   ArrowRight,
   Shield,
@@ -178,22 +179,14 @@ export default async function HomePageEN() {
 
         <div className="mb-6">
           <div className="block md:hidden">
-            <TypewriterModern
-              lines={["Real Insights.", "Immediate Results."]}
-              className="text-5xl sm:text-6xl font-bold leading-tight relative z-10 min-h-[64px] max-w-[460px] mx-auto"
-              lineClassName="block mb-2 sm:mb-0"
-              highlightClassName="text-[#FF6634] font-bold"
-              highlightWords={["Insights", "Results"]}
-            />
+            <div className="flex flex-col items-center justify-center min-h-[160px]">
+              <HeroMobileAnimated locale="en" />
+            </div>
           </div>
           <div className="hidden md:block">
-            <TypewriterModern
-              lines={["Real Insights.", "Immediate Results."]}
-              className="text-5xl md:text-7xl font-bold leading-tight relative z-10 min-h-[80px] max-w-[900px] mx-auto"
-              lineClassName="block mb-2 sm:mb-0"
-              highlightClassName="text-[#FF6634] font-bold"
-              highlightWords={["Insights", "Results"]}
-            />
+            <div className="flex flex-col items-center justify-center min-h-[180px]">
+              <HeroDesktopAnimated locale="en" />
+            </div>
           </div>
         </div>
 
