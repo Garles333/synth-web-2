@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { AnimatedTextHighlight } from "@/components/ui/animated-text-highlight";
+import { AnimatedTextHighlight } from "@/components/blocks/text-animations/animated-text-highlight";
 import { 
   ArrowLeft, 
   Calendar, 
