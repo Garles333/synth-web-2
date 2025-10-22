@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { AnimatedTextHighlight } from "@/components/ui/animated-text-highlight";
+import { AnimatedTextHighlight } from "@/components/blocks/text-animations/animated-text-highlight";
 import { toast } from "sonner";
 import { CheckCircle2 } from "lucide-react";
 
