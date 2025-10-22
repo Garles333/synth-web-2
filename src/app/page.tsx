@@ -2,7 +2,9 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { AnimatedTextHighlight } from "@/components/blocks/text-animations/animated-text-highlight";
-import { TypewriterModern } from "@/components/blocks/text-animations/TypewriterModern";
+import { HeroMobileAnimated } from "@/components/blocks/heros/hero-mobile-animated";
+import { HeroDesktopAnimated } from "@/components/blocks/heros/hero-desktop-animated";
+import { TypewriterModern } from "@/components/blocks/text-animations/typewriter-modern";
 import {
   ArrowRight,
   Shield,
@@ -183,20 +185,14 @@ Al final, no buscas saber si tu idea es buena en el vacío, sino descubrir bajo 
 
         <div className="mb-6">
           <div className="block md:hidden">
-            <TypewriterModern
-              lines={["Insights Reales.", "Resultados Inmediatos."]}
-              className="text-5xl sm:text-6xl font-bold leading-tight relative z-10 min-h-[64px] max-w-[460px] mx-auto"
-              lineClassName="block mb-2 sm:mb-0"
-              highlightClassName="text-[#FF6634] font-bold"
-            />
+            <div className="flex flex-col items-center justify-center min-h-[160px]">
+              <HeroMobileAnimated />
+            </div>
           </div>
           <div className="hidden md:block">
-            <TypewriterModern
-              lines={["Insights Reales.", "Resultados Inmediatos."]}
-              className="text-5xl md:text-7xl font-bold leading-tight relative z-10 min-h-[80px] max-w-[900px] mx-auto"
-              lineClassName="block mb-2 sm:mb-0"
-              highlightClassName="text-[#FF6634] font-bold"
-            />
+            <div className="flex flex-col items-center justify-center min-h-[180px]">
+              <HeroDesktopAnimated />
+            </div>
           </div>
         </div>
 
