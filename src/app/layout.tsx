@@ -18,6 +18,22 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-V2ZQEQ5R9L"
+          strategy="afterInteractive"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-V2ZQEQ5R9L');
+            `,
+          }}
+        />
+        <Script
           id="clarity-script"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
