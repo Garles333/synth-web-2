@@ -79,7 +79,7 @@ export const ArquitecturaTecnologica = ({ locale = 'es' }: { locale?: 'es' | 'en
       eventDriven: 'Por Eventos',
       distributed: 'Distribuido',
       culturalEngine: 'Motor de Cosmovisiones Culturales',
-      culturalEngineDesc: 'Nuestro motor calibra el modelo de pensamiento integrando Dimensiones Culturales de Hofstede. Ajustamos variables implícitas: percepción de autoridad, aversión a incertidumbre. Un joven de 22 años en Madrid piensa distinto a uno de 55 en Lima. Realismo regional basado en ciencia del comportamiento.',
+      culturalEngineDesc: 'Nuestro motor calibra el modelo de pensamiento integrando Dimensiones Culturales de Hofstede. Ajustamos variables implícitas: percepción de autoridad, aversión a incertidumbre.',
       hofstede: 'Hofstede',
       persistent: 'Persistente',
     },
@@ -106,7 +106,7 @@ export const ArquitecturaTecnologica = ({ locale = 'es' }: { locale?: 'es' | 'en
       eventDriven: 'Event-driven',
       distributed: 'Distributed',
       culturalEngine: 'Cultural Worldviews Engine',
-      culturalEngineDesc: 'Our engine calibrates the thinking model integrating Hofstede\'s Cultural Dimensions. We adjust implicit variables: perception of authority, uncertainty avoidance. A 22-year-old in Madrid thinks differently than a 55-year-old in Lima. Regional realism based on behavioral science.',
+      culturalEngineDesc: 'Our engine calibrates the thinking model integrating Hofstede\'s Cultural Dimensions. We adjust implicit variables: perception of authority, uncertainty avoidance.',
       hofstede: 'Hofstede',
       persistent: 'Persistent',
     }
