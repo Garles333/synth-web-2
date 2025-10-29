@@ -414,27 +414,6 @@ Al final, no buscas saber si tu idea es buena en el vacío, sino descubrir bajo 
             <div className="animate-fadeInUpTeam" style={{ animationDelay: '0.24s', animationFillMode: 'both' }}>
               <Card className="bg-[#1A1F2E] border-[#2A3441] p-6 text-center h-[400px] flex flex-col hover:scale-[1.03] hover:shadow-lg transition-transform duration-400">
                 <div className="mb-6 flex-shrink-0 relative flex items-center justify-center h-36">
-                  <div className="relative mx-auto">
-                    <img
-                      src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/1755630316605-etbjgew24x.png"
-                      alt="Omar Hidalgo"
-                      className="w-32 h-36 object-cover object-top mx-auto animate-glow-avatar rounded-lg relative z-10"
-                      style={{ maskImage: 'radial-gradient(ellipse at center, black 70%, transparent 100%)', WebkitMaskImage: 'radial-gradient(ellipse at center, black 70%, transparent 100%)' }} />
-
-                    <div className="absolute inset-0 w-32 h-36 mx-auto rounded-lg bg-gradient-to-br from-[#FF6634]/30 to-[#FF8A5B]/20 blur-md animate-pulse opacity-60 -z-10"></div>
-                  </div>
-                </div>
-                <div className="mt-auto flex-grow flex flex-col justify-end">
-                  <h3 className="text-xl font-bold mb-2 relative team-name-glow">Omar Hidalgo<span className="team-underline-glow"></span></h3>
-                  <p className="text-[#FF6634] mb-3 !whitespace-pre-line">Co-Fundador</p>
-                  <p className="text-sm text-[#E1E5EB] leading-relaxed !whitespace-pre-line">Especialista en procesos e innovación con más de 20 años liderando equipos técnicos. Experto en optimizar modelos de negocio a través de arquitectura tecnológica y transformación.</p>
-                </div>
-              </Card>
-            </div>
-
-            <div className="animate-fadeInUpTeam" style={{ animationDelay: '0.44s', animationFillMode: 'both' }}>
-              <Card className="bg-[#1A1F2E] border-[#2A3441] p-6 text-center h-[400px] flex flex-col hover:scale-[1.03] hover:shadow-lg transition-transform duration-400">
-                <div className="mb-6 flex-shrink-0 relative flex items-center justify-center h-36">
                   <div className="relative mx-auto" style={{ marginTop: '8px' }}>
                     <img
                       src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/1755630595109-zlk2es9s96j.png"
@@ -449,6 +428,27 @@ Al final, no buscas saber si tu idea es buena en el vacío, sino descubrir bajo 
                   <h3 className="text-xl font-bold mb-2 relative team-name-glow">Jesús Rodríguez<span className="team-underline-glow"></span></h3>
                   <p className="text-[#FF6634] mb-3">CMO & Co-Fundador</p>
                   <p className="text-sm text-[#E1E5EB] leading-relaxed !whitespace-pre-line">Líder de marketing con más de 20 años en B2B. Especialista en construcción de marca, estrategias de crecimiento y posicionamiento de alto impacto.</p>
+                </div>
+              </Card>
+            </div>
+
+            <div className="animate-fadeInUpTeam" style={{ animationDelay: '0.44s', animationFillMode: 'both' }}>
+              <Card className="bg-[#1A1F2E] border-[#2A3441] p-6 text-center h-[400px] flex flex-col hover:scale-[1.03] hover:shadow-lg transition-transform duration-400">
+                <div className="mb-6 flex-shrink-0 relative flex items-center justify-center h-36">
+                  <div className="relative mx-auto">
+                    <img
+                      src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/1755630316605-etbjgew24x.png"
+                      alt="Omar Hidalgo"
+                      className="w-32 h-36 object-cover object-top mx-auto animate-glow-avatar rounded-lg relative z-10"
+                      style={{ maskImage: 'radial-gradient(ellipse at center, black 70%, transparent 100%)', WebkitMaskImage: 'radial-gradient(ellipse at center, black 70%, transparent 100%)' }} />
+
+                    <div className="absolute inset-0 w-32 h-36 mx-auto rounded-lg bg-gradient-to-br from-[#FF6634]/30 to-[#FF8A5B]/20 blur-md animate-pulse opacity-60 -z-10"></div>
+                  </div>
+                </div>
+                <div className="mt-auto flex-grow flex flex-col justify-end">
+                  <h3 className="text-xl font-bold mb-2 relative team-name-glow">Omar Hidalgo<span className="team-underline-glow"></span></h3>
+                  <p className="text-[#FF6634] mb-3 !whitespace-pre-line">Co-Fundador</p>
+                  <p className="text-sm text-[#E1E5EB] leading-relaxed !whitespace-pre-line">Especialista en procesos e innovación con más de 20 años liderando equipos técnicos. Experto en optimizar modelos de negocio a través de arquitectura tecnológica y transformación.</p>
                 </div>
               </Card>
             </div>
