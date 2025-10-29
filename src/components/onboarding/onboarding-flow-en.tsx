@@ -89,11 +89,11 @@ export const OnboardingFlowEn = () => {
       return;
     }
 
-    // If NO session, persist locally and go to register
+    // If NO session, persist locally and redirect to external register
     try {
       localStorage.setItem("synth_onboarding", JSON.stringify(payload));
     } catch {}
-    router.push("/register");
+    window.location.href = "https://app.synth-insights.com/register";
   };
 
   const back = () => setStep((s) => (Math.max(1, s - 1) as 1 | 2 | 3));
