@@ -21,8 +21,8 @@ import {
   MapPin,
   DollarSign,
   Sparkles,
-  Zap
-} from "lucide-react";
+  Zap } from
+"lucide-react";
 import { AhorroSynthCalculator } from "@/components/sections/ahorro-synth-calculator";
 import { NewsletterBannerHome } from "@/components/blocks/newsletter-sections/newsletter-banner-home";
 import { BlogPreviewSection } from "@/components/sections/blog-preview-section";
@@ -62,80 +62,80 @@ export default async function HomePage() {
     title: p.title,
     excerpt: p.excerpt || "",
     image: p.coverImageUrl || p.imageUrl,
-    slug: p.slug,
+    slug: p.slug
   }));
 
   function formatFaqHtml(raw: string) {
     const keys = [
-      'Motor de Insights Synth', 'Biblioteca de Conocimiento', 'insights contextuales', 'Perfiles Multi-capa de Personas', 'Consistencia impulsada por IA', 'Conocimiento específico de marca',
-      'exploración rápida', 'validación direccional', 'descartar ideas', 'comparar múltiples conceptos', 'entender lenguaje del consumidor',
-      'exportar', 'integraciones nativas', 'Metodologías', 'focus group', 'transcripciones', 'análisis generado por IA', 'JSON',
-      'Preparación', 'Ejecución', 'Análisis', 'insights accionables',
-      'personalizar', 'laboratorios de IA', 'control total', 'director de investigación',
-      'ahorros', 'más del 90%', 'costos directos', 'Calculadora de Ahorros',
-      'gratis', 'sin tarjeta de crédito'
-    ];
+    'Motor de Insights Synth', 'Biblioteca de Conocimiento', 'insights contextuales', 'Perfiles Multi-capa de Personas', 'Consistencia impulsada por IA', 'Conocimiento específico de marca',
+    'exploración rápida', 'validación direccional', 'descartar ideas', 'comparar múltiples conceptos', 'entender lenguaje del consumidor',
+    'exportar', 'integraciones nativas', 'Metodologías', 'focus group', 'transcripciones', 'análisis generado por IA', 'JSON',
+    'Preparación', 'Ejecución', 'Análisis', 'insights accionables',
+    'personalizar', 'laboratorios de IA', 'control total', 'director de investigación',
+    'ahorros', 'más del 90%', 'costos directos', 'Calculadora de Ahorros',
+    'gratis', 'sin tarjeta de crédito'];
 
-    let html = raw
-      .split(/\n+/)
-      .map((p) => {
-        let res = p;
-        keys.forEach((c) => {
-          res = res.replace(new RegExp(`(?<![\\w>])(${c.replace(/([.*+?^=!:${}()|\[\]\\])/g, "\\$1")})(?![\\w<])`, 'gi'), '<strong>$1</strong>');
-        });
-        return `<p>${res.trim()}</p>`;
-      })
-      .join('');
+
+    let html = raw.
+    split(/\n+/).
+    map((p) => {
+      let res = p;
+      keys.forEach((c) => {
+        res = res.replace(new RegExp(`(?<![\\w>])(${c.replace(/([.*+?^=!:${}()|\[\]\\])/g, "\\$1")})(?![\\w<])`, 'gi'), '<strong>$1</strong>');
+      });
+      return `<p>${res.trim()}</p>`;
+    }).
+    join('');
 
     html = html.replace(new RegExp('<p>- ([^<]+)</p>', 'g'), '<ul class="list-disc pl-8 my-2"><li>$1</li></ul>');
     return html;
   }
 
   const faqs = [
-    {
-      question: "¿Synth es solo otro chatbot avanzado?",
-      answer: formatFaqHtml(`No. Mientras que un chatbot usa conocimiento genérico, cada participante Synth piensa y habla a través de las 5 capas de nuestro Motor de Realismo™: identidad, sesgos irracionales, cultura, emoción actual e intenciones. La diferencia es obtener una respuesta vs. entender a una persona.`)
-    },
-    {
-      question: `¿Qué es exactamente el "Motor de Realismo™"?`,
-      answer: formatFaqHtml(`Es nuestra arquitectura de 5 capas que asegura autenticidad. Como Director de Simulación, defines la <strong>Identidad</strong> (el ADN), inyectas <strong>Sesgos Cognitivos</strong> (el subconsciente), y modulas el <strong>Contexto</strong> (emoción, agenda). Nuestro motor añade la <strong>Capa Cultural</strong> (la tribu). ¿El resultado? Una réplica muy humana, no una máquina.`)
-    },
-    {
-      question: `¿Qué son las "Cosmovisiones" y por qué importan?`,
-      answer: formatFaqHtml(`Son los sistemas operativos culturales de tus clientes. Nuestro motor asigna automáticamente a cada participante un arquetipo cultural que define sus valores y lenguaje no escritos. Esto te permite validar si tu mensaje resuena con el <em>código</em> de la tribu. Ejecuta una simulación y ve si tu marca habla su idioma.`)
-    },
-    {
-      question: `¿Por qué querría testear con participantes "irracionales" (con sesgos)?`,
-      answer: formatFaqHtml(`Porque tus clientes son irracionales. Las personas reales no toman decisiones 100% lógicas; confían en atajos mentales. Al inyectar sesgos como "Aversión a la Pérdida", descubres las barreras emocionales reales hacia tu producto. Es la forma más rápida de pasar de idealizado a comportamiento real. Puedes elegir entre 9 sesgos.`)
-    },
-    {
-      question: `Con tanto control, ¿cómo evito confirmar mis propios sesgos?`,
-      answer: formatFaqHtml(`Atajamos el sesgo en dos frentes:
+  {
+    question: "¿Synth es solo otro chatbot avanzado?",
+    answer: formatFaqHtml(`No. Mientras que un chatbot usa conocimiento genérico, cada participante Synth piensa y habla a través de las 5 capas de nuestro Motor de Realismo™: identidad, sesgos irracionales, cultura, emoción actual e intenciones. La diferencia es obtener una respuesta vs. entender a una persona.`)
+  },
+  {
+    question: `¿Qué es exactamente el "Motor de Realismo™"?`,
+    answer: formatFaqHtml(`Es nuestra arquitectura de 5 capas que asegura autenticidad. Como Director de Simulación, defines la <strong>Identidad</strong> (el ADN), inyectas <strong>Sesgos Cognitivos</strong> (el subconsciente), y modulas el <strong>Contexto</strong> (emoción, agenda). Nuestro motor añade la <strong>Capa Cultural</strong> (la tribu). ¿El resultado? Una réplica muy humana, no una máquina.`)
+  },
+  {
+    question: `¿Qué son las "Cosmovisiones" y por qué importan?`,
+    answer: formatFaqHtml(`Son los sistemas operativos culturales de tus clientes. Nuestro motor asigna automáticamente a cada participante un arquetipo cultural que define sus valores y lenguaje no escritos. Esto te permite validar si tu mensaje resuena con el <em>código</em> de la tribu. Ejecuta una simulación y ve si tu marca habla su idioma.`)
+  },
+  {
+    question: `¿Por qué querría testear con participantes "irracionales" (con sesgos)?`,
+    answer: formatFaqHtml(`Porque tus clientes son irracionales. Las personas reales no toman decisiones 100% lógicas; confían en atajos mentales. Al inyectar sesgos como "Aversión a la Pérdida", descubres las barreras emocionales reales hacia tu producto. Es la forma más rápida de pasar de idealizado a comportamiento real. Puedes elegir entre 9 sesgos.`)
+  },
+  {
+    question: `Con tanto control, ¿cómo evito confirmar mis propios sesgos?`,
+    answer: formatFaqHtml(`Atajamos el sesgo en dos frentes:
 Antes de la simulación, con Spark: En lugar de que crees perfiles que confirmen tus propias ideas, Spark genera personas sintéticas realistas con matices y contradicciones inesperadas. Te obliga a empezar la investigación desde un punto de vista neutral y desafiante.
 Durante la simulación, con tu rol de Director: Recuerda la regla de oro: Synth no es un oráculo para validar, es tu laboratorio de pruebas de estrés. La mejor práctica es aplicar el "triángulo de estrés": una simulación base (neutral), una con participantes escépticos y otra con defensores de la competencia.
 Al final, no buscas saber si tu idea es buena en el vacío, sino descubrir bajo qué condiciones sobrevive y prospera.`)
-    },
-    {
-      question: `¿Cuál es el valor real de cambiar la emoción o agenda de un participante?`,
-      answer: formatFaqHtml(`Es la diferencia entre testear en el vacío y testear en el mundo real. Establece el estado a "Ansioso" para simular cómo reacciona tu cliente a un aumento de precio durante una crisis. Establece la agenda a "Defensor de Competidor" para ver cómo resiste tu propuesta de valor un ataque directo. <strong>Tienes control total sobre el contexto.</strong>`)
-    },
-    {
-      question: `Con una herramienta tan poderosa, ¿significa que ya no necesito agencias de investigación?`,
-      answer: formatFaqHtml(`Al contrario. Synth es el mayor aliado de las agencias de investigación. No reemplazamos su experiencia—les damos superpoderes. Permitimos que las agencias pasen menos tiempo en logística (reclutamiento, transcripción) y más en donde añaden valor único: análisis profundo y recomendaciones estratégicas. Synth convierte agencias buenas en socios estratégicos indispensables para sus clientes.`)
-    },
-    {
-      question: `¿Cómo se compara el costo de Synth con la investigación tradicional?`,
-      answer: formatFaqHtml(`Los ahorros son radicales: <strong>más del 90%</strong> comparado con un estudio cualitativo tradicional.\n\nEl verdadero cambio es estratégico: pasas de poder costear un estudio a poder <strong>lanzar diez por el costo de uno</strong>. Es la diferencia entre apostar por una idea y validarla continuamente.\n\n¿Cómo lo logramos? Eliminando costos de reclutamiento, incentivos, alquiler de salas y transcripción manual.\n\nCalcula tus ahorros exactos con nuestra <strong>Calculadora de Ahorros</strong>.`)
-    },
-    {
-      question: `¿Necesito un equipo grande de investigación para usar Synth?`,
-      answer: formatFaqHtml(`No. Synth democratiza el insight profundo. Un solo investigador o profesional de insights de mercado puede convertirse en Director de Simulación y lograr en horas la profundidad cualitativa que antes requería un equipo completo y semanas de trabajo. Es agilidad estratégica para equipos de cualquier tamaño.\nDesaconsejamos el uso por perfiles sin conocimiento fundamental de investigación.`)
-    },
-    {
-      question: `Todo esto suena genial, pero… ¿puedo probar la plataforma antes de decidir?`,
-      answer: formatFaqHtml(`Absolutamente. Creemos que el poder de Synth se entiende mejor experimentándolo. Por eso ofrecemos un modelo <strong>Freemium</strong> que te permite lanzar tus primeras simulaciones y ver la calidad de insights por ti mismo. No hay nada que perder y un nuevo universo de entendimiento que ganar. Empieza gratis y descubre el futuro de la investigación.`)
-    }
-  ];
+  },
+  {
+    question: `¿Cuál es el valor real de cambiar la emoción o agenda de un participante?`,
+    answer: formatFaqHtml(`Es la diferencia entre testear en el vacío y testear en el mundo real. Establece el estado a "Ansioso" para simular cómo reacciona tu cliente a un aumento de precio durante una crisis. Establece la agenda a "Defensor de Competidor" para ver cómo resiste tu propuesta de valor un ataque directo. <strong>Tienes control total sobre el contexto.</strong>`)
+  },
+  {
+    question: `Con una herramienta tan poderosa, ¿significa que ya no necesito agencias de investigación?`,
+    answer: formatFaqHtml(`Al contrario. Synth es el mayor aliado de las agencias de investigación. No reemplazamos su experiencia—les damos superpoderes. Permitimos que las agencias pasen menos tiempo en logística (reclutamiento, transcripción) y más en donde añaden valor único: análisis profundo y recomendaciones estratégicas. Synth convierte agencias buenas en socios estratégicos indispensables para sus clientes.`)
+  },
+  {
+    question: `¿Cómo se compara el costo de Synth con la investigación tradicional?`,
+    answer: formatFaqHtml(`Los ahorros son radicales: <strong>más del 90%</strong> comparado con un estudio cualitativo tradicional.\n\nEl verdadero cambio es estratégico: pasas de poder costear un estudio a poder <strong>lanzar diez por el costo de uno</strong>. Es la diferencia entre apostar por una idea y validarla continuamente.\n\n¿Cómo lo logramos? Eliminando costos de reclutamiento, incentivos, alquiler de salas y transcripción manual.\n\nCalcula tus ahorros exactos con nuestra <strong>Calculadora de Ahorros</strong>.`)
+  },
+  {
+    question: `¿Necesito un equipo grande de investigación para usar Synth?`,
+    answer: formatFaqHtml(`No. Synth democratiza el insight profundo. Un solo investigador o profesional de insights de mercado puede convertirse en Director de Simulación y lograr en horas la profundidad cualitativa que antes requería un equipo completo y semanas de trabajo. Es agilidad estratégica para equipos de cualquier tamaño.\nDesaconsejamos el uso por perfiles sin conocimiento fundamental de investigación.`)
+  },
+  {
+    question: `Todo esto suena genial, pero… ¿puedo probar la plataforma antes de decidir?`,
+    answer: formatFaqHtml(`Absolutamente. Creemos que el poder de Synth se entiende mejor experimentándolo. Por eso ofrecemos un modelo <strong>Freemium</strong> que te permite lanzar tus primeras simulaciones y ver la calidad de insights por ti mismo. No hay nada que perder y un nuevo universo de entendimiento que ganar. Empieza gratis y descubre el futuro de la investigación.`)
+  }];
+
 
   return (
     <div className="min-h-screen bg-[#0B0E1A] text-white">
@@ -151,8 +151,8 @@ Al final, no buscas saber si tu idea es buena en el vacío, sino descubrir bajo 
             <img
               src="https://i.postimg.cc/bvqJBxD6/Logo-Synth-sin-fondo.png"
               alt="Synth"
-              className="h-8 w-auto object-contain"
-            />
+              className="h-8 w-auto object-contain" />
+
           </div>
           <div className="hidden md:flex items-center space-x-8">
             <a href="#inicio" className="hover:text-[#FF6634] transition-colors">Inicio</a>
@@ -238,15 +238,15 @@ Al final, no buscas saber si tu idea es buena en el vacío, sino descubrir bajo 
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">Algunas marcas ya confían en Synth</h2>
           <div className="relative overflow-hidden">
             <div className="flex animate-slide-continuous space-x-16 items-center">
-              {Array.from({ length: 4 }, (_, setIndex) => (
-                <div key={setIndex} className="flex space-x-16 items-center shrink-0">
-                  {["Pulso App", "The Signal", "Tierras de Castilla", "Nexus Studio", "Echo Design"].map((brand, index) => (
-                    <div key={`${setIndex}-${index}`} className="flex items-center justify-center text-white/70 font-light text-xl whitespace-nowrap min-w-fit">
+              {Array.from({ length: 4 }, (_, setIndex) =>
+              <div key={setIndex} className="flex space-x-16 items-center shrink-0">
+                  {["Pulso App", "The Signal", "Tierras de Castilla", "Nexus Studio", "Echo Design"].map((brand, index) =>
+                <div key={`${setIndex}-${index}`} className="flex items-center justify-center text-white/70 font-light text-xl whitespace-nowrap min-w-fit">
                       {brand}
                     </div>
-                  ))}
+                )}
                 </div>
-              ))}
+              )}
             </div>
           </div>
         </div>
@@ -327,8 +327,8 @@ Al final, no buscas saber si tu idea es buena en el vacío, sino descubrir bajo 
             src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/1753258326722-7ue1k3jh895.jpg"
             alt="Tech BG"
             className="w-full h-full object-cover"
-            style={{ filter: 'saturate(1.65) contrast(1.23) brightness(1.07)', objectPosition: 'center' }}
-          />
+            style={{ filter: 'saturate(1.65) contrast(1.23) brightness(1.07)', objectPosition: 'center' }} />
+
           <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom,rgba(11,14,26,0.60) 0%,rgba(11,14,26,0.70) 100%)' }} />
         </div>
         <div className="max-w-6xl mx-auto relative z-10 px-4">
@@ -337,8 +337,8 @@ Al final, no buscas saber si tu idea es buena en el vacío, sino descubrir bajo 
               Arquitectura{' '}
               <span
                 className="text-white transition-colors duration-300 hover:text-[#FF6634] cursor-pointer"
-                style={{ WebkitTransition: 'color 0.3s', MozTransition: 'color 0.3s', OTransition: 'color 0.3s', transition: 'color 0.3s' }}
-              >
+                style={{ WebkitTransition: 'color 0.3s', MozTransition: 'color 0.3s', OTransition: 'color 0.3s', transition: 'color 0.3s' }}>
+
                 Tecnológica
               </span>
             </h2>
@@ -398,8 +398,8 @@ Al final, no buscas saber si tu idea es buena en el vacío, sino descubrir bajo 
                       src="https://i.postimg.cc/gcB1t8BG/Cd-P-de-Pie-removebg-preview.png"
                       alt="Carlos de Prado"
                       className="w-32 h-36 object-cover object-top mx-auto animate-glow-avatar rounded-lg relative z-10"
-                      style={{ maskImage: 'radial-gradient(ellipse at center, black 70%, transparent 100%)', WebkitMaskImage: 'radial-gradient(ellipse at center, black 70%, transparent 100%)' }}
-                    />
+                      style={{ maskImage: 'radial-gradient(ellipse at center, black 70%, transparent 100%)', WebkitMaskImage: 'radial-gradient(ellipse at center, black 70%, transparent 100%)' }} />
+
                     <div className="absolute inset-0 w-32 h-36 mx-auto rounded-lg bg-gradient-to-br from-[#FF6634]/30 to-[#FF8A5B]/20 blur-md animate-pulse opacity-60 -z-10"></div>
                   </div>
                 </div>
@@ -419,14 +419,14 @@ Al final, no buscas saber si tu idea es buena en el vacío, sino descubrir bajo 
                       src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/1755630316605-etbjgew24x.png"
                       alt="Omar Hidalgo"
                       className="w-32 h-36 object-cover object-top mx-auto animate-glow-avatar rounded-lg relative z-10"
-                      style={{ maskImage: 'radial-gradient(ellipse at center, black 70%, transparent 100%)', WebkitMaskImage: 'radial-gradient(ellipse at center, black 70%, transparent 100%)' }}
-                    />
+                      style={{ maskImage: 'radial-gradient(ellipse at center, black 70%, transparent 100%)', WebkitMaskImage: 'radial-gradient(ellipse at center, black 70%, transparent 100%)' }} />
+
                     <div className="absolute inset-0 w-32 h-36 mx-auto rounded-lg bg-gradient-to-br from-[#FF6634]/30 to-[#FF8A5B]/20 blur-md animate-pulse opacity-60 -z-10"></div>
                   </div>
                 </div>
                 <div className="mt-auto flex-grow flex flex-col justify-end">
                   <h3 className="text-xl font-bold mb-2 relative team-name-glow">Omar Hidalgo<span className="team-underline-glow"></span></h3>
-                  <p className="text-[#FF6634] mb-3">CIO & Co-Fundador</p>
+                  <p className="text-[#FF6634] mb-3 !whitespace-pre-line">Co-Fundador</p>
                   <p className="text-sm text-[#E1E5EB] leading-relaxed !whitespace-pre-line">Especialista en procesos e innovación con más de 20 años liderando equipos técnicos. Experto en optimizar modelos de negocio a través de arquitectura tecnológica y transformación.</p>
                 </div>
               </Card>
@@ -440,8 +440,8 @@ Al final, no buscas saber si tu idea es buena en el vacío, sino descubrir bajo 
                       src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/1755630595109-zlk2es9s96j.png"
                       alt="Jesús Rodríguez"
                       className="w-40 h-45 object-cover object-top mx-auto animate-glow-avatar rounded-lg relative z-10"
-                      style={{ maskImage: 'radial-gradient(ellipse at center, black 70%, transparent 100%)', WebkitMaskImage: 'radial-gradient(ellipse at center, black 70%, transparent 100%)' }}
-                    />
+                      style={{ maskImage: 'radial-gradient(ellipse at center, black 70%, transparent 100%)', WebkitMaskImage: 'radial-gradient(ellipse at center, black 70%, transparent 100%)' }} />
+
                     <div className="absolute inset-0 w-40 h-45 mx-auto rounded-lg bg-gradient-to-br from-[#FF6634]/30 to-[#FF8A5B]/20 blur-md animate-pulse opacity-60 -z-10"></div>
                   </div>
                 </div>
@@ -636,6 +636,6 @@ Al final, no buscas saber si tu idea es buena en el vacío, sino descubrir bajo 
       <div className="border-t border-[#2A3441] pt-8 flex flex-col md:flex-row justify-between items-center">
         <p className="text-[#E1E5EB] mb-4 md:mb-0">© 2025 Synth. Todos los derechos reservados.</p>
       </div>
-    </div>
-  );
+    </div>);
+
 }
