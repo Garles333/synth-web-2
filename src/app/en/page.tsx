@@ -471,12 +471,10 @@ export default async function HomePageEN() {
         <LaboratorioRealismo locale="en" />
       </ScrollReveal>
 
-      <ScrollReveal direction="up" distance={60}>
-        <DiferenciaFundamental locale="en" />
-      </ScrollReveal>
+      <SparkSection locale="en" />
 
       <ScrollReveal direction="up" distance={60}>
-        <SparkSection locale="en" />
+        <DiferenciaFundamental locale="en" />
       </ScrollReveal>
 
       <section id="equipo" className="py-20 px-4">

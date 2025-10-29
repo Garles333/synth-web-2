@@ -372,11 +372,11 @@ Al final, no buscas saber si tu idea es buena en el vacío, sino descubrir bajo 
         <LaboratorioRealismo />
       </ScrollReveal>
 
+      <SparkSection locale="es" />
+
       <ScrollReveal direction="up" distance={60}>
         <DiferenciaFundamental />
       </ScrollReveal>
-
-      <SparkSection locale="es" />
 
       <section id="equipo" className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
