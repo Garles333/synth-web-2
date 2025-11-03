@@ -141,36 +141,31 @@ export async function createOrUpdateContact(contactData: MauticContact): Promise
  */
 async function addTagsToContact(contactId: number, tags: string[], token: string): Promise<void> {
   try {
-    console.log('📌 Starting to add tags:', { contactId, tags });
+    console.log('📌 Adding tags to contact:', { contactId, tags });
     
-    for (const tag of tags) {
-      const tagUrl = `${MAUTIC_BASE_URL}/api/contacts/${contactId}/tags/add`;
-      console.log('📌 Adding tag to contact:', { contactId, tag, url: tagUrl });
-      
-      const response = await fetch(tagUrl, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ tag }),
-      });
+    // CORRECCIÓN: Mautic requiere PATCH al endpoint del contacto con tags como array
+    const updateUrl = `${MAUTIC_BASE_URL}/api/contacts/${contactId}`;
+    
+    const response = await fetch(updateUrl, {
+      method: 'PATCH',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ tags }), // Enviar tags como array directamente
+    });
 
-      const responseData = await response.text();
-      
-      if (!response.ok) {
-        console.error('❌ Failed to add tag:', { 
-          tag, 
-          status: response.status, 
-          statusText: response.statusText,
-          response: responseData 
-        });
-      } else {
-        console.log('✅ Tag added successfully:', { tag, contactId });
-      }
-    }
+    const responseData = await response.text();
     
-    console.log('📌 Finished adding all tags');
+    if (!response.ok) {
+      console.error('❌ Failed to add tags:', { 
+        status: response.status, 
+        statusText: response.statusText,
+        response: responseData 
+      });
+    } else {
+      console.log('✅ Tags added successfully:', { tags, contactId, response: responseData });
+    }
   } catch (error) {
     console.error('❌ Error adding tags to contact:', error);
   }
