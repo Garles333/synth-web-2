@@ -190,6 +190,8 @@ export async function trackDemoRequest(
   firstName: string,
   lastName: string,
   company: string,
+  companyType: string,
+  country: string,
   locale: 'es' | 'en' = 'es'
 ): Promise<MauticResponse> {
   return createOrUpdateContact({
@@ -197,6 +199,8 @@ export async function trackDemoRequest(
     firstname: firstName,
     lastname: lastName,
     company,
+    companyType,
+    country,
     locale,
     tags: ['demo_solicitado', `idioma_${locale}`],
   });

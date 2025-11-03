@@ -10,7 +10,7 @@ import {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { action, email, firstName, lastName, company, locale = 'es', data, tags, fields } = body;
+    const { action, email, firstName, lastName, company, companyType, country, locale = 'es', data, tags, fields } = body;
 
     if (!email || typeof email !== 'string') {
       return NextResponse.json(
@@ -28,13 +28,21 @@ export async function POST(request: NextRequest) {
         break;
 
       case 'demo':
-        if (!firstName || !lastName || !company) {
+        if (!firstName || !lastName) {
           return NextResponse.json(
-            { error: 'First name, last name, and company are required for demo requests' },
+            { error: 'First name and last name are required for demo requests' },
             { status: 400 }
           );
         }
-        result = await trackDemoRequest(email, firstName, lastName, company, locale);
+        result = await trackDemoRequest(
+          email, 
+          firstName, 
+          lastName, 
+          company || '', 
+          companyType || '', 
+          country || '', 
+          locale
+        );
         break;
 
       case 'free_trial':
