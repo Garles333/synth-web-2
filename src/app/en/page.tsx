@@ -4,6 +4,8 @@ import { Badge } from "@/components/ui/badge";
 import { AnimatedTextHighlight } from "@/components/blocks/text-animations/animated-text-highlight";
 import { HeroMobileAnimated } from "@/components/blocks/heros/hero-mobile-animated";
 import { HeroDesktopAnimated } from "@/components/blocks/heros/hero-desktop-animated";
+import { TrackedCTAButton } from "@/components/ui/tracked-cta-button";
+import { DemoDialogTrigger } from "@/components/ui/demo-dialog-trigger";
 import {
   ArrowRight,
   Shield,
@@ -42,10 +44,10 @@ export const metadata = {
   title: 'Synthetic-data simulation platform: Test, validate, and refine business decisions before real-world impact.',
   description: 'Synthetic-data simulation platform: Test, validate, and refine business decisions before real-world impact.',
   alternates: {
-    canonical: 'https://synth-insights.com/en',
+    canonical: 'https://synth.com.es/en',
     languages: {
-      'es-ES': 'https://synth-insights.com/',
-      'en-US': 'https://synth-insights.com/en'
+      'es-ES': 'https://synth.com.es/',
+      'en-US': 'https://synth.com.es/en'
     }
   }
 };
@@ -195,16 +197,22 @@ export default async function HomePageEN() {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 relative z-10">
-          <Button asChild className="bg-[#FF6634] hover:bg-[#FF6634]/90 text-white px-8 py-3 text-base md:text-lg transform hover:scale-105 transition-all duration-300 hover:shadow-lg hover:shadow-[#FF6634]/25">
-            <Link href="/en/onboarding">
-              Try it free
-              <Play className="w-5 h-5 ml-2" />
-            </Link>
-          </Button>
-          <Button variant="outline" className="border-[#2A3441] text-white hover:bg-[#1A1F2E] px-8 py-3 text-base md:text-lg transform hover:scale-105 transition-all duration-300 hover:border-[#FF6634]/50">
-            Watch Demo
-            <ArrowRight className="w-5 h-5 ml-2" />
-          </Button>
+          <TrackedCTAButton
+            ctaName="Try it free - Hero"
+            targetUrl="/en/onboarding"
+            locale="en"
+            page="homepage"
+            className="bg-[#FF6634] hover:bg-[#FF6634]/90 text-white px-8 py-3 text-base md:text-lg transform hover:scale-105 transition-all duration-300 hover:shadow-lg hover:shadow-[#FF6634]/25"
+          >
+            Try it free
+            <Play className="w-5 h-5 ml-2" />
+          </TrackedCTAButton>
+          <DemoDialogTrigger locale="en" ctaName="Watch Demo - Hero" page="homepage">
+            <Button variant="outline" className="border-[#2A3441] text-white hover:bg-[#1A1F2E] px-8 py-3 text-base md:text-lg transform hover:scale-105 transition-all duration-300 hover:border-[#FF6634]/50">
+              Watch Demo
+              <ArrowRight className="w-5 h-5 ml-2" />
+            </Button>
+          </DemoDialogTrigger>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto relative z-10">
