@@ -141,9 +141,11 @@ export async function createOrUpdateContact(contactData: MauticContact): Promise
  */
 async function addTagsToContact(contactId: number, tags: string[], token: string): Promise<void> {
   try {
+    console.log('📌 Starting to add tags:', { contactId, tags });
+    
     for (const tag of tags) {
       const tagUrl = `${MAUTIC_BASE_URL}/api/contacts/${contactId}/tags/add`;
-      console.log('Adding tag to contact:', { contactId, tag });
+      console.log('📌 Adding tag to contact:', { contactId, tag, url: tagUrl });
       
       const response = await fetch(tagUrl, {
         method: 'POST',
@@ -154,12 +156,23 @@ async function addTagsToContact(contactId: number, tags: string[], token: string
         body: JSON.stringify({ tag }),
       });
 
+      const responseData = await response.text();
+      
       if (!response.ok) {
-        console.error('Failed to add tag:', tag, response.status);
+        console.error('❌ Failed to add tag:', { 
+          tag, 
+          status: response.status, 
+          statusText: response.statusText,
+          response: responseData 
+        });
+      } else {
+        console.log('✅ Tag added successfully:', { tag, contactId });
       }
     }
+    
+    console.log('📌 Finished adding all tags');
   } catch (error) {
-    console.error('Error adding tags to contact:', error);
+    console.error('❌ Error adding tags to contact:', error);
   }
 }
 
