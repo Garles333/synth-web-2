@@ -67,6 +67,7 @@ export function DemoFormDialog({ open, onOpenChange, locale = 'es' }: DemoFormDi
       bolivia: 'Bolivia',
       chile: 'Chile',
       colombia: 'Colombia',
+      mexico: 'Mexico',
       paraguay: 'Paraguay',
       peru: 'Peru',
       other: 'Other',
@@ -106,6 +107,7 @@ export function DemoFormDialog({ open, onOpenChange, locale = 'es' }: DemoFormDi
       bolivia: 'Bolivia',
       chile: 'Chile',
       colombia: 'Colombia',
+      mexico: 'México',
       paraguay: 'Paraguay',
       peru: 'Perú',
       other: 'Otro',
@@ -264,6 +266,7 @@ export function DemoFormDialog({ open, onOpenChange, locale = 'es' }: DemoFormDi
                     <SelectItem value="bolivia">{t.countries.bolivia}</SelectItem>
                     <SelectItem value="chile">{t.countries.chile}</SelectItem>
                     <SelectItem value="colombia">{t.countries.colombia}</SelectItem>
+                    <SelectItem value="mexico">{t.countries.mexico}</SelectItem>
                     <SelectItem value="paraguay">{t.countries.paraguay}</SelectItem>
                     <SelectItem value="peru">{t.countries.peru}</SelectItem>
                     <SelectItem value="other">{t.countries.other}</SelectItem>
