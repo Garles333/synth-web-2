@@ -1,0 +1,49 @@
+User-agent: *
+Allow: /
+Allow: /blog/
+Allow: /precios
+Allow: /funcionalidades
+Allow: /nosotros
+Allow: /contacto
+Allow: /casos-de-exito
+Allow: /recursos
+Allow: /demo
+Allow: /registrarse
+Allow: /iniciar-sesion
+
+# Block admin, API, and backend paths
+Disallow: /admin/
+Disallow: /api/
+Disallow: /backend/
+Disallow: /dashboard/
+Disallow: /private/
+Disallow: /internal/
+Disallow: /debug/
+Disallow: /test/
+Disallow: /dev/
+Disallow: /staging/
+Disallow: /experimental/
+Disallow: /_next/
+Disallow: /node_modules/
+
+# Block temporary or utility files
+Disallow: /tmp/
+Disallow: /temp/
+Disallow: /*.log$
+Disallow: /*.json$
+Disallow: /sitemap*.xml$
+
+# Allow common static assets
+Allow: /images/
+Allow: /css/
+Allow: /js/
+Allow: /assets/
+Allow: /uploads/
+Allow: /media/
+Allow: /static/
+
+# Crawl delay (optional, recommended for large sites)
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://synth.com.es/sitemap.xml

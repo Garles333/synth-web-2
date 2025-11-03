@@ -4,10 +4,10 @@ export const metadata: Metadata = {
   title: "Synth Insights - AI-Powered Market Research Platform",
   description: "Synthetic market research platform: Test, validate and refine your business decisions before real-world impact.",
   alternates: {
-    canonical: 'https://synth-insights.com/en',
+    canonical: 'https://synth.com.es/en',
     languages: {
-      'es-ES': 'https://synth-insights.com/',
-      'en-US': 'https://synth-insights.com/en'
+      'es-ES': 'https://synth.com.es/',
+      'en-US': 'https://synth.com.es/en'
     }
   }
 };
