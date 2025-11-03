@@ -70,8 +70,35 @@ export const OnboardingFlow = () => {
             tags
           }),
         }).catch(() => {
-          // Si systeme.io falla, continuar de todas formas
           console.log("Systeme.io sync failed, continuing...");
+        });
+
+        // 3. Enviar a Mautic
+        await fetch("/api/mautic/contact", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: session.user.email,
+            firstname: session.user.name?.split(" ")[0] || "",
+            lastname: session.user.name?.split(" ").slice(1).join(" ") || "",
+            tags: [
+              "onboarding-completed",
+              `goal-${goal.toLowerCase().replace(/\s+/g, "-")}`,
+              `role-${role.toLowerCase().replace(/\s+/g, "-")}`,
+              `team-${teamSize.toLowerCase().replace(/\s+/g, "-")}`
+            ],
+            fields: {
+              onboarding_goal: goal,
+              onboarding_role: role,
+              onboarding_team_size: teamSize,
+              onboarding_methods: methods.join(", "),
+              onboarding_completed_at: new Date().toISOString()
+            }
+          }),
+        }).catch(() => {
+          console.log("Mautic sync failed, continuing...");
         });
 
         // Save locally for future UI usage

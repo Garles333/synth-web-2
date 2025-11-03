@@ -23,7 +23,7 @@ export function DemoDialogTrigger({
     
     // Track CTA click in Mautic
     try {
-      await fetch('/api/mautic/contact', {
+      await fetch('/api/contact-mautic', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

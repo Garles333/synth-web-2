@@ -29,6 +29,7 @@ export function DemoFormDialog({ open, onOpenChange, locale = 'es' }: DemoFormDi
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [error, setError] = useState('');
 
   const t = locale === 'en' ? {
     title: 'Request a Demo',
@@ -70,16 +71,11 @@ export function DemoFormDialog({ open, onOpenChange, locale = 'es' }: DemoFormDi
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    if (!formData.email || !formData.firstName || !formData.lastName || !formData.company) {
-      toast.error(t.requiredFields);
-      return;
-    }
-
     setIsSubmitting(true);
+    setError('');
 
     try {
-      const response = await fetch('/api/mautic/contact', {
+      const response = await fetch('/api/contact-mautic', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -48,15 +48,16 @@ export const NewsletterBannerHome = ({
     setState('loading');
     setLastSubmit(now);
     try {
-      // Enviar solo a Mautic
-      const response = await fetch('/api/mautic/contact', {
+      const response = await fetch('/api/contact-mautic', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
           action: 'newsletter',
-          email, 
-          locale
-        })
+          email,
+          locale,
+        }),
       });
 
       if (response.ok) {
