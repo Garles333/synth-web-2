@@ -48,33 +48,28 @@ export const NewsletterBannerHome = ({
     setState('loading');
     setLastSubmit(now);
     try {
-      // Enviar a ambos endpoints: Resend y Systeme
-      const [resendResponse, systemeResponse] = await Promise.allSettled([
-        fetch('/api/newsletter', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, locale })
-        }),
-        fetch('/api/systeme/subscribe', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, tags: ['newsletter'] })
+      // Enviar solo a Mautic
+      const response = await fetch('/api/mautic/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          action: 'newsletter',
+          email, 
+          locale
         })
-      ]);
+      });
 
-      // Si al menos uno tiene éxito, consideramos exitoso
-      const hasSuccess = 
-        (resendResponse.status === 'fulfilled' && resendResponse.value.ok) ||
-        (systemeResponse.status === 'fulfilled' && systemeResponse.value.ok);
-
-      if (hasSuccess) {
+      if (response.ok) {
         setState('success');
         setEmail('');
       } else {
+        const errorData = await response.json();
+        console.error('Newsletter subscription error:', errorData);
         setState('error');
         setErrorMessage(locale === 'en' ? 'An error occurred, please try again in a few seconds' : 'Ocurrió un error, prueba de nuevo en unos segundos');
       }
     } catch (error) {
+      console.error('Newsletter subscription error:', error);
       setState('error');
       setErrorMessage(locale === 'en' ? 'An error occurred, please try again in a few seconds' : 'Ocurrió un error, prueba de nuevo en unos segundos');
     }

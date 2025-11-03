@@ -1,18 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
-
-interface MauticContactData {
-  email: string;
-  firstname?: string;
-  lastname?: string;
-  tags?: string[];
-  fields?: Record<string, any>;
-}
+import {
+  trackNewsletterSubscription,
+  trackDemoRequest,
+  trackFreeTrialStart,
+  trackOnboardingComplete,
+  createOrUpdateContact
+} from '@/lib/mautic';
 
 export async function POST(request: NextRequest) {
   try {
-    const data: MauticContactData = await request.json();
-    
-    const { email, firstname, lastname, tags = [], fields = {} } = data;
+    const body = await request.json();
+    const { action, email, firstName, lastName, company, locale = 'es', data, tags, fields } = body;
 
     if (!email || typeof email !== 'string') {
       return NextResponse.json(
@@ -21,107 +19,62 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const mauticUrl = process.env.MAUTIC_URL;
-    const mauticUser = process.env.MAUTIC_USERNAME;
-    const mauticPassword = process.env.MAUTIC_PASSWORD;
+    let result;
 
-    if (!mauticUrl || !mauticUser || !mauticPassword) {
-      console.error('Mautic credentials not configured');
-      return NextResponse.json(
-        { error: 'Mautic not configured' },
-        { status: 500 }
-      );
-    }
+    // Handle different actions
+    switch (action) {
+      case 'newsletter':
+        result = await trackNewsletterSubscription(email, locale);
+        break;
 
-    // Preparar datos del contacto para Mautic
-    const contactData: Record<string, any> = {
-      email,
-      ...(firstname && { firstname }),
-      ...(lastname && { lastname }),
-      ...fields
-    };
-
-    // Agregar tags si existen
-    if (tags.length > 0) {
-      contactData.tags = tags;
-    }
-
-    // Autenticación básica para Mautic API
-    const auth = Buffer.from(`${mauticUser}:${mauticPassword}`).toString('base64');
-
-    // Primero intentar buscar si el contacto existe
-    const searchResponse = await fetch(
-      `${mauticUrl}/api/contacts?search=email:${encodeURIComponent(email)}`,
-      {
-        method: 'GET',
-        headers: {
-          'Authorization': `Basic ${auth}`,
-          'Content-Type': 'application/json',
-        },
-      }
-    );
-
-    if (!searchResponse.ok) {
-      console.error('Mautic search error:', await searchResponse.text());
-      return NextResponse.json(
-        { error: 'Failed to search contact in Mautic' },
-        { status: 500 }
-      );
-    }
-
-    const searchResult = await searchResponse.json();
-    const existingContact = searchResult.contacts && Object.values(searchResult.contacts)[0];
-
-    let mauticResponse;
-    
-    if (existingContact) {
-      // Actualizar contacto existente
-      const contactId = (existingContact as any).id;
-      mauticResponse = await fetch(
-        `${mauticUrl}/api/contacts/${contactId}/edit`,
-        {
-          method: 'PATCH',
-          headers: {
-            'Authorization': `Basic ${auth}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(contactData),
+      case 'demo':
+        if (!firstName || !lastName || !company) {
+          return NextResponse.json(
+            { error: 'First name, last name, and company are required for demo requests' },
+            { status: 400 }
+          );
         }
-      );
-    } else {
-      // Crear nuevo contacto
-      mauticResponse = await fetch(
-        `${mauticUrl}/api/contacts/new`,
-        {
-          method: 'POST',
-          headers: {
-            'Authorization': `Basic ${auth}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(contactData),
-        }
-      );
+        result = await trackDemoRequest(email, firstName, lastName, company, locale);
+        break;
+
+      case 'free_trial':
+        result = await trackFreeTrialStart(email, locale);
+        break;
+
+      case 'onboarding':
+        result = await trackOnboardingComplete(email, data || {}, locale);
+        break;
+
+      default:
+        // Generic contact creation with custom tags/fields
+        result = await createOrUpdateContact({
+          email,
+          firstname: firstName,
+          lastname: lastName,
+          company,
+          locale,
+          tags,
+          ...fields
+        });
+        break;
     }
 
-    if (!mauticResponse.ok) {
-      const errorText = await mauticResponse.text();
-      console.error('Mautic API error:', errorText);
+    if (!result.success) {
+      console.error('Mautic API error:', result.error);
       return NextResponse.json(
-        { error: 'Failed to sync with Mautic', details: errorText },
+        { error: 'Failed to sync with Mautic', details: result.error },
         { status: 500 }
       );
     }
-
-    const result = await mauticResponse.json();
 
     return NextResponse.json(
-      { success: true, data: result },
+      { success: true, data: result.contact },
       { status: 200 }
     );
   } catch (error) {
     console.error('Mautic contact API error:', error);
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: 'Internal server error', details: error instanceof Error ? error.message : 'Unknown error' },
       { status: 500 }
     );
   }

@@ -28,12 +28,24 @@ interface MauticResponse {
  */
 async function getMauticToken(): Promise<string> {
   try {
+    // Validar credenciales
+    if (!MAUTIC_CLIENT_ID || !MAUTIC_CLIENT_SECRET) {
+      console.error('Mautic credentials missing:', {
+        hasUrl: !!MAUTIC_BASE_URL,
+        hasClientId: !!MAUTIC_CLIENT_ID,
+        hasSecret: !!MAUTIC_CLIENT_SECRET
+      });
+      throw new Error('Mautic credentials not configured');
+    }
+
     const tokenUrl = `${MAUTIC_BASE_URL}/oauth/v2/token`;
     const params = new URLSearchParams({
       client_id: MAUTIC_CLIENT_ID,
       client_secret: MAUTIC_CLIENT_SECRET,
       grant_type: 'client_credentials',
     });
+
+    console.log('Requesting Mautic token from:', tokenUrl);
 
     const response = await fetch(tokenUrl, {
       method: 'POST',
@@ -44,10 +56,13 @@ async function getMauticToken(): Promise<string> {
     });
 
     if (!response.ok) {
+      const errorText = await response.text();
+      console.error('Mautic token error:', response.status, errorText);
       throw new Error(`Failed to get Mautic token: ${response.statusText}`);
     }
 
     const data = await response.json();
+    console.log('Mautic token obtained successfully');
     return data.access_token;
   } catch (error) {
     console.error('Error getting Mautic token:', error);
@@ -79,6 +94,8 @@ export async function createOrUpdateContact(contactData: MauticContact): Promise
       }
     });
 
+    console.log('Creating/updating Mautic contact:', { email: contactData.email, tags: contactData.tags });
+
     // Create/update contact
     const contactUrl = `${MAUTIC_BASE_URL}/api/contacts/new`;
     const contactResponse = await fetch(contactUrl, {
@@ -91,11 +108,15 @@ export async function createOrUpdateContact(contactData: MauticContact): Promise
     });
 
     if (!contactResponse.ok) {
+      const errorText = await contactResponse.text();
+      console.error('Mautic contact creation error:', contactResponse.status, errorText);
       throw new Error(`Failed to create contact: ${contactResponse.statusText}`);
     }
 
     const contactResult = await contactResponse.json();
     const contactId = contactResult.contact?.id;
+
+    console.log('Contact created/updated:', contactId);
 
     // Add tags if provided
     if (contactData.tags && contactData.tags.length > 0 && contactId) {
@@ -122,7 +143,9 @@ async function addTagsToContact(contactId: number, tags: string[], token: string
   try {
     for (const tag of tags) {
       const tagUrl = `${MAUTIC_BASE_URL}/api/contacts/${contactId}/tags/add`;
-      await fetch(tagUrl, {
+      console.log('Adding tag to contact:', { contactId, tag });
+      
+      const response = await fetch(tagUrl, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -130,6 +153,10 @@ async function addTagsToContact(contactId: number, tags: string[], token: string
         },
         body: JSON.stringify({ tag }),
       });
+
+      if (!response.ok) {
+        console.error('Failed to add tag:', tag, response.status);
+      }
     }
   } catch (error) {
     console.error('Error adding tags to contact:', error);
