@@ -636,10 +636,12 @@ Al final, no buscas saber si tu idea es buena en el vacío, sino descubrir bajo 
           </div>
 
           <div className="border-t border-[#2A3441] pt-8 mt-8 flex flex-col md:flex-row justify-between items-center">
-            <div className="flex space-x-6">
+            <div className="flex flex-wrap justify-center md:justify-start space-x-6 mb-4 md:mb-0">
               <a href="/privacidad" className="text-[#E1E5EB] hover:text-[#FF6634] text-sm transition-colors">Política de Privacidad</a>
               <a href="/terminos-y-condiciones" className="text-[#E1E5EB] hover:text-[#FF6634] text-sm transition-colors">Términos y Condiciones</a>
+              <a href="/en/refund-policy" className="text-[#E1E5EB] hover:text-[#FF6634] text-sm transition-colors">Refund Policy</a>
             </div>
+            <p className="text-[#E1E5EB] text-sm">© 2025 Synth. Todos los derechos reservados.</p>
           </div>
         </div>
       </footer>

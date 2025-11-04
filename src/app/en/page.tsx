@@ -730,10 +730,12 @@ export default async function HomePageEN() {
           </div>
 
           <div className="border-t border-[#2A3441] pt-8 mt-8 flex flex-col md:flex-row justify-between items-center">
-            <div className="flex space-x-6">
+            <div className="flex flex-wrap justify-center md:justify-start space-x-6 mb-4 md:mb-0">
               <a href="/en/privacy-policy" className="text-[#E1E5EB] hover:text-[#FF6634] text-sm transition-colors">Privacy Policy</a>
               <a href="/en/terms-and-conditions" className="text-[#E1E5EB] hover:text-[#FF6634] text-sm transition-colors">Terms & Conditions</a>
+              <a href="/en/refund-policy" className="text-[#E1E5EB] hover:text-[#FF6634] text-sm transition-colors">Refund Policy</a>
             </div>
+            <p className="text-[#E1E5EB] text-sm">© 2025 Synth. All rights reserved.</p>
           </div>
         </div>
       </footer>
