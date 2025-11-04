@@ -15,8 +15,8 @@ export default function RefundPolicyENPage() {
 
           <p><strong>1. Overview</strong></p>
           <p>
-            This Refund Policy outlines the terms and conditions under which Inmutable 256 LLC 
-            ("Synth", "we", "our", or "the Company") provides refunds for subscription services 
+            This Refund Policy outlines the terms and conditions under which Synth Insights LLC 
+            ("Synth", "we", "our", or the "Company") provides refunds for subscription services 
             purchased through our platform. By subscribing to our services, you agree to the terms 
             outlined in this policy.
           </p>
@@ -187,10 +187,10 @@ export default function RefundPolicyENPage() {
             For refund requests, billing questions, or any concerns regarding this policy, please contact:
           </p>
           <div className="space-y-2 mt-4">
-            <p><strong>Inmutable 256 LLC</strong></p>
+            <p><strong>Synth Insights LLC</strong></p>
             <p>Attn: Billing Department</p>
-            <p>2880 Oakland Park Blvd Suite 225C</p>
-            <p>Oakland Park, FL 33311</p>
+            <p>1209 Mountain Road Pl NE Ste R</p>
+            <p>Albuquerque, NM 87110</p>
             <p>USA</p>
             <p><strong>Email:</strong> hola@synth-insights.com</p>
             <p><strong>Phone:</strong> +34 620 915 003</p>
