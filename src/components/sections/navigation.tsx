@@ -16,6 +16,7 @@ export const Navigation = () => {
   const isBlog = pathname.startsWith("/blog");
   const isEN = pathname.startsWith("/en");
   const isCaseStudies = pathname.includes("/casos-de-exito") || pathname.includes("/case-studies");
+  const isManifiesto = pathname === "/manifiesto";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,9 +41,9 @@ export const Navigation = () => {
           { name: "Casos de Éxito", href: "/casos-de-exito" },
           { name: "Precios", href: "/#precios" }
         ])
-    : isBlog
+    : isBlog || isManifiesto
     ? [
-        { name: "Inicio", href: "/#inicio" },
+        { name: "Inicio", href: "/" },
         { name: "Lo que nos hace diferentes", href: "/#motor-realismo" },
         { name: "Casos de Éxito", href: "/casos-de-exito" },
         { name: "Precios", href: "/#precios" }
@@ -58,7 +59,7 @@ export const Navigation = () => {
     <>
       <motion.nav 
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isBlog || isCaseStudies
+          isBlog || isCaseStudies || isManifiesto
             ? 'bg-[#0B0E1A]/95 border-b border-white/10'
             : isScrolled 
               ? 'glass-effect border-b border-white/10' 
@@ -93,8 +94,11 @@ export const Navigation = () => {
                   {item.name}
                 </Link>
               ))}
-              {!isBlog && !isCaseStudies && (
-                <Link href="/blog" className="text-gray-300 hover:text-white transition-colors">Blog</Link>
+              {!isBlog && !isCaseStudies && !isManifiesto && (
+                <>
+                  <Link href="/blog" className="text-gray-300 hover:text-white transition-colors">Blog</Link>
+                  <Link href="/manifiesto" className="text-gray-300 hover:text-[#FF6634] transition-colors font-medium">Manifiesto</Link>
+                </>
               )}
             </div>
             
@@ -132,9 +136,9 @@ export const Navigation = () => {
                 </div>
               )}
 
-              <Link href={isBlog || isCaseStudies ? (isEN ? "/en/onboarding" : "/onboarding") : `${base}#precios`}>
-                <Button className={`${isBlog || isCaseStudies ? 'bg-[#FF6634] hover:bg-[#FF6634]/90' : 'bg-black hover:bg-gray-900'} text-white px-6 py-2 text-sm font-medium transition-all hover:scale-105`}>
-                  {isBlog || isCaseStudies ? (isEN ? 'Try it free' : 'Comenzar Gratis') : 'Comenzar'}
+              <Link href={isBlog || isCaseStudies || isManifiesto ? (isEN ? "/en/onboarding" : "/onboarding") : `${base}#precios`}>
+                <Button className={`${isBlog || isCaseStudies || isManifiesto ? 'bg-[#FF6634] hover:bg-[#FF6634]/90' : 'bg-black hover:bg-gray-900'} text-white px-6 py-2 text-sm font-medium transition-all hover:scale-105`}>
+                  {isBlog || isCaseStudies || isManifiesto ? (isEN ? 'Try it free' : 'Comenzar Gratis') : 'Comenzar'}
                 </Button>
               </Link>
             </div>
