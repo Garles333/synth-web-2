@@ -96,7 +96,7 @@ export function EducationalInstitutionDialog({
           firstName: formData.name.split(' ')[0],
           lastName: formData.name.split(' ').slice(1).join(' ') || formData.name.split(' ')[0],
           locale,
-          tags: ['rol_educacion', locale === 'en' ? 'educational_inquiry_en' : 'consulta_educativa'],
+          tags: ['info_educativo_solicitado'],
           fields: {
             institution_type: formData.institutionType,
             position: formData.position,
