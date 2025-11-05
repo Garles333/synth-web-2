@@ -86,6 +86,11 @@ export async function createOrUpdateContact(contactData: MauticContact): Promise
     if (contactData.lastname) payload.lastname = contactData.lastname;
     if (contactData.company) payload.company = contactData.company;
     if (contactData.locale) payload.preferred_locale = contactData.locale;
+    
+    // IMPORTANTE: Incluir tags directamente en el payload de creación
+    if (contactData.tags && contactData.tags.length > 0) {
+      payload.tags = contactData.tags;
+    }
 
     // Add custom fields
     Object.keys(contactData).forEach(key => {
@@ -94,7 +99,7 @@ export async function createOrUpdateContact(contactData: MauticContact): Promise
       }
     });
 
-    console.log('Creating/updating Mautic contact:', { email: contactData.email, tags: contactData.tags });
+    console.log('Creating/updating Mautic contact:', { email: contactData.email, tags: contactData.tags, payload });
 
     // Create/update contact
     const contactUrl = `${MAUTIC_BASE_URL}/api/contacts/new`;
@@ -118,9 +123,18 @@ export async function createOrUpdateContact(contactData: MauticContact): Promise
 
     console.log('Contact created/updated:', contactId);
 
-    // Add tags if provided
+    // Si los tags no se agregaron en la creación, intentar agregarlos por separado
     if (contactData.tags && contactData.tags.length > 0 && contactId) {
-      await addTagsToContact(contactId, contactData.tags, token);
+      const createdTags = contactResult.contact?.tags || [];
+      console.log('Tags en el contacto creado:', createdTags);
+      
+      // Solo agregar tags si no se incluyeron en la respuesta
+      if (createdTags.length === 0) {
+        console.log('⚠️ Tags no incluidos en creación, agregando por separado...');
+        await addTagsToContact(contactId, contactData.tags, token);
+      } else {
+        console.log('✅ Tags incluidos correctamente en la creación');
+      }
     }
 
     return {
@@ -143,16 +157,16 @@ async function addTagsToContact(contactId: number, tags: string[], token: string
   try {
     console.log('📌 Adding tags to contact:', { contactId, tags });
     
-    // CORRECCIÓN: Mautic requiere PATCH al endpoint del contacto con tags como array
-    const updateUrl = `${MAUTIC_BASE_URL}/api/contacts/${contactId}`;
+    // CORRECCIÓN: Usar POST al endpoint /edit con formato correcto de Mautic
+    const updateUrl = `${MAUTIC_BASE_URL}/api/contacts/${contactId}/edit`;
     
     const response = await fetch(updateUrl, {
-      method: 'PATCH',
+      method: 'POST',
       headers: {
         'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ tags }), // Enviar tags como array directamente
+      body: JSON.stringify({ tags }), // Mautic acepta tags como array en el body
     });
 
     const responseData = await response.text();
