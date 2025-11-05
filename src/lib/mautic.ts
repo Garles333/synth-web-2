@@ -208,16 +208,31 @@ export async function trackDemoRequest(
   country: string,
   locale: 'es' | 'en' = 'es'
 ): Promise<MauticResponse> {
-  return createOrUpdateContact({
+  // Preparar datos del contacto - solo incluir campos que Mautic acepta
+  const contactData: MauticContact = {
     email,
     firstname: firstName,
     lastname: lastName,
-    company,
-    companyType,
-    country,
     locale,
     tags: ['demo_solicitado', `idioma_${locale}`],
-  });
+  };
+
+  // Solo agregar company si tiene valor
+  if (company && company.trim()) {
+    contactData.company = company;
+  }
+
+  // Agregar campos personalizados como descripción o notas si existen
+  // (Estos campos no son críticos para la creación del contacto)
+  if (companyType && companyType.trim()) {
+    contactData.company_type = companyType;
+  }
+
+  if (country && country.trim()) {
+    contactData.country = country;
+  }
+
+  return createOrUpdateContact(contactData);
 }
 
 /**
