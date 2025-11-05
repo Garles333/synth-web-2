@@ -86,12 +86,19 @@ export const NewsletterBannerHome = ({
       <div className="w-full max-w-md">
         {state === 'success' ? (
           <div
-            className="flex items-center justify-center gap-3 text-white rounded px-4 py-3 bg-[#1A1F2E] border border-[#FF6634]"
+            className="relative overflow-hidden bg-gradient-to-r from-[#FF6634] to-[#FF8A5B] rounded-lg p-4 animate-fadeInUp"
             role="alert"
             aria-live="polite"
           >
-            <CheckCircle className="h-5 w-5 text-green-300" />
-            <span className="font-medium">{locale === 'en' ? 'Successfully subscribed!' : '¡Suscrito con éxito!'}</span>
+            <div className="flex items-center justify-center gap-3 text-white">
+              <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                <CheckCircle className="w-6 h-6" />
+              </div>
+              <div className="flex-1">
+                <span className="font-bold text-lg">{locale === 'en' ? 'Successfully subscribed!' : '¡Suscrito con éxito!'}</span>
+                <p className="text-sm text-white/90">{locale === 'en' ? 'Thank you for subscribing to our newsletter' : 'Gracias por suscribirte a nuestro boletín'}</p>
+              </div>
+            </div>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="flex flex-row gap-2 w-full">

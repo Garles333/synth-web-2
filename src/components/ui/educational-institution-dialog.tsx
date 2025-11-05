@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { GraduationCap, Loader2 } from "lucide-react";
+import { GraduationCap, Loader2, CheckCircle } from "lucide-react";
 import { toast } from "sonner";
 
 interface EducationalInstitutionDialogProps {
@@ -20,6 +20,7 @@ export function EducationalInstitutionDialog({
   locale = 'es'
 }: EducationalInstitutionDialogProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const [formData, setFormData] = useState({
     institutionType: '',
     name: '',
@@ -158,19 +159,20 @@ export function EducationalInstitutionDialog({
         throw new Error('Failed to submit form');
       }
 
-      toast.success(t.successTitle, {
-        description: t.successMessage,
-      });
+      setIsSuccess(true);
 
-      // Reset form and close dialog
-      setFormData({
-        institutionType: '',
-        name: '',
-        email: '',
-        position: '',
-        country: ''
-      });
-      onOpenChange(false);
+      // Reset form and close dialog after 4 seconds
+      setTimeout(() => {
+        setFormData({
+          institutionType: '',
+          name: '',
+          email: '',
+          position: '',
+          country: ''
+        });
+        setIsSuccess(false);
+        onOpenChange(false);
+      }, 4000);
     } catch (error) {
       console.error('Error submitting form:', error);
       toast.error(t.errorTitle, {
@@ -184,122 +186,151 @@ export function EducationalInstitutionDialog({
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[500px] bg-[#1A1F2E] border-[#2A3441] text-white">
-        <DialogHeader>
-          <div className="flex items-center gap-3 mb-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-[#FF6634]/20 to-[#FF8A5B]/20 rounded-lg flex items-center justify-center border border-[#FF6634]/30">
-              <GraduationCap className="w-5 h-5 text-[#FF6634]" />
+        {isSuccess && (
+          <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-[#FF6634] to-[#FF8A5B] p-4 rounded-t-lg animate-fadeInUp">
+            <div className="flex items-center justify-center gap-3 text-white">
+              <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                <CheckCircle className="w-6 h-6" />
+              </div>
+              <div className="flex-1">
+                <h3 className="text-lg font-bold">{t.successTitle}</h3>
+                <p className="text-sm text-white/90">{t.successMessage}</p>
+              </div>
             </div>
-            <DialogTitle className="text-2xl font-bold text-white">
-              {t.title}
-            </DialogTitle>
           </div>
-          <DialogDescription className="text-[#E1E5EB]">
-            {t.description}
-          </DialogDescription>
-        </DialogHeader>
+        )}
 
-        <form onSubmit={handleSubmit} className="space-y-4 mt-4">
-          <div className="space-y-2">
-            <label htmlFor="institutionType" className="text-sm font-medium text-white">
-              {t.institutionType}
-            </label>
-            <Input
-              id="institutionType"
-              type="text"
-              placeholder={t.institutionTypePlaceholder}
-              value={formData.institutionType}
-              onChange={(e) => setFormData({ ...formData, institutionType: e.target.value })}
-              className="bg-[#0B0E1A] border-[#2A3441] text-white placeholder:text-[#6B7280]"
-              disabled={isSubmitting}
-            />
-          </div>
+        <div className={isSuccess ? 'mt-24' : ''}>
+          {!isSuccess ? (
+            <>
+              <DialogHeader>
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-10 h-10 bg-gradient-to-br from-[#FF6634]/20 to-[#FF8A5B]/20 rounded-lg flex items-center justify-center border border-[#FF6634]/30">
+                    <GraduationCap className="w-5 h-5 text-[#FF6634]" />
+                  </div>
+                  <DialogTitle className="text-2xl font-bold text-white">
+                    {t.title}
+                  </DialogTitle>
+                </div>
+                <DialogDescription className="text-[#E1E5EB]">
+                  {t.description}
+                </DialogDescription>
+              </DialogHeader>
 
-          <div className="space-y-2">
-            <label htmlFor="name" className="text-sm font-medium text-white">
-              {t.name}
-            </label>
-            <Input
-              id="name"
-              type="text"
-              placeholder={t.namePlaceholder}
-              value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="bg-[#0B0E1A] border-[#2A3441] text-white placeholder:text-[#6B7280]"
-              disabled={isSubmitting}
-            />
-          </div>
+              <form onSubmit={handleSubmit} className="space-y-4 mt-4">
+                <div className="space-y-2">
+                  <label htmlFor="institutionType" className="text-sm font-medium text-white">
+                    {t.institutionType}
+                  </label>
+                  <Input
+                    id="institutionType"
+                    type="text"
+                    placeholder={t.institutionTypePlaceholder}
+                    value={formData.institutionType}
+                    onChange={(e) => setFormData({ ...formData, institutionType: e.target.value })}
+                    className="bg-[#0B0E1A] border-[#2A3441] text-white placeholder:text-[#6B7280]"
+                    disabled={isSubmitting}
+                  />
+                </div>
 
-          <div className="space-y-2">
-            <label htmlFor="email" className="text-sm font-medium text-white">
-              {t.email}
-            </label>
-            <Input
-              id="email"
-              type="email"
-              placeholder={t.emailPlaceholder}
-              value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              className="bg-[#0B0E1A] border-[#2A3441] text-white placeholder:text-[#6B7280]"
-              disabled={isSubmitting}
-            />
-          </div>
+                <div className="space-y-2">
+                  <label htmlFor="name" className="text-sm font-medium text-white">
+                    {t.name}
+                  </label>
+                  <Input
+                    id="name"
+                    type="text"
+                    placeholder={t.namePlaceholder}
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="bg-[#0B0E1A] border-[#2A3441] text-white placeholder:text-[#6B7280]"
+                    disabled={isSubmitting}
+                  />
+                </div>
 
-          <div className="space-y-2">
-            <label htmlFor="position" className="text-sm font-medium text-white">
-              {t.position}
-            </label>
-            <Input
-              id="position"
-              type="text"
-              placeholder={t.positionPlaceholder}
-              value={formData.position}
-              onChange={(e) => setFormData({ ...formData, position: e.target.value })}
-              className="bg-[#0B0E1A] border-[#2A3441] text-white placeholder:text-[#6B7280]"
-              disabled={isSubmitting}
-            />
-          </div>
+                <div className="space-y-2">
+                  <label htmlFor="email" className="text-sm font-medium text-white">
+                    {t.email}
+                  </label>
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder={t.emailPlaceholder}
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="bg-[#0B0E1A] border-[#2A3441] text-white placeholder:text-[#6B7280]"
+                    disabled={isSubmitting}
+                  />
+                </div>
 
-          <div className="space-y-2">
-            <label htmlFor="country" className="text-sm font-medium text-white">
-              {t.country} <span className="text-[#FF6634]">*</span>
-            </label>
-            <Select
-              value={formData.country}
-              onValueChange={(value) => setFormData({ ...formData, country: value })}
-              disabled={isSubmitting}
-            >
-              <SelectTrigger className="bg-[#0B0E1A] border-[#2A3441] text-white">
-                <SelectValue placeholder={t.countryPlaceholder} />
-              </SelectTrigger>
-              <SelectContent className="bg-[#1A1F2E] border-[#2A3441] text-white">
-                <SelectItem value="spain">{t.countries.spain}</SelectItem>
-                <SelectItem value="argentina">{t.countries.argentina}</SelectItem>
-                <SelectItem value="bolivia">{t.countries.bolivia}</SelectItem>
-                <SelectItem value="chile">{t.countries.chile}</SelectItem>
-                <SelectItem value="colombia">{t.countries.colombia}</SelectItem>
-                <SelectItem value="mexico">{t.countries.mexico}</SelectItem>
-                <SelectItem value="paraguay">{t.countries.paraguay}</SelectItem>
-                <SelectItem value="peru">{t.countries.peru}</SelectItem>
-                <SelectItem value="other">{t.countries.other}</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
+                <div className="space-y-2">
+                  <label htmlFor="position" className="text-sm font-medium text-white">
+                    {t.position}
+                  </label>
+                  <Input
+                    id="position"
+                    type="text"
+                    placeholder={t.positionPlaceholder}
+                    value={formData.position}
+                    onChange={(e) => setFormData({ ...formData, position: e.target.value })}
+                    className="bg-[#0B0E1A] border-[#2A3441] text-white placeholder:text-[#6B7280]"
+                    disabled={isSubmitting}
+                  />
+                </div>
 
-          <Button
-            type="submit"
-            disabled={isSubmitting}
-            className="w-full bg-[#FF6634] hover:bg-[#FF8A5B] text-white font-semibold py-3 rounded-lg transition-all duration-300"
-          >
-            {isSubmitting ? (
-              <>
-                <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                {t.submitting}
-              </>
-            ) : (
-              t.submit
-            )}
-          </Button>
-        </form>
+                <div className="space-y-2">
+                  <label htmlFor="country" className="text-sm font-medium text-white">
+                    {t.country} <span className="text-[#FF6634]">*</span>
+                  </label>
+                  <Select
+                    value={formData.country}
+                    onValueChange={(value) => setFormData({ ...formData, country: value })}
+                    disabled={isSubmitting}
+                  >
+                    <SelectTrigger className="bg-[#0B0E1A] border-[#2A3441] text-white">
+                      <SelectValue placeholder={t.countryPlaceholder} />
+                    </SelectTrigger>
+                    <SelectContent className="bg-[#1A1F2E] border-[#2A3441] text-white">
+                      <SelectItem value="spain">{t.countries.spain}</SelectItem>
+                      <SelectItem value="argentina">{t.countries.argentina}</SelectItem>
+                      <SelectItem value="bolivia">{t.countries.bolivia}</SelectItem>
+                      <SelectItem value="chile">{t.countries.chile}</SelectItem>
+                      <SelectItem value="colombia">{t.countries.colombia}</SelectItem>
+                      <SelectItem value="mexico">{t.countries.mexico}</SelectItem>
+                      <SelectItem value="paraguay">{t.countries.paraguay}</SelectItem>
+                      <SelectItem value="peru">{t.countries.peru}</SelectItem>
+                      <SelectItem value="other">{t.countries.other}</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-[#FF6634] hover:bg-[#FF8A5B] text-white font-semibold py-3 rounded-lg transition-all duration-300"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                      {t.submitting}
+                    </>
+                  ) : (
+                    t.submit
+                  )}
+                </Button>
+              </form>
+            </>
+          ) : (
+            <div className="py-8 text-center">
+              <Button
+                onClick={() => onOpenChange(false)}
+                className="bg-[#FF6634] hover:bg-[#FF6634]/90 text-white"
+              >
+                {locale === 'en' ? 'Close' : 'Cerrar'}
+              </Button>
+            </div>
+          )}
+        </div>
       </DialogContent>
     </Dialog>
   );

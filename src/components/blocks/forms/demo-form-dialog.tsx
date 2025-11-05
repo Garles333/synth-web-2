@@ -148,14 +148,13 @@ export function DemoFormDialog({ open, onOpenChange, locale = 'es' }: DemoFormDi
 
       if (result.success) {
         setIsSuccess(true);
-        toast.success(locale === 'en' ? 'Demo requested successfully!' : '¡Demo solicitada con éxito!');
         
-        // Reset form after 3 seconds
+        // Reset form after 4 seconds
         setTimeout(() => {
           setFormData({ email: '', name: '', company: '', companyType: '', country: '' });
           setIsSuccess(false);
           onOpenChange(false);
-        }, 3000);
+        }, 4000);
       } else {
         toast.error(t.errorMessage);
       }
@@ -170,143 +169,152 @@ export function DemoFormDialog({ open, onOpenChange, locale = 'es' }: DemoFormDi
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[500px] bg-[#1A1F2E] border-[#2A3441] text-white">
-        {!isSuccess ? (
-          <>
-            <DialogHeader>
-              <DialogTitle className="text-2xl font-bold">{t.title}</DialogTitle>
-              <DialogDescription className="text-[#E1E5EB]">
-                {t.description}
-              </DialogDescription>
-            </DialogHeader>
-
-            <form onSubmit={handleSubmit} className="space-y-4 mt-4">
-              <div className="space-y-2">
-                <Label htmlFor="email" className="text-white">
-                  {t.email} <span className="text-[#FF6634]">*</span>
-                </Label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder={t.emailPlaceholder}
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="bg-[#0B0E1A] border-[#2A3441] text-white placeholder:text-[#6B7280]"
-                  required
-                />
+        {isSuccess && (
+          <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-[#FF6634] to-[#FF8A5B] p-4 rounded-t-lg animate-fadeInUp">
+            <div className="flex items-center justify-center gap-3 text-white">
+              <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                <CheckCircle className="w-6 h-6" />
               </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="name" className="text-white">
-                  {t.name} <span className="text-[#FF6634]">*</span>
-                </Label>
-                <Input
-                  id="name"
-                  type="text"
-                  placeholder={t.namePlaceholder}
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="bg-[#0B0E1A] border-[#2A3441] text-white placeholder:text-[#6B7280]"
-                  required
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="company" className="text-white">
-                  {t.company}
-                </Label>
-                <Input
-                  id="company"
-                  type="text"
-                  placeholder={t.companyPlaceholder}
-                  value={formData.company}
-                  onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                  className="bg-[#0B0E1A] border-[#2A3441] text-white placeholder:text-[#6B7280]"
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="companyType" className="text-white">
-                  {t.companyType} <span className="text-[#FF6634]">*</span>
-                </Label>
-                <Select
-                  value={formData.companyType}
-                  onValueChange={(value) => setFormData({ ...formData, companyType: value })}
-                  required
-                >
-                  <SelectTrigger className="bg-[#0B0E1A] border-[#2A3441] text-white">
-                    <SelectValue placeholder={t.companyTypePlaceholder} />
-                  </SelectTrigger>
-                  <SelectContent className="bg-[#1A1F2E] border-[#2A3441] text-white">
-                    <SelectItem value="creative">{t.companyTypes.creative}</SelectItem>
-                    <SelectItem value="media">{t.companyTypes.media}</SelectItem>
-                    <SelectItem value="consulting">{t.companyTypes.consulting}</SelectItem>
-                    <SelectItem value="market">{t.companyTypes.market}</SelectItem>
-                    <SelectItem value="client">{t.companyTypes.client}</SelectItem>
-                    <SelectItem value="education">{t.companyTypes.education}</SelectItem>
-                    <SelectItem value="other">{t.companyTypes.other}</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="country" className="text-white">
-                  {t.country} <span className="text-[#FF6634]">*</span>
-                </Label>
-                <Select
-                  value={formData.country}
-                  onValueChange={(value) => setFormData({ ...formData, country: value })}
-                  required
-                >
-                  <SelectTrigger className="bg-[#0B0E1A] border-[#2A3441] text-white">
-                    <SelectValue placeholder={t.countryPlaceholder} />
-                  </SelectTrigger>
-                  <SelectContent className="bg-[#1A1F2E] border-[#2A3441] text-white">
-                    <SelectItem value="spain">{t.countries.spain}</SelectItem>
-                    <SelectItem value="argentina">{t.countries.argentina}</SelectItem>
-                    <SelectItem value="bolivia">{t.countries.bolivia}</SelectItem>
-                    <SelectItem value="chile">{t.countries.chile}</SelectItem>
-                    <SelectItem value="colombia">{t.countries.colombia}</SelectItem>
-                    <SelectItem value="mexico">{t.countries.mexico}</SelectItem>
-                    <SelectItem value="paraguay">{t.countries.paraguay}</SelectItem>
-                    <SelectItem value="peru">{t.countries.peru}</SelectItem>
-                    <SelectItem value="other">{t.countries.other}</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <Button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-[#FF6634] hover:bg-[#FF6634]/90 text-white"
-              >
-                {isSubmitting ? (
-                  <>
-                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                    {t.submitting}
-                  </>
-                ) : (
-                  t.submit
-                )}
-              </Button>
-            </form>
-          </>
-        ) : (
-          <div className="py-8 text-center">
-            <div className="mb-4 flex justify-center">
-              <div className="w-16 h-16 bg-[#FF6634]/20 rounded-full flex items-center justify-center">
-                <CheckCircle className="w-10 h-10 text-[#FF6634]" />
+              <div className="flex-1">
+                <h3 className="text-lg font-bold">{t.successTitle}</h3>
+                <p className="text-sm text-white/90">{t.successMessage}</p>
               </div>
             </div>
-            <h3 className="text-2xl font-bold mb-2">{t.successTitle}</h3>
-            <p className="text-[#E1E5EB] mb-6">{t.successMessage}</p>
-            <Button
-              onClick={() => onOpenChange(false)}
-              className="bg-[#FF6634] hover:bg-[#FF6634]/90 text-white"
-            >
-              {t.close}
-            </Button>
           </div>
         )}
+
+        <div className={isSuccess ? 'mt-24' : ''}>
+          {!isSuccess ? (
+            <>
+              <DialogHeader>
+                <DialogTitle className="text-2xl font-bold">{t.title}</DialogTitle>
+                <DialogDescription className="text-[#E1E5EB]">
+                  {t.description}
+                </DialogDescription>
+              </DialogHeader>
+
+              <form onSubmit={handleSubmit} className="space-y-4 mt-4">
+                <div className="space-y-2">
+                  <Label htmlFor="email" className="text-white">
+                    {t.email} <span className="text-[#FF6634]">*</span>
+                  </Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder={t.emailPlaceholder}
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="bg-[#0B0E1A] border-[#2A3441] text-white placeholder:text-[#6B7280]"
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="name" className="text-white">
+                    {t.name} <span className="text-[#FF6634]">*</span>
+                  </Label>
+                  <Input
+                    id="name"
+                    type="text"
+                    placeholder={t.namePlaceholder}
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="bg-[#0B0E1A] border-[#2A3441] text-white placeholder:text-[#6B7280]"
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="company" className="text-white">
+                    {t.company}
+                  </Label>
+                  <Input
+                    id="company"
+                    type="text"
+                    placeholder={t.companyPlaceholder}
+                    value={formData.company}
+                    onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                    className="bg-[#0B0E1A] border-[#2A3441] text-white placeholder:text-[#6B7280]"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="companyType" className="text-white">
+                    {t.companyType} <span className="text-[#FF6634]">*</span>
+                  </Label>
+                  <Select
+                    value={formData.companyType}
+                    onValueChange={(value) => setFormData({ ...formData, companyType: value })}
+                    required
+                  >
+                    <SelectTrigger className="bg-[#0B0E1A] border-[#2A3441] text-white">
+                      <SelectValue placeholder={t.companyTypePlaceholder} />
+                    </SelectTrigger>
+                    <SelectContent className="bg-[#1A1F2E] border-[#2A3441] text-white">
+                      <SelectItem value="creative">{t.companyTypes.creative}</SelectItem>
+                      <SelectItem value="media">{t.companyTypes.media}</SelectItem>
+                      <SelectItem value="consulting">{t.companyTypes.consulting}</SelectItem>
+                      <SelectItem value="market">{t.companyTypes.market}</SelectItem>
+                      <SelectItem value="client">{t.companyTypes.client}</SelectItem>
+                      <SelectItem value="education">{t.companyTypes.education}</SelectItem>
+                      <SelectItem value="other">{t.companyTypes.other}</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="country" className="text-white">
+                    {t.country} <span className="text-[#FF6634]">*</span>
+                  </Label>
+                  <Select
+                    value={formData.country}
+                    onValueChange={(value) => setFormData({ ...formData, country: value })}
+                    required
+                  >
+                    <SelectTrigger className="bg-[#0B0E1A] border-[#2A3441] text-white">
+                      <SelectValue placeholder={t.countryPlaceholder} />
+                    </SelectTrigger>
+                    <SelectContent className="bg-[#1A1F2E] border-[#2A3441] text-white">
+                      <SelectItem value="spain">{t.countries.spain}</SelectItem>
+                      <SelectItem value="argentina">{t.countries.argentina}</SelectItem>
+                      <SelectItem value="bolivia">{t.countries.bolivia}</SelectItem>
+                      <SelectItem value="chile">{t.countries.chile}</SelectItem>
+                      <SelectItem value="colombia">{t.countries.colombia}</SelectItem>
+                      <SelectItem value="mexico">{t.countries.mexico}</SelectItem>
+                      <SelectItem value="paraguay">{t.countries.paraguay}</SelectItem>
+                      <SelectItem value="peru">{t.countries.peru}</SelectItem>
+                      <SelectItem value="other">{t.countries.other}</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-[#FF6634] hover:bg-[#FF6634]/90 text-white"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                      {t.submitting}
+                    </>
+                  ) : (
+                    t.submit
+                  )}
+                </Button>
+              </form>
+            </>
+          ) : (
+            <div className="py-8 text-center">
+              <Button
+                onClick={() => onOpenChange(false)}
+                className="bg-[#FF6634] hover:bg-[#FF6634]/90 text-white"
+              >
+                {t.close}
+              </Button>
+            </div>
+          )}
+        </div>
       </DialogContent>
     </Dialog>
   );
