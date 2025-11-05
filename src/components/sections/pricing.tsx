@@ -4,9 +4,12 @@ import { Check, Globe, Loader2, RefreshCw, GraduationCap, Sparkles } from "lucid
 import { useCurrency } from "@/lib/currency";
 import Link from "next/link";
 import { currencies, formatConvertedPrice } from "@/lib/currency";
+import { useState } from "react";
+import { EducationalInstitutionDialog } from "@/components/ui/educational-institution-dialog";
 
 export const Pricing = ({ locale = 'es' }: {locale?: 'es' | 'en';}) => {
   const { currentCountry, formatFromEUR, isLoading, detectionMethod } = useCurrency();
+  const [educationalDialogOpen, setEducationalDialogOpen] = useState(false);
 
   // Force USD display for English locale
   const forceUSD = locale === 'en';
@@ -372,14 +375,11 @@ export const Pricing = ({ locale = 'es' }: {locale?: 'es' | 'en';}) => {
                 </div>
               </div>
 
-              {/* CTA Button with mailto */}
+              {/* CTA Button - now opens dialog */}
               <Button
-                asChild
+                onClick={() => setEducationalDialogOpen(true)}
                 className="bg-[#FF6634] hover:bg-[#FF8A5B] text-white px-6 py-3 text-base font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 whitespace-nowrap">
-
-                <a href="mailto:hola@synth-insights.com?subject=Consulta%20Plan%20Académico">
-                  {locale === 'en' ? 'Contact Us' : 'Solicitar Información'}
-                </a>
+                {locale === 'en' ? 'Contact Us' : 'Solicitar Información'}
               </Button>
             </div>
           </div>
@@ -405,6 +405,13 @@ export const Pricing = ({ locale = 'es' }: {locale?: 'es' | 'en';}) => {
           </div>
         }
       </div>
-    </section>);
 
+      {/* Educational Institution Dialog */}
+      <EducationalInstitutionDialog 
+        open={educationalDialogOpen} 
+        onOpenChange={setEducationalDialogOpen}
+        locale={locale}
+      />
+    </section>
+  );
 };

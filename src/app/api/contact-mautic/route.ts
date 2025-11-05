@@ -53,6 +53,18 @@ export async function POST(request: NextRequest) {
         result = await trackOnboardingComplete(email, data || {}, locale);
         break;
 
+      case 'educational_institution':
+        // Handle educational institution inquiries
+        result = await createOrUpdateContact({
+          email,
+          firstname: firstName,
+          lastname: lastName,
+          locale,
+          tags: tags || ['educational_institution', `idioma_${locale}`],
+          ...fields
+        });
+        break;
+
       default:
         // Generic contact creation with custom tags/fields
         result = await createOrUpdateContact({
