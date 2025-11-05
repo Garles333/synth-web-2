@@ -46,7 +46,7 @@ export function DemoFormDialog({ open, onOpenChange, locale = 'es' }: DemoFormDi
     emailPlaceholder: 'you@company.com',
     name: 'Name',
     namePlaceholder: 'John Doe',
-    company: 'Company (Recommended)',
+    company: 'Company',
     companyPlaceholder: 'Acme Inc.',
     companyType: 'Company Type',
     companyTypePlaceholder: 'Select company type',
@@ -86,7 +86,7 @@ export function DemoFormDialog({ open, onOpenChange, locale = 'es' }: DemoFormDi
     emailPlaceholder: 'tu@empresa.com',
     name: 'Nombre',
     namePlaceholder: 'Juan Pérez',
-    company: 'Empresa (Recomendado)',
+    company: 'Empresa',
     companyPlaceholder: 'Mi Empresa S.L.',
     companyType: 'Tipo de empresa',
     companyTypePlaceholder: 'Selecciona tipo de empresa',
@@ -226,7 +226,7 @@ export function DemoFormDialog({ open, onOpenChange, locale = 'es' }: DemoFormDi
 
                 <div className="space-y-2">
                   <Label htmlFor="company" className="text-white">
-                    {t.company}
+                    {t.company} <span className="text-[#FF6634]">*</span>
                   </Label>
                   <Input
                     id="company"
@@ -235,6 +235,7 @@ export function DemoFormDialog({ open, onOpenChange, locale = 'es' }: DemoFormDi
                     value={formData.company}
                     onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                     className="bg-[#0B0E1A] border-[#2A3441] text-white placeholder:text-[#6B7280]"
+                    required
                   />
                 </div>
 
