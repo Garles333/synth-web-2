@@ -369,8 +369,8 @@ export const Pricing = ({ locale = 'es' }: {locale?: 'es' | 'en';}) => {
                   </h3>
                   <p className="text-[#E1E5EB] text-sm md:text-base">
                     {locale === 'en' ?
-                    'Access exclusive discounts of up to 60% on all our plans. Contact us to learn more.' :
-                    'Accede a descuentos exclusivos de hasta 60% en todos nuestros planes. Contáctanos para conocer más.'}
+                    'Access exclusive benefits and discounts on all our plans. Contact us to learn more.' :
+                    'Accede a beneficios y descuentos exclusivos en todos nuestros planes. Contáctanos para conocer más.'}
                   </p>
                 </div>
               </div>
