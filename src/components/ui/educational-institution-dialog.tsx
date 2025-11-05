@@ -28,7 +28,7 @@ export function EducationalInstitutionDialog({
 
   const t = locale === 'en' ? {
     title: 'Educational Institutions',
-    description: 'Tell us about your institution and we will contact you with exclusive discounts of up to 60%.',
+    description: 'Tell us about your institution and we will contact you with exclusive benefits and discounts.',
     institutionType: 'Type of Educational Institution',
     institutionTypePlaceholder: 'School, University, Academy, etc.',
     name: 'Full Name',
@@ -40,14 +40,14 @@ export function EducationalInstitutionDialog({
     submit: 'Request Information',
     submitting: 'Sending...',
     successTitle: 'Request sent successfully!',
-    successMessage: 'We will contact you shortly with more information about our exclusive discounts.',
+    successMessage: 'We will contact you shortly with more information about our exclusive benefits and discounts.',
     errorTitle: 'Error sending request',
     errorMessage: 'Please try again or contact us at hola@synth-insights.com',
     requiredFields: 'Please fill in all fields',
     invalidEmail: 'Please enter a valid email address'
   } : {
     title: 'Instituciones Educativas',
-    description: 'Cuéntanos sobre tu institución y te contactaremos con descuentos exclusivos de hasta 60%.',
+    description: 'Cuéntanos sobre tu institución y te contactaremos con beneficios y descuentos exclusivos.',
     institutionType: 'Tipo de Institución Educativa',
     institutionTypePlaceholder: 'Colegio, Universidad, Academia, etc.',
     name: 'Nombre Completo',
@@ -59,7 +59,7 @@ export function EducationalInstitutionDialog({
     submit: 'Solicitar Información',
     submitting: 'Enviando...',
     successTitle: '¡Solicitud enviada correctamente!',
-    successMessage: 'Te contactaremos pronto con más información sobre nuestros descuentos exclusivos.',
+    successMessage: 'Te contactaremos pronto con más información sobre nuestros beneficios y descuentos exclusivos.',
     errorTitle: 'Error al enviar solicitud',
     errorMessage: 'Por favor intenta nuevamente o contáctanos en hola@synth-insights.com',
     requiredFields: 'Por favor completa todos los campos',
@@ -96,7 +96,7 @@ export function EducationalInstitutionDialog({
           firstName: formData.name.split(' ')[0],
           lastName: formData.name.split(' ').slice(1).join(' ') || formData.name.split(' ')[0],
           locale,
-          tags: ['educational_institution', locale === 'en' ? 'educational_inquiry_en' : 'consulta_educativa'],
+          tags: ['rol_educacion', locale === 'en' ? 'educational_inquiry_en' : 'consulta_educativa'],
           fields: {
             institution_type: formData.institutionType,
             position: formData.position,
