@@ -46,9 +46,6 @@ export default function ManifiestoPage() {
             </div>
           </ScrollReveal>
         </div>
-
-        {/* Decorative connector */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-px h-16 bg-gradient-to-b from-[#FF6634]/50 to-transparent"></div>
       </section>
 
       {/* Content wrapper - tighter spacing */}
@@ -120,15 +117,6 @@ export default function ManifiestoPage() {
           </article>
         </ScrollReveal>
 
-        {/* Visual connector */}
-        <div className="flex items-center justify-center py-4">
-          <div className="w-2 h-2 rounded-full bg-[#FF6634] animate-pulse"></div>
-          <div className="w-16 h-px bg-gradient-to-r from-[#FF6634] to-transparent"></div>
-          <div className="w-2 h-2 rounded-full bg-[#FF6634]/50"></div>
-          <div className="w-16 h-px bg-gradient-to-l from-[#FF6634] to-transparent"></div>
-          <div className="w-2 h-2 rounded-full bg-[#FF6634] animate-pulse"></div>
-        </div>
-
         {/* Sección 2: El Coste Real de la Espera */}
         <ScrollReveal direction="up" distance={40}>
           <article className="relative">
@@ -188,15 +176,6 @@ export default function ManifiestoPage() {
           </article>
         </ScrollReveal>
 
-        {/* Visual connector */}
-        <div className="flex items-center justify-center py-4">
-          <div className="w-2 h-2 rounded-full bg-[#FF6634] animate-pulse"></div>
-          <div className="w-16 h-px bg-gradient-to-r from-[#FF6634] to-transparent"></div>
-          <div className="w-2 h-2 rounded-full bg-[#FF6634]/50"></div>
-          <div className="w-16 h-px bg-gradient-to-l from-[#FF6634] to-transparent"></div>
-          <div className="w-2 h-2 rounded-full bg-[#FF6634] animate-pulse"></div>
-        </div>
-
         {/* Sección 3: Nuestra Declaración de Principios */}
         <ScrollReveal direction="up" distance={40}>
           <article className="relative">
@@ -254,15 +233,6 @@ export default function ManifiestoPage() {
             </div>
           </article>
         </ScrollReveal>
-
-        {/* Visual connector */}
-        <div className="flex items-center justify-center py-4">
-          <div className="w-2 h-2 rounded-full bg-[#FF6634] animate-pulse"></div>
-          <div className="w-16 h-px bg-gradient-to-r from-[#FF6634] to-transparent"></div>
-          <div className="w-2 h-2 rounded-full bg-[#FF6634]/50"></div>
-          <div className="w-16 h-px bg-gradient-to-l from-[#FF6634] to-transparent"></div>
-          <div className="w-2 h-2 rounded-full bg-[#FF6634] animate-pulse"></div>
-        </div>
 
         {/* Sección 4: El Nuevo Modelo */}
         <ScrollReveal direction="up" distance={40}>
@@ -331,24 +301,15 @@ export default function ManifiestoPage() {
 
                 <div className="relative mt-8 p-6 bg-gradient-to-br from-[#FF6634]/10 to-transparent border border-[#FF6634]/40 rounded-xl">
                   <p className="text-white font-bold text-lg md:text-xl text-center">
-                    El fieldwork tradicional te da una <span className="line-through text-[#E1E5EB]">foto borrosa del pasado</span>.
+                    El fieldwork te da una respuesta <span className="text-[#FF6634]">(tarde y cara)</span>.
                     <br />
-                    La simulación te da un <span className="text-[#FF6634]">mapa HD del futuro</span>.
+                    La simulación te da un <span className="text-[#FF6634]">campo de pruebas ilimitado (al instante)</span>.
                   </p>
                 </div>
               </div>
             </div>
           </article>
         </ScrollReveal>
-
-        {/* Visual connector to CTA */}
-        <div className="flex items-center justify-center py-6">
-          <div className="w-3 h-3 rounded-full bg-[#FF6634] animate-pulse shadow-lg shadow-[#FF6634]/50"></div>
-          <div className="w-24 h-px bg-gradient-to-r from-[#FF6634] to-transparent"></div>
-          <div className="w-3 h-3 rounded-full bg-[#FF6634]/50"></div>
-          <div className="w-24 h-px bg-gradient-to-l from-[#FF6634] to-transparent"></div>
-          <div className="w-3 h-3 rounded-full bg-[#FF6634] animate-pulse shadow-lg shadow-[#FF6634]/50"></div>
-        </div>
 
         {/* Sección 5: El Próximo Paso - CTA Final */}
         <ScrollReveal direction="up" distance={40}>
