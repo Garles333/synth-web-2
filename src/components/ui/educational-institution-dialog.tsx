@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { GraduationCap, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -23,7 +24,8 @@ export function EducationalInstitutionDialog({
     institutionType: '',
     name: '',
     email: '',
-    position: ''
+    position: '',
+    country: ''
   });
 
   const t = locale === 'en' ? {
@@ -37,6 +39,19 @@ export function EducationalInstitutionDialog({
     emailPlaceholder: 'your.email@institution.edu',
     position: 'Position at Institution',
     positionPlaceholder: 'Director, Professor, Coordinator, etc.',
+    country: 'Country',
+    countryPlaceholder: 'Select country',
+    countries: {
+      spain: 'Spain',
+      argentina: 'Argentina',
+      bolivia: 'Bolivia',
+      chile: 'Chile',
+      colombia: 'Colombia',
+      mexico: 'Mexico',
+      paraguay: 'Paraguay',
+      peru: 'Peru',
+      other: 'Other',
+    },
     submit: 'Request Information',
     submitting: 'Sending...',
     successTitle: 'Request sent successfully!',
@@ -56,6 +71,19 @@ export function EducationalInstitutionDialog({
     emailPlaceholder: 'tu.correo@institucion.edu',
     position: 'Puesto en la Institución',
     positionPlaceholder: 'Director, Profesor, Coordinador, etc.',
+    country: 'País',
+    countryPlaceholder: 'Selecciona país',
+    countries: {
+      spain: 'España',
+      argentina: 'Argentina',
+      bolivia: 'Bolivia',
+      chile: 'Chile',
+      colombia: 'Colombia',
+      mexico: 'México',
+      paraguay: 'Paraguay',
+      peru: 'Perú',
+      other: 'Otro',
+    },
     submit: 'Solicitar Información',
     submitting: 'Enviando...',
     successTitle: '¡Solicitud enviada correctamente!',
@@ -70,7 +98,7 @@ export function EducationalInstitutionDialog({
     e.preventDefault();
     
     // Validation
-    if (!formData.institutionType || !formData.name || !formData.email || !formData.position) {
+    if (!formData.institutionType || !formData.name || !formData.email || !formData.position || !formData.country) {
       toast.error(t.requiredFields);
       return;
     }
@@ -85,6 +113,27 @@ export function EducationalInstitutionDialog({
     setIsSubmitting(true);
 
     try {
+      // Mapear country a tags pais_*
+      const countryTagMap: Record<string, string> = {
+        'spain': 'pais_es',
+        'argentina': 'pais_ar',
+        'bolivia': 'pais_bo',
+        'chile': 'pais_cl',
+        'colombia': 'pais_co',
+        'mexico': 'pais_mx',
+        'paraguay': 'pais_py',
+        'peru': 'pais_pe',
+        'other': 'pais_otro_latam',
+      };
+
+      // Preparar tags
+      const tags = ['info_educativo_solicitado', 'rol_educacion', `idioma_${locale}`];
+      
+      // Agregar tag de país
+      if (formData.country && countryTagMap[formData.country]) {
+        tags.push(countryTagMap[formData.country]);
+      }
+
       const response = await fetch('/api/contact-mautic', {
         method: 'POST',
         headers: {
@@ -96,7 +145,7 @@ export function EducationalInstitutionDialog({
           firstName: formData.name.split(' ')[0],
           lastName: formData.name.split(' ').slice(1).join(' ') || formData.name.split(' ')[0],
           locale,
-          tags: ['info_educativo_solicitado'],
+          tags,
           fields: {
             institution_type: formData.institutionType,
             position: formData.position,
@@ -118,7 +167,8 @@ export function EducationalInstitutionDialog({
         institutionType: '',
         name: '',
         email: '',
-        position: ''
+        position: '',
+        country: ''
       });
       onOpenChange(false);
     } catch (error) {
@@ -207,6 +257,32 @@ export function EducationalInstitutionDialog({
               className="bg-[#0B0E1A] border-[#2A3441] text-white placeholder:text-[#6B7280]"
               disabled={isSubmitting}
             />
+          </div>
+
+          <div className="space-y-2">
+            <label htmlFor="country" className="text-sm font-medium text-white">
+              {t.country} <span className="text-[#FF6634]">*</span>
+            </label>
+            <Select
+              value={formData.country}
+              onValueChange={(value) => setFormData({ ...formData, country: value })}
+              disabled={isSubmitting}
+            >
+              <SelectTrigger className="bg-[#0B0E1A] border-[#2A3441] text-white">
+                <SelectValue placeholder={t.countryPlaceholder} />
+              </SelectTrigger>
+              <SelectContent className="bg-[#1A1F2E] border-[#2A3441] text-white">
+                <SelectItem value="spain">{t.countries.spain}</SelectItem>
+                <SelectItem value="argentina">{t.countries.argentina}</SelectItem>
+                <SelectItem value="bolivia">{t.countries.bolivia}</SelectItem>
+                <SelectItem value="chile">{t.countries.chile}</SelectItem>
+                <SelectItem value="colombia">{t.countries.colombia}</SelectItem>
+                <SelectItem value="mexico">{t.countries.mexico}</SelectItem>
+                <SelectItem value="paraguay">{t.countries.paraguay}</SelectItem>
+                <SelectItem value="peru">{t.countries.peru}</SelectItem>
+                <SelectItem value="other">{t.countries.other}</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
 
           <Button

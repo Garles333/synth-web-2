@@ -208,28 +208,55 @@ export async function trackDemoRequest(
   country: string,
   locale: 'es' | 'en' = 'es'
 ): Promise<MauticResponse> {
-  // Preparar datos del contacto - solo incluir campos que Mautic acepta
+  // Mapear companyType a tags rol_*
+  const companyTypeTagMap: Record<string, string> = {
+    'creative': 'rol_agencia_creativa',
+    'media': 'rol_agencia_medios',
+    'consulting': 'rol_consultoria',
+    'market': 'rol_investigacion',
+    'client': 'rol_marca_empresa',
+    'education': 'rol_educacion',
+    'other': 'rol_otros',
+  };
+
+  // Mapear country a tags pais_*
+  const countryTagMap: Record<string, string> = {
+    'spain': 'pais_es',
+    'argentina': 'pais_ar',
+    'bolivia': 'pais_bo',
+    'chile': 'pais_cl',
+    'colombia': 'pais_co',
+    'mexico': 'pais_mx',
+    'paraguay': 'pais_py',
+    'peru': 'pais_pe',
+    'other': 'pais_otro_latam',
+  };
+
+  // Preparar tags base
+  const tags: string[] = ['demo_solicitado', `idioma_${locale}`];
+
+  // Agregar tag de tipo de empresa si existe
+  if (companyType && companyTypeTagMap[companyType]) {
+    tags.push(companyTypeTagMap[companyType]);
+  }
+
+  // Agregar tag de país si existe
+  if (country && countryTagMap[country]) {
+    tags.push(countryTagMap[country]);
+  }
+
+  // Preparar datos del contacto
   const contactData: MauticContact = {
     email,
     firstname: firstName,
     lastname: lastName,
     locale,
-    tags: ['demo_solicitado', `idioma_${locale}`],
+    tags,
   };
 
   // Solo agregar company si tiene valor
   if (company && company.trim()) {
     contactData.company = company;
-  }
-
-  // Agregar campos personalizados como descripción o notas si existen
-  // (Estos campos no son críticos para la creación del contacto)
-  if (companyType && companyType.trim()) {
-    contactData.company_type = companyType;
-  }
-
-  if (country && country.trim()) {
-    contactData.country = country;
   }
 
   return createOrUpdateContact(contactData);
